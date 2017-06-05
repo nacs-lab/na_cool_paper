@@ -65,7 +65,7 @@
   motional ground state in an optical tweezer.
   Despite having a very large Lamb-Dicke parameter, high initial temperature and
   large differential AC Stark shift in the excited state,
-  we achieved a ground state preparation fidelity of $XX\%$ after a few hundred ms of cooling
+  we achieved a ground state preparation fidelity of $??\%$ after a few hundred ms of cooling
   by using a few new cooling techniques including addressing high order Raman sideband.
   We demonstrate that Raman sideband cooling to the 3D motional ground state is applicable to
   systems where tight confinement or low initial cooling is hard to achieve.
@@ -105,9 +105,9 @@
     \label{f-ld}}
 \end{figure}
 \begin{figure*}
-  \includegraphics[height=4.3cm]{imgs/spectrum_r.pdf}
-  \includegraphics[height=4.3cm]{imgs/rabi_flop_r3_0.pdf}
-  \includegraphics[height=4.3cm]{imgs/rabi_flop_r3_p1.pdf}
+  \includegraphics[height=4.2cm]{imgs/spectrum_r.pdf}
+  \includegraphics[height=4.2cm]{imgs/rabi_flop_r3_0.pdf}
+  \includegraphics[height=4.2cm]{imgs/rabi_flop_r3_p1.pdf}
   \caption{Radial Raman sideband spectrum of first order heating, first order cooling and
     second order cooling (A) before and (B) after Raman sideband cooling.
     Rabi flopping on axis 3 (C) carrier and (D) first order heating sideband
@@ -115,6 +115,20 @@
     Solid lines in (C) and (D) are theoretical fit with a ground state probability of $????\%$.
     Horizontal dashed lines in (A) to (D) are total survival and detection efficiency.
     \label{f-radial}}
+\end{figure*}
+\begin{figure*}
+  \includegraphics[height=4.2cm]{imgs/spectrum_a1.pdf}
+  \includegraphics[height=4.2cm]{imgs/rabi_flop_a1_0.pdf}
+  \includegraphics[height=4.2cm]{imgs/rabi_flop_a1_p1.pdf}
+  \caption{Axial Raman sideband spectrum from first order heating to eighth order cooling
+    (A) before and (B) after Raman sideband cooling.
+    The data for the second and higher orders of cooling sidebands are taken with $150\mu s$
+    pulse time and the rest are taken with $125\mu s$ pulse time.
+    Rabi flopping on axial (C) carrier and (D) first order heating sideband
+    after cooling.
+    Solid lines in (C) and (D) are theoretical fit with a ground state probability of $????\%$.
+    Horizontal dashed lines in (C) and (D) are total survival and detection efficiency.
+    \label{f-axial}}
 \end{figure*}
 
 Single neutral atoms trapped in optical tweezers provide a promising system
@@ -155,9 +169,9 @@ an optical pumping pulse bring the atom back to the $|F=2, m_F=-2\rangle$ state 
 the entropy. The second step could also change the motional state of the atoms which
 could cause heating. The possibility for this to happen for an atom in the motional level $n$
 is approximately proportional to the effective Lamb-Dicke parameter
-$\eta^{OP}_{eff}=\sqrt{2n+1}\eta^{OP}$ where $\eta^{OP}=???$ is the Lamb-Dicke parameter for
+$\eta^{OP}_{eff}=\sqrt{2n+1}\eta^{OP}$ where $\eta^{OP}=k^{OP}???$ is the Lamb-Dicke parameter for
 optical pumping.
-The geometry of the relevant beams (???and their polarizations) is showed in figure \ref{f-setup}B.
+The geometry of the relevant beams and their polarizations is showed in figure \ref{f-setup}B.
 The optical tweezer has one weakly confined axial direction (axis $1$) and
 two more strongly confined radial directions (axis $2$ and $3$).
 Multiple pairs of beams are used to drive the Raman transition during cooling in order to
@@ -179,19 +193,19 @@ a small Lamb-Dicke parameter. However, since the Lamb-Dicke parameter $\eta$ is 
 proportional to $\sqrt{m}$ (???) where $m$ is the mass of the atom, it is larger for sodium
 given the same trap depth (???).
 With $45mW$ of power at the focus of the trap, we measured a trapping frequency of
-$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{67, 420, 580\}\ \text{\text{kHz}}$
+$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69, 430, 590\}\ \text{\text{kHz}}$
 which corresponds to optical pumping Lamb-Dicke parameters of
-$\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{???, ???, ???\}$.
-Moreover, due to the unresolved(?) hyperfine structure in the $3^2P_{3/2}$ manifold,
+$\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.60, 0.24, 0.21\}$.
+Moreover, due to the small hyperfine structure in the $3^2P_{3/2}$ manifold,
 the sub-Doppler cooling in sodium is also less efficient and we start the
 Raman sideband cooling with a initial temperature of $40\mu K$. Combined with the high Lamb-Dicke
 parameters, this gives us a initial effective optical pumping Lamb-Dicke parameters of
-$\{\eta^{OP}_{1eff},\eta^{OP}_{2eff},\eta^{OP}_{3eff}\} = \{???, ???, ???\}$
+$\{\eta^{OP}_{1eff},\eta^{OP}_{2eff},\eta^{OP}_{3eff}\} = \{2.97, 0.52, 0.40\}$
 As a result, there is a very high probability of heating during the optical pumping step
 (figure \ref{f-ld}B) causing a $30\%$ average heating probability during optical pumping
 in the weakly confined axial direction. Fortunately, the high Lamb-Dicke parameters also
 provide us tools to overcome this issue. From our geometry, the Lamb-Dicke parameters for
-Raman transitions are $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{???, ???, ???\}$. As shown in
+Raman transitions are $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{???, 0.34, 0.29\}$. As shown in
 figure \ref{f-ld}A, the high Raman Lamb-Dicke parameters causes a strong coupling to higher orders
 of cooling sidebands, especially for high motional states.
 This enables us to cool atoms in high motional states by driving on high order Raman sidebands,
@@ -230,8 +244,9 @@ light shift in the center of the trap is as large as $300\text{MHz}$.
 In additional to creating a large and position dependent detuning for the optical pumping light,
 it also mixes the excited state state hyperfine levels,
 affecting the branching ratio and increasing the number of photons needed during optical pumping.
-Similar to our loading and imaging process [???], we solve this issue by switching the
-trapping light at $3\text{MHz}$ during the whole cooling sequence.
+Similar to our loading and imaging process \cite{Hutzler2016},
+we solve this issue by switching the trapping light at $3\text{MHz}$
+during the whole cooling sequence.
 Due to the large light shift, the optical pumping is effectively off when the trap light is on.
 Since the atom can only be addressed by the optical pumping light when the trap light is off,
 the effect of light shift on optical pumping fidelity is suppressed.
@@ -242,14 +257,14 @@ In the simulation, we can observe the high heating rate due to the high Lamb-Dic
 and confirm that by using high order Raman sideband transition in the cooling sequence we can
 suppress this effect and reduces the motional energy of the atom faster.
 The simulation is also used to guide the optimization of the cooling sequence by exploring the
-large parameter space and finding a robust cooling strategy. As shown in figure (?),
+large parameter space and finding a robust cooling strategy. As shown in figure \ref{f-setup}B,
 we found that instead of cooling on only one sideband order at a time, it is generally more
 efficient to alternate the cooling pulse between two neighboring orders (axial) or pulse lengths.
 A cooling sequence like this minimizes the accumulation of atom in a state not addressed by a
 particular Raman pulse parameter.
 
 For the more tightly confined radial directions,
-we starts the cooling with $\{\bar n_2, \bar n_3\}=????, ????$.
+we starts the cooling with $\{\bar n_2, \bar n_3\}=2.2, 1.9$.
 The radial sideband spectra of the initial distribution is shown in figure \ref{f-radial}A
 where we can clearly see the first order heating, first order cooling and
 second order cooling sidebands.
@@ -266,18 +281,6 @@ we measured the Rabi flopping on the carrier and heating sideband before and aft
 as a independent way to obtain the population in different motional states.
 Fitting the Rabi flopping data give a ground state probability of $????$ and $????$,
 showing good agreement between the two methods.
-\begin{figure*}
-  \includegraphics[height=4.3cm]{imgs/spectrum_a1.pdf}
-  \includegraphics[height=4.3cm]{imgs/rabi_flop_a1_0.pdf}
-  \includegraphics[height=4.3cm]{imgs/rabi_flop_a1_p1.pdf}
-  \caption{Axial Raman sideband spectrum from first order heating to eighth order cooling
-    (A) before and (B) after Raman sideband cooling.
-    Rabi flopping on axial (C) carrier and (D) first order heating sideband
-    after cooling.
-    Solid lines in (C) and (D) are theoretical fit with a ground state probability of $????\%$.
-    Horizontal dashed lines in (C) and (D) are total survival and detection efficiency.
-    \label{f-axial}}
-\end{figure*}
 
 The axial direction is much less confined and therefore has a much higher initial effective
 Lamb-Dicke parameter of $\eta^{OP}_{eff1}\approx3.3$.
@@ -312,7 +315,6 @@ state using Raman sideband cooling that is challenging to laser cool
 including molecules and exotic atoms.
 
 % Missing:
-% ?? D1 OP
 % ?? Blackman pulse
 
 \bibliography{paper}
