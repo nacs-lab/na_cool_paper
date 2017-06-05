@@ -143,8 +143,8 @@ data_after_a1_0 = NaCsData.map_params((i, v)->v * 1e6, data_d)
 data_after_a1_p1 = NaCsData.map_params((i, v)->v * 1e6, data_c)
 
 function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
-                 rates::AbstractVector{T}, tmax::T, atol=0.005, n::Integer=100000,
-                 rd=thread_rng()) where T<:AbstractFloat
+                 rates::AbstractVector{T}, tmax::T, atol=0.005, δΩ=T(0),
+                 n::Integer=100000, rd=thread_rng()) where T<:AbstractFloat
     nΩ = length(Ωs)
     nstates = length(rates)
     count = 0
@@ -157,7 +157,8 @@ function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
                 break
             end
         end
-        i_final = propagate_multistates(T(Ωs[j]), 1, 6, Γ, rates, 1, tmax, rd)
+        Ω = T(sqrt(Ωs[j]^2 + (δΩ * randn(rd))^2))
+        i_final = propagate_multistates(Ω, 1, 6, Γ, rates, 1, tmax, rd)
         if i_final > 5
             # count F1
             count += 1
@@ -172,14 +173,15 @@ function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
     return binomial_estimate(count, n)[1]
 end
 
-function f1_prop_getter(Γ, scale=1)
+function f1_prop_getter(Γ, scale=1, δΩ=0)
     Γ32 = Float32.(Γ)
     rates32 = Γ_to_rates(Γ32)
-    (Ωs, pΩ, t, atol=0.005)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol) * scale
+    (Ωs, pΩ, t, atol=0.005)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol, δΩ) * scale
 end
 
 const f_r3 = f1_prop_getter(rates_r3, 0.85)
 const f_r2 = f1_prop_getter(rates_r2, 0.85)
+# const f_a1 = f1_prop_getter(rates_a1, 0.85, 2π * 2e3)
 const f_a1 = f1_prop_getter(rates_a1, 0.85)
 
 function plot_f1(f, ts, Ωs, pΩ; kws...)
@@ -209,8 +211,9 @@ const p_r3 = [0.9, 0.077, 0.023]
 
 figure()
 ts_r3_0 = linspace(0, 80e-6, 1001)
-plot_f1(f_r3, ts_r3_0, 2π / τ_r3 * meles_r3_0[1:3], p_r3, color="k")
-plot_data(data_after_r3_0, 1, fmt="ko")
+plot_f1(f_r3, ts_r3_0, 2π / τ_r3 * meles_r3_0[1:3], p_r3, color="C0")
+plot_data(data_after_r3_0, 1, fmt="C0o")
+plot_data(data_before_r3_0, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_r3_0[1] * 1e6, ts_r3_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -222,8 +225,9 @@ maybe_save("$(prefix)_r3_0")
 
 figure()
 ts_r3_p1 = linspace(0, 180e-6, 1001)
-plot_f1(f_r3, ts_r3_p1, 2π / τ_r3 * meles_r3_p1[1:3], p_r3, color="k")
-plot_data(data_after_r3_p1, 1, fmt="ko")
+plot_f1(f_r3, ts_r3_p1, 2π / τ_r3 * meles_r3_p1[1:3], p_r3, color="C0")
+plot_data(data_after_r3_p1, 1, fmt="C0o")
+plot_data(data_before_r3_p1, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_r3_p1[1] * 1e6, ts_r3_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -238,8 +242,9 @@ const p_r2 = [0.896, 0.048, 0.056]
 
 figure()
 ts_r2_0 = linspace(0, 80e-6, 201)
-plot_f1(f_r2, ts_r2_0, 2π / τ_r2 * meles_r2_0[1:3], p_r2, color="C3")
-plot_data(data_after_r2_0, 1, fmt="C3o")
+plot_f1(f_r2, ts_r2_0, 2π / τ_r2 * meles_r2_0[1:3], p_r2, color="C0")
+plot_data(data_after_r2_0, 1, fmt="C0o")
+plot_data(data_before_r2_0, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_r2_0[1] * 1e6, ts_r2_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -251,8 +256,9 @@ maybe_save("$(prefix)_r2_0")
 
 figure()
 ts_r2_p1 = linspace(0, 180e-6, 201)
-plot_f1(f_r2, ts_r2_p1, 2π / τ_r2 * meles_r2_p1[1:3], p_r2, color="C3")
-plot_data(data_after_r2_p1, 1, fmt="C3o")
+plot_f1(f_r2, ts_r2_p1, 2π / τ_r2 * meles_r2_p1[1:3], p_r2, color="C0")
+plot_data(data_after_r2_p1, 1, fmt="C0o")
+plot_data(data_before_r2_p1, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_r2_p1[1] * 1e6, ts_r2_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -262,8 +268,8 @@ text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r2_p1")
 
-const τ_a1 = 60.1833e-6
-const p_a1 = [0.92, 0.08, 0.0]
+const τ_a1 = 59e-6
+const p_a1 = [0.97, 0.03, 0.0]
 
 ts_a1_0 = linspace(0, 300e-6, 201)
 ts_a1_p1 = linspace(0, 450e-6, 201)
@@ -271,6 +277,7 @@ ts_a1_p1 = linspace(0, 450e-6, 201)
 figure()
 plot_f1(f_a1, ts_a1_0, 2π / τ_a1 * (meles_a1_0[1:3] * meles_r3_0[1:3]'), p_a1 * p_r3', color="C0")
 plot_data(data_after_a1_0, 1, fmt="C0o")
+plot_data(data_before_a1_0, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_a1_0[1] * 1e6, ts_a1_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -284,6 +291,7 @@ figure()
 plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
         p_a1 * p_r3', color="C0")
 plot_data(data_after_a1_p1, 1, fmt="C0o")
+plot_data(data_before_a1_p1, 1, fmt="C3o-")
 ylim([0, 1])
 xlim([ts_a1_p1[1] * 1e6, ts_a1_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
