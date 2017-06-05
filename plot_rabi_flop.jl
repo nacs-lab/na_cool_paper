@@ -42,7 +42,7 @@ const rates_coprop = rates_f1_coprop + rates_f2_coprop
 
 # Matrix elements
 const m_Na = 23e-3 / 6.02e23
-const η_a1 = Trap.η(m_Na, 68.8e3, 2π / 589e-9) / √(2)
+const η_a1 = Trap.η(m_Na, 68.8e3, 2π / 589e-9) * 0.67
 const η_r2 = Trap.η(m_Na, 430e3, 2π / 589e-9) * √(2)
 const η_r3 = Trap.η(m_Na, 589.5e3, 2π / 589e-9) * √(2)
 
@@ -173,26 +173,25 @@ function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
     return binomial_estimate(count, n)[1]
 end
 
-function f1_prop_getter(Γ, scale=1, δΩ=0)
+function f1_prop_getter(Γ)
     Γ32 = Float32.(Γ)
     rates32 = Γ_to_rates(Γ32)
-    (Ωs, pΩ, t, atol=0.005)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol, δΩ) * scale
+    (Ωs, pΩ, t, atol=0.005, δΩ=0)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol, δΩ)
 end
 
-const f_r3 = f1_prop_getter(rates_r3, 0.85)
-const f_r2 = f1_prop_getter(rates_r2, 0.85)
-# const f_a1 = f1_prop_getter(rates_a1, 0.85, 2π * 2e3)
-const f_a1 = f1_prop_getter(rates_a1, 0.85)
+const f_r3 = f1_prop_getter(rates_r3)
+const f_r2 = f1_prop_getter(rates_r2)
+const f_a1 = f1_prop_getter(rates_a1)
 
-function plot_f1(f, ts, Ωs, pΩ; kws...)
+function plot_f1(f, ts, Ωs, pΩ, δΩ=0, scale=0.85; kws...)
     res = zeros(length(ts))
     @time Threads.@threads for i in 1:length(ts)
-        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002)
+        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002) * scale
     end
     plot(ts * 1e6, res; kws...)
 end
 
-function diviation(f, data, Ωs, pΩ, scale=1 / 0.85)
+function diviation(f, data, Ωs, pΩ, scale=1 / 0.85, δΩ=0)
     params, ratios, uncs = NaCsData.get_values(data)
     perm = sortperm(params)
     params = params[perm] * 1e-6
@@ -201,7 +200,7 @@ function diviation(f, data, Ωs, pΩ, scale=1 / 0.85)
     n = length(params)
     s = 0.0
     for i in 1:n
-        s += ((f(Ωs, pΩ, Float32(params[i]), 0.001) - ratios[i]) / uncs[i])^2
+        s += ((f(Ωs, pΩ, Float32(params[i]), 0.001, δΩ) - ratios[i]) / uncs[i])^2
     end
     return s, n
 end
@@ -268,7 +267,7 @@ text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r2_p1")
 
-const τ_a1 = 59e-6
+const τ_a1 = 60e-6
 const p_a1 = [0.97, 0.03, 0.0]
 
 ts_a1_0 = linspace(0, 300e-6, 201)
