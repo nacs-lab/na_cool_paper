@@ -110,6 +110,10 @@ end
 
 function maybe_save(name)
     if !interactive()
+        dir = dirname(name)
+        if !isempty(dir)
+            mkpath(dir, 0o755)
+        end
         savefig("$name.pdf"; bbox_inches="tight", transparent=true)
         savefig("$name.png"; bbox_inches="tight", transparent=true)
         savefig("$name.svg", bbox_inches="tight", transparent=true)
@@ -186,27 +190,30 @@ const f_a1 = f1_prop_getter(rates_a1)
 function plot_f1(f, ts, Ωs, pΩ, δΩ=0, scale=0.85; kws...)
     res = zeros(length(ts))
     @time Threads.@threads for i in 1:length(ts)
-        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002) * scale
+        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002, δΩ) * scale
     end
     plot(ts * 1e6, res; kws...)
 end
 
-function diviation(f, data, Ωs, pΩ, scale=1 / 0.85, δΩ=0)
-    params, ratios, uncs = NaCsData.get_values(data)
-    perm = sortperm(params)
-    params = params[perm] * 1e-6
-    ratios = ratios[perm, 2] .* scale
-    uncs = uncs[perm, 2] .* scale
-    n = length(params)
-    s = 0.0
-    for i in 1:n
-        s += ((f(Ωs, pΩ, Float32(params[i]), 0.001, δΩ) - ratios[i]) / uncs[i])^2
-    end
-    return s, n
-end
+# function diviation(f, data, Ωs, pΩ, scale=1 / 0.85, δΩ=0)
+#     params, ratios, uncs = NaCsData.get_values(data)
+#     perm = sortperm(params)
+#     params = params[perm] * 1e-6
+#     ratios = ratios[perm, 2] .* scale
+#     uncs = uncs[perm, 2] .* scale
+#     n = length(params)
+#     s = 0.0
+#     for i in 1:n
+#         s += ((f(Ωs, pΩ, Float32(params[i]), 0.001, δΩ) - ratios[i]) / uncs[i])^2
+#     end
+#     return s, n
+# end
+
+# r3 0.90±0.02
 
 const τ_r3 = 11.445e-6
-const p_r3 = [0.9, 0.077, 0.023]
+const p_r3 = [0.93, 0.057, 0.013]
+const δΩ_r3 = 0
 
 figure()
 ts_r3_0 = linspace(0, 80e-6, 1001)
@@ -236,8 +243,11 @@ text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r3_p1")
 
+# r2 0.90±0.03
+
 const τ_r2 = 11.608e-6
 const p_r2 = [0.896, 0.048, 0.056]
+const δΩ_r2 = 0
 
 figure()
 ts_r2_0 = linspace(0, 80e-6, 201)
@@ -267,8 +277,9 @@ text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r2_p1")
 
-const τ_a1 = 60e-6
-const p_a1 = [0.97, 0.03, 0.0]
+const τ_a1 = 60.3e-6
+const p_a1 = [0.92, 0.05, 0.02]
+const δΩ_a1 = 15e3
 
 ts_a1_0 = linspace(0, 300e-6, 201)
 ts_a1_p1 = linspace(0, 450e-6, 201)
@@ -288,7 +299,9 @@ maybe_save("$(prefix)_a1_0")
 
 figure()
 plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
-        p_a1 * p_r3', color="C0")
+        p_a1 * p_r3', 0, color="C0")
+plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
+        p_a1 * p_r3', δΩ_a1, color="C0")
 plot_data(data_after_a1_p1, 1, fmt="C0o")
 plot_data(data_before_a1_p1, 1, fmt="C3o-")
 ylim([0, 1])
