@@ -319,9 +319,10 @@ const τ_a1 = 60.3e-6
 const p_a1 = [0.92, 0.05, 0.02]
 const δΩ_a1 = 15e3
 
-const τ_a1_init = 65e-6
-const nbar_init_a1 = 20.0
-const δΩ_a1_init = 25e3
+const τ_a1_init = 80e-6
+const nbar_init_a1 = 10.0
+const δΩ_a1_init_0 = 25e3
+const δΩ_a1_init_p1 = 50e3
 
 figure()
 ts_a1_0 = linspace(0, 300e-6, 256)
@@ -330,7 +331,7 @@ plot_f1(f_a1, ts_a1_0, 2π / τ_a1 * (meles_a1_0[1:3] * meles_r3_0[1:3]'), p_a1 
 ts_a1_0_init = linspace(0, 150e-6, 256)
 plot_data(data_before_a1_0, 1, fmt="C3o")
 plot_f1_thermal2(f_a1, ts_a1_0_init, 2π / τ_a1_init * meles_a1_0, nbar_init_a1,
-                 meles_r3_0, nbar_init_r3, δΩ_a1_init, color="C3")
+                 meles_r3_0, nbar_init_r3, δΩ_a1_init_0, color="C3")
 ylim([0, 1])
 xlim([ts_a1_0[1] * 1e6, ts_a1_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
@@ -349,7 +350,7 @@ plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
 ts_a1_p1_init = linspace(0, 400e-6, 256)
 plot_data(data_before_a1_p1, 1, fmt="C3o")
 plot_f1_thermal2(f_a1, ts_a1_p1_init, 2π / τ_a1_init * meles_a1_p1, nbar_init_a1,
-                 meles_r3_0, nbar_init_r3, δΩ_a1_init, color="C3")
+                 meles_r3_0, nbar_init_r3, δΩ_a1_init_p1, color="C3")
 ylim([0, 1])
 xlim([ts_a1_p1[1] * 1e6, ts_a1_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
