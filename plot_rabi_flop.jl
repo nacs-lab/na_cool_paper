@@ -230,7 +230,7 @@ end
 #     return s, n
 # end
 
-# r3 0.90±0.02
+# r3 0.90±0.05
 
 const τ_r3 = 11.445e-6
 const p_r3 = [0.93, 0.057, 0.013]
@@ -271,7 +271,7 @@ text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r3_p1")
 
-# r2 0.90±0.03
+# r2 0.90±0.06
 
 const τ_r2 = 11.608e-6
 const p_r2 = [0.896, 0.048, 0.056]
@@ -320,7 +320,7 @@ const p_a1 = [0.92, 0.05, 0.02]
 const δΩ_a1 = 15e3
 
 const τ_a1_init = 65e-6
-const nbar_init_a1 = 27.0
+const nbar_init_a1 = 20.0
 const δΩ_a1_init = 25e3
 
 figure()
