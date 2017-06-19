@@ -9,6 +9,9 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[colorlinks=true]{hyperref}
 
+\usepackage[final]{fixme}
+\fxsetup{layout=inline}
+
 \newcommand{\ud}{\mathrm{d}}
 \newcommand{\ue}{\mathrm{e}}
 \newcommand{\ui}{\mathrm{i}}
@@ -82,7 +85,8 @@
   \caption{(A) Energy levels and schematic of Raman sideband cooling.
     The Raman transitions have a one photon detuning $\Delta=25$ GHz from the D2 line.
     We use D1 light with $\sigma^-$ polarization to repump atoms out of $|F=2,m_F=-1\rangle$
-    state to minimize heating on the atom in $|F=2,m_F=-2\rangle$ state [TALK ABOUT THIS IN THE TEXT].
+    state to minimize heating on the atom in $|F=2,m_F=-2\rangle$ state
+    \fxnote{TALK ABOUT THIS IN THE TEXT}.
     (B) Geometry and polarizations of the Raman and optical pumping beams relative to the
     optical tweezer and bias magnetic field.
     (C) Schematic of the cooling sequence. The tweezer switches at 3 MHz to
@@ -130,20 +134,20 @@
 \end{figure*}
 
 Systems of single neutral atoms trapped in optical tweezers are an exciting platform to study quantum information, quantum chemistry,
-and quantum simulation of many-body systems [REF].
+and quantum simulation of many-body systems \fxnote{REF}.
 This approach provides full single-site resolution and control, and can feature long-range interactions via Rydberg atoms,
-polar molecules, or dipolar atoms [REF].
+polar molecules, or dipolar atoms \fxnote{REF}.
 Polar molecules in particular offer the additional advantages of long-lived internal states and a high degree of tunability,
-including the shape, range, and strength of the interaction [REF].
-Optical tweezers can also be re-arranged in real-time, allowing rapid preparation of atoms in complex geometries with high fidelity [REF].
+including the shape, range, and strength of the interaction \fxnote{REF}.
+Optical tweezers can also be re-arranged in real-time, allowing rapid preparation of atoms in complex geometries with high fidelity \fxnote{REF}.
 
 In order to achieve long coherence times and full quantum control of the system,
 it is typically necessary to cool the atom to the
 three dimensional motional ground state in the optical tweezer.
-This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012} and Cs [REF] in experiments that had low initial temperature and small Lamb-Dicke parameter.
+This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012} and Cs \fxnote{REF} in experiments that had low initial temperature and small Lamb-Dicke parameter.
 These features
-may not be easily achievable for other systems, such as directly laser-cooled polar molecules [REF],
-or atoms with challenging sub-Doppler cooling such as Na, K, and Li [REF].
+may not be easily achievable for other systems, such as directly laser-cooled polar molecules \fxnote{REF},
+or atoms with challenging sub-Doppler cooling such as Na, K, and Li \fxnote{REF}.
 In this letter, we cool single sodium atoms
 trapped in optical tweezers to the motional ground state with Raman sideband cooling.
 Despite having a large Lamb-Dicke parameter and high initial temperature, we are able to achieve a ground state probability of $77(4)\%$
@@ -156,9 +160,9 @@ proportional to $\sqrt[4]{m}/\lambda$ where $m$ is the mass of the atom and $\la
 is the wavelength of the atomic transition,
 it is larger for sodium given the same trap depth due to its low mass and short D line wavelength.
 With 45 mW of power in the trap, we measure trapping frequencies of
-$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69, 430, 590\}\ \text{\text{kHz}}$ [ERROR BARS]
+$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69, 430, 590\}\ \text{\text{kHz}}$ \fxnote{ERROR BARS}
 which corresponds to optical pumping Lamb-Dicke parameters of
-$\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.60, 0.24, 0.21\}$ [ERROR BARS].
+$\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.60, 0.24, 0.21\}$ \fxnote{ERROR BARS}.
 Moreover, due to the small hyperfine structure in the $3^2P_{3/2}$ manifold,
 the sub-Doppler cooling in sodium is also less efficient and we start the
 Raman sideband cooling with a initial temperature of 70 $\mu$K. Combined with the high Lamb-Dicke
@@ -177,14 +181,14 @@ This enables cooling of atoms in high motional states by driving higher order Ra
 removing more motional energy in a single cooling pulse and offsetting the effect of heating. Since the heating probability is higher for high motional states,
 cooling on these high order sidebands can greatly suppress the high heating during
 optical pumping during the initial cooling. Since the coupling strength of different orders
-do not reach their minimums at the same time [FIG], using multiple orders of motional sidebands
+do not reach their minimums at the same time \fxnote{FIG}, using multiple orders of motional sidebands
 for cooling also avoids accumulation of population near the coupling minimum of a particular
 order, which improves the overall efficiency of the cooling process.
 
 The high initial temperature also causes additional complications.  First, population in high motional states means that the atoms sample
-the anharmonicity of the trap away from the harmonic center.  This results in sidebands that are broader and of reduced height [FIG], and limits the Rabi frequency of the Raman pulse
+the anharmonicity of the trap away from the harmonic center.  This results in sidebands that are broader and of reduced height \fxnote{FIG}, and limits the Rabi frequency of the Raman pulse
 on the radial sidebands to be no lower than tens of kHz in order to drive atoms in
-different motional states equally.  [EXPLAIN THIS A LITTLE MORE].
+different motional states equally. \fxnote{EXPLAIN THIS A LITTLE MORE}.
 Second, the deep trap that is needed to trap and image single sodium atom also creates
 a very large AC Stark shift in the excited state (as large as 300 MHz).
 This creates large, position-dependent detuning for the optical pumping light and mixes the excited state state hyperfine levels,
@@ -196,7 +200,7 @@ Since the atom can only be addressed by the optical pumping light when the trap 
 the effect of light shift on optical pumping fidelity is suppressed.
 
 Taking all these features of our system into account, we use a Monte-Carlo simulation to verify
-the validity of our method [WRITE BRIEF SUMMARY IN APPENDIX?].
+the validity of our method \fxnote{WRITE BRIEF SUMMARY IN APPENDIX?}.
 In the simulation, we can observe the high heating rate due to the high Lamb-Dicke parameters
 and confirm that by using high order Raman sideband transition in the cooling sequence we can
 suppress this effect and reduces the motional energy of the atom faster.
@@ -208,7 +212,7 @@ A cooling sequence like this minimizes the accumulation of atom in a state not a
 particular Raman pulse parameter.
 
 For the more tightly confined radial directions,
-we begin the cooling with $\{\bar n_2, \bar n_3\}=2.2, 1.9$ [ERROR BARS].
+we begin the cooling with $\{\bar n_2, \bar n_3\}=2.2, 1.9$ \fxnote{ERROR BARS}.
 The radial sideband spectra of the initial distribution is shown in figure \ref{f-radial}A
 where we can clearly see the first order heating, first order cooling and
 second order cooling sidebands.
@@ -233,7 +237,7 @@ and ground state population under the assumption that only a few states are popu
 We can verify the result via an independent measurement of Rabi flopping on the carrier and heating
 sidebands. This data is shown before and after cooling in Figures
 \ref{f-radial}C and \ref{f-radial}D
-and yields $90\%$ and $92\%$ [ERROR BARS],
+and yields $90\%$ and $92\%$ \fxnote{ERROR BARS},
 showing good agreement between the two methods.
 
 The axial direction is much less confined and therefore has a much higher initial effective
@@ -261,7 +265,7 @@ Combining the axial and radial cooling results,
 we have achieved a 3D ground state probability of $77(4)\%$.
 We believe this is currently limited by off-resonant scattering from the Raman beams
 and the resonance shift caused by magnetic field fluctuations.
-Improvements on these [HOW?] should improve the cooling performance even further.
+Improvements on these \fxnote{HOW?} should improve the cooling performance even further.
 We have shown that despite the difficulty in cooling sodium atoms,
 it is possible to achieve reliable three dimensional cooling with significant ground state
 probability using new cooling techniques and a optimized cooling sequence.
