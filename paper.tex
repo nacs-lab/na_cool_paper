@@ -43,7 +43,7 @@
 \newcommand{\sddiff}[3][{}]{{\frac{\ud^{#1}}{\ud {#3}{}^{#1}} {#2}}}
 
 \begin{document}
-\title{Motional Quantum Ground-State Cooing of a Single Sodium Atom}
+\title{Motional Quantum Ground-State Cooing Outside the Lamb-Dicke Regime}
 \author{Yichao Yu}
 \author{Nicholas R. Hutzler}
 \author{Jessie T. Zhang}
@@ -65,7 +65,7 @@
   motional ground state in an optical tweezer.
   Despite having a very large Lamb-Dicke parameter, high initial temperature and
   large differential AC Stark shift in the excited state,
-  we achieved a ground state preparation fidelity of $77.1(35)\%$ after a few hundred ms of cooling
+  we achieved a ground state preparation fidelity of $77(4)\%$ after a few hundred ms of cooling
   by using a few new cooling techniques including addressing high order Raman sideband.
   We demonstrate that Raman sideband cooling to the 3D motional ground state is applicable to
   systems where tight confinement or low initial cooling is hard to achieve.
@@ -129,36 +129,32 @@
     \label{f-axial}}
 \end{figure*}
 
-Single neutral atoms trapped in optical tweezers provide a promising system
-for various applications including quantum information, quantum chemistry
-and quantum simulation of many-body systems.
-Long-range interactions between the sites can be achieved by using Rydberg atoms,
-polar molecules, or dipolar atoms.
-Polar molecules offer the additional advantage of a high degree of tunability,
-including the shape, range, and strength of the interaction.
-Arrays of optical tweezers offer the ability to move, detect, and manipulate individual sites,
-and can be used to prepare complex interacting systems with high fidelity.
-In order to achieve long coherence time and full quantum control of the system needed for
-these applications,
-it is usually necessary to control the thermal motion of the atoms by cooling to the
-three dimensional motional ground state in the optical tweezer,
-which has already been demonstrated with heavy alkali atoms including rubidium and cesium.
-However, some of the important properties of previous experiments,
-for example low initial temperature and small Lamb-Dicke parameter,
-may not be easily achievable for other systems, such as directly laser-cooled polar molecules,
-or atoms with challenging sub-Doppler cooling such as Na, K, and Li.
-To extend the versatility of this approach, we must be able to apply it in a more general case.
+Systems of single neutral atoms trapped in optical tweezers are an exciting platform to study quantum information, quantum chemistry,
+and quantum simulation of many-body systems [REF].
+This approach provides full single-site resolution and control, and can feature long-range interactions via Rydberg atoms,
+polar molecules, or dipolar atoms [REF].
+Polar molecules in particular offer the additional advantages of long-lived internal states and a high degree of tunability,
+including the shape, range, and strength of the interaction [REF].
+Optical tweezers can also be re-arranged in real-time, allowing rapid preparation of atoms in complex geometries with high fidelity [REF].
+
+In order to achieve long coherence times and full quantum control of the system,
+it is typically necessary to cool the atom to the
+three dimensional motional ground state in the optical tweezer.
+This has been demonstrated for neutral Rb and Cs [REF] in experiments that had low initial temperature and small Lamb-Dicke parameter.  
+These features
+may not be easily achievable for other systems, such as directly laser-cooled polar molecules [REF],
+or atoms with challenging sub-Doppler cooling such as Na, K, and Li [REF].
 In this letter, we cool single sodium atoms
 trapped in optical tweezers to the motional ground state with Raman sideband cooling.
-Despite having a large Lamb-Dicke parameter and high initial temperature, we are able to achieve a ground state probability of $77.1(35)\%$
-by utilizing several new cooling techniques and a carefully optimized cooling sequence.
+Despite having a large Lamb-Dicke parameter and high initial temperature, we are able to achieve a ground state probability of $77(4)\%$
+by utilizing several new cooling techniques and a carefully optimized cooling sequence.  Our approach is quite general, and opens up ground-state cooling for other systems.
 
 The Raman sideband cooling (RSC) scheme that we use to achieve high ground state preparation fidelity
-consists of multiple cycles of laser pulses to manipulate the internal and
+consists of multiple cycles of laser pulses to manipulate both the internal and
 motional states of the atoms.
 Figure \ref{f-setup}A shows the schematic of the energy levels and the cooling sequence
 in our setup.
-Each cooling cycle starts with the sodium atom in the $|F=2, m_F=-2\rangle$
+Each cooling cycle begins with the sodium atom in the $|F=2, m_F=-2\rangle$
 ground electronic state and a certain vibration state $n$.
 In the first step, a Raman pulse drives a transition to the motional state $n-\Delta n$
 to reduce the motional energy while also changing the internal state to $|F=1, m_F=-1\rangle$.
@@ -199,9 +195,9 @@ BRIEFLY DESCRIBE NA TRAPPING SETUP.
 %proportional to $\sqrt{m}$ (???) where $m$ is the mass of the atom, it is larger for sodium
 %given the same trap depth (???).
 
-With $45mW$ of power at the focus of the trap, we measure trapping frequencies of
+With 45 mW of power at the in the trap, we measure trapping frequencies of
 $\{\omega_1,\omega_2,\omega_3\}/2\pi = \{67, 420, 580\}\ \text{\text{kHz}}$
-which corresponds to optical pumping LD parameters of
+which correspond to optical pumping LD parameters of
 $\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{???, ???, ???\}$.
 Moreover, due to hyperfine structure in the $3^2P_{3/2}$ manifold,
 the sub-Doppler cooling in sodium is also less efficient and we start the
@@ -227,13 +223,13 @@ us to realize ground state cooling. On the other hand, since these conditions ca
 to meet for other interesting systems like directly laser cooled molecules, the techniques we
 use to overcome these challenges could be useful for a wider variety of systems.
 
-As mentioned previously, in order to perform Raman sideband cooling efficiently and
-minimize the heating during the optical pumping, we need to have a low initial temperature and
-a small Lamb-Dicke parameter. However, since the Lamb-Dicke parameter $\eta$ is inversely
+As mentioned previously, efficient Raman sideband cooling to the 3D ground state has been achieved in systems with
+low initial temperature and
+ small Lamb-Dicke parameter. However, since the Lamb-Dicke parameter $\eta$ is inversely
 proportional to $\sqrt[4]{m}/\lambda$ where $m$ is the mass of the atom and $\lambda$
 is the wavelength of the atomic transition,
 it is larger for sodium given the same trap depth due to its low mass and short D line wavelength.
-With $45mW$ of power at the focus of the trap, we measured a trapping frequency of
+With 45 mW of power at the focus of the trap, we measured a trapping frequency of
 $\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69, 430, 590\}\ \text{\text{kHz}}$
 which corresponds to optical pumping Lamb-Dicke parameters of
 $\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.60, 0.24, 0.21\}$.
