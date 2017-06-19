@@ -42,19 +42,19 @@ const rates_coprop = rates_f1_coprop + rates_f2_coprop
 
 # Matrix elements
 const m_Na = 23e-3 / 6.02e23
-const η_a1 = Trap.η(m_Na, 68.8e3, 2π / 589e-9) / √(2)
+const η_a1 = Trap.η(m_Na, 68.8e3, 2π / 589e-9) * 0.67
 const η_r2 = Trap.η(m_Na, 430e3, 2π / 589e-9) * √(2)
 const η_r3 = Trap.η(m_Na, 589.5e3, 2π / 589e-9) * √(2)
 
-const ns_a1 = 0:75
+const ns_a1 = 0:150
 const meles_a1_0 = Trap.sideband.(ns_a1, ns_a1, η_a1)
 const meles_a1_p1 = Trap.sideband.(ns_a1, ns_a1 .+ 1, η_a1)
 
-const ns_r2 = 0:25
+const ns_r2 = 0:50
 const meles_r2_0 = Trap.sideband.(ns_r2, ns_r2, η_r2)
 const meles_r2_p1 = Trap.sideband.(ns_r2, ns_r2 .+ 1, η_r2)
 
-const ns_r3 = 0:25
+const ns_r3 = 0:50
 const meles_r3_0 = Trap.sideband.(ns_r3, ns_r3, η_r3)
 const meles_r3_p1 = Trap.sideband.(ns_r3, ns_r3 .+ 1, η_r3)
 
@@ -110,6 +110,10 @@ end
 
 function maybe_save(name)
     if !interactive()
+        dir = dirname(name)
+        if !isempty(dir)
+            mkpath(dir, 0o755)
+        end
         savefig("$name.pdf"; bbox_inches="tight", transparent=true)
         savefig("$name.png"; bbox_inches="tight", transparent=true)
         savefig("$name.svg", bbox_inches="tight", transparent=true)
@@ -143,8 +147,8 @@ data_after_a1_0 = NaCsData.map_params((i, v)->v * 1e6, data_d)
 data_after_a1_p1 = NaCsData.map_params((i, v)->v * 1e6, data_c)
 
 function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
-                 rates::AbstractVector{T}, tmax::T, atol=0.005, n::Integer=100000,
-                 rd=thread_rng()) where T<:AbstractFloat
+                 rates::AbstractVector{T}, tmax::T, atol=0.005, δΩ=T(0),
+                 n::Integer=100000, rd=thread_rng()) where T<:AbstractFloat
     nΩ = length(Ωs)
     nstates = length(rates)
     count = 0
@@ -157,10 +161,15 @@ function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
                 break
             end
         end
-        i_final = propagate_multistates(T(Ωs[j]), 1, 6, Γ, rates, 1, tmax, rd)
+        Ω0 = Ωs[j]
+        δ = δΩ * randn(rd)
+        Ω = T(sqrt(Ω0^2 + δ^2))
+        i_final = propagate_multistates(Ω, 1, 6, Γ, rates, 1, tmax, rd)
         if i_final > 5
-            # count F1
-            count += 1
+            if rand(rd) < Ω0^2 / Ω^2
+                # count F1
+                count += 1
+            end
         end
         if i % 256 == 0
             r, s = binomial_estimate(count, i)
@@ -172,123 +181,179 @@ function f1_prob(Ωs, pΩ::AbstractArray, Γ::AbstractMatrix{T},
     return binomial_estimate(count, n)[1]
 end
 
-function f1_prop_getter(Γ, scale=1)
+function f1_prop_getter(Γ)
     Γ32 = Float32.(Γ)
     rates32 = Γ_to_rates(Γ32)
-    (Ωs, pΩ, t, atol=0.005)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol) * scale
+    (Ωs, pΩ, t, atol=0.005, δΩ=0)->f1_prob(Ωs, pΩ, Γ32, rates32, t, atol, δΩ)
 end
 
-const f_r3 = f1_prop_getter(rates_r3, 0.85)
-const f_r2 = f1_prop_getter(rates_r2, 0.85)
-const f_a1 = f1_prop_getter(rates_a1, 0.85)
+const f_r3 = f1_prop_getter(rates_r3)
+const f_r2 = f1_prop_getter(rates_r2)
+const f_a1 = f1_prop_getter(rates_a1)
 
-function plot_f1(f, ts, Ωs, pΩ; kws...)
+function plot_f1(f, ts, Ωs, pΩ, δΩ=0, scale=0.85; kws...)
     res = zeros(length(ts))
     @time Threads.@threads for i in 1:length(ts)
-        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002)
+        res[i] = f(Ωs, pΩ, Float32(ts[i]), 0.002, δΩ) * scale
     end
     plot(ts * 1e6, res; kws...)
 end
 
-function diviation(f, data, Ωs, pΩ, scale=1 / 0.85)
-    params, ratios, uncs = NaCsData.get_values(data)
-    perm = sortperm(params)
-    params = params[perm] * 1e-6
-    ratios = ratios[perm, 2] .* scale
-    uncs = uncs[perm, 2] .* scale
-    n = length(params)
-    s = 0.0
-    for i in 1:n
-        s += ((f(Ωs, pΩ, Float32(params[i]), 0.001) - ratios[i]) / uncs[i])^2
-    end
-    return s, n
+function plot_f1_thermal(f, ts, Ωs, nbar, δΩ=0, scale=0.92; kws...)
+    nstates = length(Ωs)
+    ns = 0:(nstates - 1)
+    pΩ = (nbar / (nbar + 1)).^ns ./ (nbar + 1)
+    plot_f1(f, ts, Ωs, pΩ, δΩ, scale; kws...)
 end
 
+function plot_f1_thermal2(f, ts, Ωs, nbar, Ωs2, nbar2, δΩ=0, scale=0.92; kws...)
+    nstates = length(Ωs)
+    ns = 0:(nstates - 1)
+    pΩ = (nbar / (nbar + 1)).^ns ./ (nbar + 1)
+    nstates2 = length(Ωs2)
+    ns2 = 0:(nstates2 - 1)
+    pΩ2 = (nbar2 / (nbar2 + 1)).^ns2 ./ (nbar2 + 1)
+    plot_f1(f, ts, Ωs * Ωs2', pΩ * pΩ2', δΩ, scale; kws...)
+end
+
+# function diviation(f, data, Ωs, pΩ, scale=1 / 0.85, δΩ=0)
+#     params, ratios, uncs = NaCsData.get_values(data)
+#     perm = sortperm(params)
+#     params = params[perm] * 1e-6
+#     ratios = ratios[perm, 2] .* scale
+#     uncs = uncs[perm, 2] .* scale
+#     n = length(params)
+#     s = 0.0
+#     for i in 1:n
+#         s += ((f(Ωs, pΩ, Float32(params[i]), 0.001, δΩ) - ratios[i]) / uncs[i])^2
+#     end
+#     return s, n
+# end
+
+# r3 0.90±0.05
+
 const τ_r3 = 11.445e-6
-const p_r3 = [0.9, 0.077, 0.023]
+const p_r3 = [0.93, 0.057, 0.013]
+const δΩ_r3 = 0
+
+const τ_r3_init = 12.8e-6
+const nbar_init_r3 = 2.5
+const δΩ_r3_init = 15e3
 
 figure()
-ts_r3_0 = linspace(0, 80e-6, 1001)
-plot_f1(f_r3, ts_r3_0, 2π / τ_r3 * meles_r3_0[1:3], p_r3, color="k")
-plot_data(data_after_r3_0, 1, fmt="ko")
+ts_r3_0 = linspace(0, 80e-6, 256)
+plot_data(data_after_r3_0, 1, fmt="C0o")
+plot_f1(f_r3, ts_r3_0, 2π / τ_r3 * meles_r3_0[1:3], p_r3, color="C0")
+ts_r3_0_init = linspace(0, 30e-6, 256)
+plot_data(data_before_r3_0, 1, fmt="C3o")
+plot_f1_thermal(f_r3, ts_r3_0_init, 2π / τ_r3_init * meles_r3_0, nbar_init_r3, δΩ_r3_init,
+                color="C3")
 ylim([0, 1])
 xlim([ts_r3_0[1] * 1e6, ts_r3_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(5, 0.9, "(C)")
 grid()
 maybe_save("$(prefix)_r3_0")
 
 figure()
-ts_r3_p1 = linspace(0, 180e-6, 1001)
-plot_f1(f_r3, ts_r3_p1, 2π / τ_r3 * meles_r3_p1[1:3], p_r3, color="k")
-plot_data(data_after_r3_p1, 1, fmt="ko")
+ts_r3_p1 = linspace(0, 180e-6, 256)
+plot_data(data_after_r3_p1, 1, fmt="C0o")
+plot_f1(f_r3, ts_r3_p1, 2π / τ_r3 * meles_r3_p1[1:3], p_r3, color="C0")
+ts_r3_p1_init = linspace(0, 160e-6, 256)
+plot_data(data_before_r3_p1, 1, fmt="C3o")
+plot_f1_thermal(f_r3, ts_r3_p1_init, 2π / τ_r3_init * meles_r3_p1, nbar_init_r3, δΩ_r3_init, color="C3")
 ylim([0, 1])
 xlim([ts_r3_p1[1] * 1e6, ts_r3_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r3_p1")
 
+# r2 0.90±0.06
+
 const τ_r2 = 11.608e-6
 const p_r2 = [0.896, 0.048, 0.056]
+const δΩ_r2 = 0
+
+const τ_r2_init = 13.5e-6
+const nbar_init_r2 = 3.6
+const δΩ_r2_init = 15e3
 
 figure()
-ts_r2_0 = linspace(0, 80e-6, 201)
-plot_f1(f_r2, ts_r2_0, 2π / τ_r2 * meles_r2_0[1:3], p_r2, color="C3")
-plot_data(data_after_r2_0, 1, fmt="C3o")
+ts_r2_0 = linspace(0, 80e-6, 256)
+plot_data(data_after_r2_0, 1, fmt="C0o")
+plot_f1(f_r2, ts_r2_0, 2π / τ_r2 * meles_r2_0[1:3], p_r2, color="C0")
+ts_r2_0_init = linspace(0, 30e-6, 256)
+plot_data(data_before_r2_0, 1, fmt="C3o")
+plot_f1_thermal(f_r2, ts_r2_0_init, 2π / τ_r2_init * meles_r2_0, nbar_init_r2,
+                δΩ_r2_init, color="C3")
 ylim([0, 1])
 xlim([ts_r2_0[1] * 1e6, ts_r2_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(5, 0.9, "(C)")
 grid()
 maybe_save("$(prefix)_r2_0")
 
 figure()
-ts_r2_p1 = linspace(0, 180e-6, 201)
-plot_f1(f_r2, ts_r2_p1, 2π / τ_r2 * meles_r2_p1[1:3], p_r2, color="C3")
-plot_data(data_after_r2_p1, 1, fmt="C3o")
+ts_r2_p1 = linspace(0, 180e-6, 256)
+plot_data(data_after_r2_p1, 1, fmt="C0o")
+plot_f1(f_r2, ts_r2_p1, 2π / τ_r2 * meles_r2_p1[1:3], p_r2, color="C0")
+ts_r2_p1_init = linspace(0, 140e-6, 256)
+plot_data(data_before_r2_p1, 1, fmt="C3o")
+plot_f1_thermal(f_r2, ts_r2_p1_init, 2π / τ_r2_init * meles_r2_p1, nbar_init_r2,
+                δΩ_r2_init, color="C3")
 ylim([0, 1])
 xlim([ts_r2_p1[1] * 1e6, ts_r2_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(10, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_r2_p1")
 
-const τ_a1 = 60.1833e-6
-const p_a1 = [0.92, 0.08, 0.0]
+# a1 0.91
 
-ts_a1_0 = linspace(0, 300e-6, 201)
-ts_a1_p1 = linspace(0, 450e-6, 201)
+const τ_a1 = 60.3e-6
+const p_a1 = [0.92, 0.05, 0.02]
+const δΩ_a1 = 15e3
+
+const τ_a1_init = 65e-6
+const nbar_init_a1 = 20.0
+const δΩ_a1_init = 25e3
 
 figure()
-plot_f1(f_a1, ts_a1_0, 2π / τ_a1 * (meles_a1_0[1:3] * meles_r3_0[1:3]'), p_a1 * p_r3', color="C0")
+ts_a1_0 = linspace(0, 300e-6, 256)
 plot_data(data_after_a1_0, 1, fmt="C0o")
+plot_f1(f_a1, ts_a1_0, 2π / τ_a1 * (meles_a1_0[1:3] * meles_r3_0[1:3]'), p_a1 * p_r3', color="C0")
+ts_a1_0_init = linspace(0, 150e-6, 256)
+plot_data(data_before_a1_0, 1, fmt="C3o")
+plot_f1_thermal2(f_a1, ts_a1_0_init, 2π / τ_a1_init * meles_a1_0, nbar_init_a1,
+                 meles_r3_0, nbar_init_r3, δΩ_a1_init, color="C3")
 ylim([0, 1])
 xlim([ts_a1_0[1] * 1e6, ts_a1_0[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(10, 0.9, "(C)")
 grid()
 maybe_save("$(prefix)_a1_0")
 
 figure()
-plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
-        p_a1 * p_r3', color="C0")
+ts_a1_p1 = linspace(0, 450e-6, 256)
 plot_data(data_after_a1_p1, 1, fmt="C0o")
+plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
+        p_a1 * p_r3', 0, color="C0")
+plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
+        p_a1 * p_r3', δΩ_a1, color="C2")
+ts_a1_p1_init = linspace(0, 400e-6, 256)
+plot_data(data_before_a1_p1, 1, fmt="C3o")
+plot_f1_thermal2(f_a1, ts_a1_p1_init, 2π / τ_a1_init * meles_a1_p1, nbar_init_a1,
+                 meles_r3_0, nbar_init_r3, δΩ_a1_init, color="C3")
 ylim([0, 1])
 xlim([ts_a1_p1[1] * 1e6, ts_a1_p1[end] * 1e6])
 xlabel("Time (\$\\mu s\$)")
 ylabel("Survival")
-axhline(0.85, linewidth=2, color="b", ls="--", alpha=0.3)
 text(20, 0.9, "(D)")
 grid()
 maybe_save("$(prefix)_a1_p1")
