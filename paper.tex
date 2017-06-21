@@ -86,7 +86,6 @@
     The Raman transitions have a one photon detuning $\Delta=25$ GHz from the D2 line.
     We use D1 light with $\sigma^-$ polarization to repump atoms out of $|F=2,m_F=-1\rangle$
     state to minimize heating on the atom in $|F=2,m_F=-2\rangle$ state
-    \fxnote{TALK ABOUT THIS IN THE TEXT}.
     (B) Geometry and polarizations of the Raman and optical pumping beams relative to the
     optical tweezer and bias magnetic field.
     (C) Schematic of the cooling sequence. The tweezer switches at 3 MHz to
@@ -141,33 +140,68 @@
     \label{f-axial}}
 \end{figure*}
 
-Systems of single neutral atoms trapped in optical tweezers are an exciting platform to study quantum information, quantum chemistry,
-and quantum simulation of many-body systems \fxnote{REF}.
-This approach provides full single-site resolution and control, and can feature long-range interactions via Rydberg atoms, polar molecules, or dipolar atoms \fxnote{REF}.
+Systems of single neutral atoms trapped in optical tweezers are an exciting platform to study
+quantum information, quantum chemistry, and quantum simulation of many-body systems \fxnote{REF}.
+This approach provides full single-site resolution and control,
+and can feature long-range interactions via Rydberg atoms, polar molecules,
+or dipolar atoms \fxnote{REF}.
 Polar molecules in particular offer the additional advantages of long-lived internal states
 and a high degree of tunability, including the shape, range,
 and strength of the interaction \fxnote{REF}.
-Optical tweezers can also be re-arranged in real-time, allowing rapid preparation of atoms in complex geometries with high fidelity \fxnote{REF}.
+Optical tweezers can also be re-arranged in real-time,
+allowing rapid preparation of atoms in complex geometries with high fidelity \fxnote{REF}.
 
 In order to achieve long coherence times and full quantum control of the system,
 it is typically necessary to cool the atom to the
 three dimensional motional ground state in the optical tweezer.
-This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012} and Cs\cite{Liu2017} in experiments that had low initial temperature and small Lamb-Dicke parameter.
-These features
-may not be easily achievable for other systems, such as directly laser-cooled polar molecules \fxnote{REF},
+This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012} and Cs\cite{Liu2017}
+in experiments that had low initial temperature and small Lamb-Dicke parameter.
+These features may not be easily achievable for other systems,
+such as directly laser-cooled polar molecules \fxnote{REF},
 or atoms with challenging sub-Doppler cooling such as Na, K, and Li \fxnote{REF}.
-In this letter, we cool single sodium atoms
-trapped in optical tweezers to the motional ground state with Raman sideband cooling.
-Despite having a large Lamb-Dicke parameter and high initial temperature, we are able to achieve a ground state probability of $77(4)\%$
+In this letter, we cool single sodium atoms trapped in optical tweezers to
+the motional ground state with Raman sideband cooling.
+Despite having a large Lamb-Dicke parameter and high initial temperature,
+we are able to achieve a ground state probability of $77(4)\%$
 by utilizing several new cooling techniques and a carefully optimized cooling sequence.
 Our approach is quite general, and opens up ground-state cooling for other systems.
 
-As mentioned previously, in order to perform Raman sideband cooling efficiently and
-minimize the heating during the optical pumping, we need to have a low initial temperature and
+The Raman sideband cooling we used to achieve the high ground state preparation fidelity
+consists of multiple cycles of laser pulses to manipulate the internal and
+motional states of the atoms.
+Figure \ref{f-setup}A shows the schematic of the energy levels and the cooling sequence
+in our setup.
+Each cooling cycle starts with the sodium atom in the $|F=2, m_F=-2\rangle$
+ground electronic state and a certain vibration state $n$.
+In the first step, a Raman pulse drives a transition to the motional state $n-\Delta n$
+to reduce the motional energy while also changing the internal state to $|F=1, m_F=-1\rangle$.
+In the second step, which finishes the cooling cycle,
+an optical pumping pulse bring the atom back to the $|F=2, m_F=-2\rangle$ state to take away
+the entropy.
+The second step could also change the motional state of the atoms which could cause heating.
+The possibility for this to happen for an atom in the motional level $n$
+is approximately proportional to the effective Lamb-Dicke parameter
+$\eta^{OP}_{eff}=\sqrt{2n+1}\eta^{OP}$ where $\eta^{OP}=k^{OP}\sqrt{\hbar/2m\omega}$
+is the Lamb-Dicke parameter for optical pumping.
+Additional photon scattering on the atom in the $|F=2, m_F=-2\rangle$
+state will also cause heating.
+In order to reduce this effect, we address the atom in the $F=2$ states during optical pumping
+on the D1 line, so that the $|F=2, m_F=-2\rangle$ state is a dark state for $\sigma^-$
+polarization and does not scatter any photon. We measured a $130(20)$ times reduction in photon
+scattering rate on $|F=2, m_F=-2\rangle$ state compare to using only the D2 line
+with the same optical pumping rate.
+The geometry of the relevant beams and their polarizations is showed in figure \ref{f-setup}B.
+The optical tweezer has one weakly confined axial direction (axis $1$) and
+two more strongly confined radial directions (axis $2$ and $3$).
+Multiple pairs of beams are used to drive the Raman transition during cooling in order to
+isolate and maximize the coupling to different trap axis.
+
+In order to perform Raman sideband cooling efficiently and minimize
+the heating during the optical pumping, we need to have a low initial temperature and
 a small Lamb-Dicke parameter. However, since the Lamb-Dicke parameter $\eta$ is inversely
-proportional to $\sqrt[4]{m}/\lambda$ where $m$ is the mass of the atom and $\lambda$
+proportional to $\sqrt[4]{m}\lambda$ where $m$ is the mass of the atom and $\lambda$
 is the wavelength of the atomic transition,
-it is larger for sodium given the same trap depth due to its low mass and short D line wavelength.
+it is larger for sodium at a given trap depth due to its low mass and short D line wavelength.
 With 45 mW of power in the trap, we measure trapping frequencies of
 $\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$
 which corresponds to optical pumping Lamb-Dicke parameters of
@@ -220,7 +254,7 @@ In the simulation, we can observe the high heating rate due to the high Lamb-Dic
 and confirm that by using high order Raman sideband transition in the cooling sequence we can
 suppress this effect and reduces the motional energy of the atom faster.
 The simulation is also used to guide the optimization of the cooling sequence by exploring the
-large parameter space and finding a robust cooling strategy. As shown in figure \ref{f-setup}B,
+large parameter space and finding a robust cooling strategy. As shown in figure \ref{f-setup}C,
 we found that instead of cooling on only one sideband order at a time, it is generally more
 efficient to alternate the cooling pulse between two neighboring orders (axial) or pulse lengths.
 A cooling sequence like this minimizes the accumulation of atom in a state not addressed by a
@@ -253,7 +287,7 @@ minimum of one sideband order. Once the atom is cooled down, we estimate the tem
 and ground state population under the assumption that only a few states are populated.
 We can verify the result via an independent measurement of Rabi flopping on the carrier and heating
 sidebands. This data is shown before and after cooling in Figures
-\ref{f-radial}B and \ref{f-radial}C and yields $90\%$ and $92\%$ \fxnote{ERROR BARS},
+\ref{f-radial}B and \ref{f-radial}C and yields $89(2)\%$ and $92(2)\%$
 showing good agreement between the two methods.
 
 The axial direction is much less confined and therefore has a much higher initial effective
