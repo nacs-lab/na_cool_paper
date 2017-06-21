@@ -243,7 +243,8 @@ a very large AC Stark shift in the excited state (as large as 300 MHz).
 This creates large, position-dependent detuning for the optical pumping light and mixes the excited state state hyperfine levels,
 which affects the branching ratios and increases the number of photons needed for optical pumping.
 We solve this issue by switching the trapping light at $3\text{MHz}$
-during the whole cooling sequence, similar to our loading and imaging process \cite{Hutzler2017-LightShifts}, but leave on the OP light with constant intensity.
+during the whole cooling sequence, similar to our loading and imaging process
+\cite{Hutzler2017-LightShifts}, but leave on the OP light with constant intensity.
 Due to the large light shift, the OP light is effectively off when the trap light is on.
 Since the atom can only be addressed by the optical pumping light when the trap light is off,
 the effect of light shift on optical pumping fidelity is suppressed.
@@ -254,11 +255,26 @@ In the simulation, we can observe the high heating rate due to the high Lamb-Dic
 and confirm that by using high order Raman sideband transition in the cooling sequence we can
 suppress this effect and reduces the motional energy of the atom faster.
 The simulation is also used to guide the optimization of the cooling sequence by exploring the
-large parameter space and finding a robust cooling strategy. As shown in figure \ref{f-setup}C,
-we found that instead of cooling on only one sideband order at a time, it is generally more
-efficient to alternate the cooling pulse between two neighboring orders (axial) or pulse lengths.
-A cooling sequence like this minimizes the accumulation of atom in a state not addressed by a
-particular Raman pulse parameter.
+large parameter space and finding a robust cooling strategy.
+As shown in figure \ref{f-setup}C, we found that instead of cooling on only one sideband order
+at a time, it is generally more efficient to alternate the cooling pulse between two
+neighboring orders (axial) to minimize the accumulation of atom in a state
+not addressed by a particular order.
+The simulation also shows that the most efficient way of cooling on a high order sideband is
+to perform a $\pi$ pulse corresponding to its maximum matrix element.
+This makes sure we are using each order to cool a range of states that has the strongest
+coupling to this order and let other sidebands to cool other states.
+This strategy is only not as effective during the last stage of cooling in each direction
+where most of the remainly excited population is in the first motional excited state
+while the rest also have the strongest coupling to the first cooling sideband.
+Because of this, we switch to cooling only on the first order sideband as the last cooling
+stage while maintaining the alternating order between different axis to maximize the final
+ground state probability.
+Guided by the simulation result, we construct our initial cooling sequence by first starting
+at the highest two observed cooling sideband and decrease the order after cooling on them
+for 6 to 15 cycles with the optimum pulse lengths.
+This sequence gives good cooling performance which is then experimentally further optimized
+by fine tuning of different parameters.
 
 For the more tightly confined radial directions,
 we begin the cooling with $\{\bar n_2, \bar n_3\}=3.4(2), 2.5(2)$
