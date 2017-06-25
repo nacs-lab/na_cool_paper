@@ -2,20 +2,12 @@
 
 push!(LOAD_PATH, joinpath(@__DIR__, "../../lib"))
 
-import NaCsCalc.Utils: interactive
 import NaCsCalc: Trap
 using Cubature
-using PyPlot
-
-PyPlot.matplotlib["rcParams"][:update](Dict("font.size" => 20))
-PyPlot.matplotlib[:rc]("xtick", labelsize=15)
-PyPlot.matplotlib[:rc]("ytick", labelsize=15)
 
 const m_Na = 23e-3 / 6.02e23
 const η_ax = Trap.η(m_Na, 67e3, 2π / 589e-9) / √(2)
 const η_ax_op = Trap.η(m_Na, 67e3, 2π / 589e-9)
-const η_ra1 = Trap.η(m_Na, 430e3, 2π / 589e-9)
-const η_ra2 = Trap.η(m_Na, 590e3, 2π / 589e-9)
 
 """
     emission(v, isσ::Bool) -> (sinθ, cosθ)
@@ -105,14 +97,20 @@ function op_heating_all(cb::Function, sz1, sz2, η::T, isσ) where T
     res
 end
 
-const coupling_ax = (op_heating_all(op_heating_ax, 100, 100, Float32(η_ax_op), false) *
-                     op_heating_all(op_heating_ax, 100, 100, Float32(η_ax_op), true))
-const coupling_ra1 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra1), false) *
-                      op_heating_all(op_heating_ra, 30, 30, Float32(η_ra1), true))
-const coupling_ra2 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), false) *
-                      op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), true))
-
 function p_heat(coupling, sz)
+    T = eltype(coupling)
+    res = Vector{T}(sz)
+    @inbounds for i in 1:sz
+        v = zero(T)
+        for j in (i + 1):size(coupling, 1)
+            v += coupling[j, i]
+        end
+        res[i] = v
+    end
+    return res
+end
+
+function op_unc(coupling, sz)
     T = eltype(coupling)
     res = Vector{T}(sz)
     @inbounds for i in 1:sz
@@ -128,59 +126,48 @@ function p_heat(coupling, sz)
     return res
 end
 
-function maybe_save(name)
-    if !interactive()
-        savefig("$name.pdf"; bbox_inches="tight", transparent=true)
-        savefig("$name.png"; bbox_inches="tight", transparent=true)
-        savefig("$name.svg", bbox_inches="tight", transparent=true)
-        close()
-    end
+function prob_nbar(n, nbar)
+    α = nbar / (nbar + 1)
+    return α^n / (nbar + 1)
 end
 
-function maybe_show()
-    if interactive()
-        show()
+function calc_heating(cb::F, nbar, η, nσ) where F
+    nmax = ceil(Int, nbar * 4)
+    cpl_max = ceil(Int, nbar * 5)
+    cplπ = op_heating_all(cb, cpl_max, cpl_max, Float32(η), false)
+    cplσ = op_heating_all(cb, cpl_max, cpl_max, Float32(η), false)
+    cpl = cplπ
+    for _ in 1:nσ
+        cpl *= cplσ
     end
+    # heating = p_heat(cpl, nmax + 1)
+    heating = op_unc(cpl, nmax + 1)
+    probability = prob_nbar.(0:nmax, nbar)
+    nbar_lo = floor(Int, nbar)
+    w_hi = nbar - nbar_lo
+    w_lo = 1 - w_hi
+    heating_mean = heating[nbar_lo + 1] * w_lo + heating[nbar_lo + 2] * w_hi
+    return sum(heating .* probability), heating[1], heating_mean
 end
 
-const nmax = 70
-const nmax_r = 15
-
-function plot_sidebands(ns, Δns, η)
-    for Δn in Δns
-        plot(ns, abs.(Trap.sideband.(ns, ns .+ Δn, η)), ".-", label="\$\\Delta n=$(Δn)\$")
-    end
+function prn_heating_ax(prefix, nbar, η, nσ)
+    heat_avg, heat0, heat_nbar = calc_heating(op_heating_ax, nbar, η, nσ)
+    println("$prefix:")
+    println("  Avg heating: $heat_avg")
+    println("  Heating for ground state: $heat0")
+    println("  Heating for nbar: $heat_nbar")
 end
 
-figure(figsize=[1.5, 1.1] * 4.8)
+function prn_heating_ra(prefix, nbar, η, nσ)
+    heat_avg, heat0, heat_nbar = calc_heating(op_heating_ra, nbar, η, nσ)
+    println("$prefix:")
+    println("  Avg heating: $heat_avg")
+    println("  Heating for ground state: $heat0")
+    println("  Heating for nbar: $heat_nbar")
+end
 
-ax1 = subplot(211)
-plot_sidebands(0:nmax, -1:-1:-5, η_ax)
-xlim([0, nmax])
-ylim([0, 0.75])
-grid()
-ylabel("\$|\\langle n |e^{ikr}| n + \\Delta n \\rangle|\$")
-text(0, 0.65, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!1\$", color="C0")
-text(9, 0.55, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!2\$", color="C1")
-text(21, 0.47, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!3\$", color="C2")
-text(36, 0.44, "\$\\left|\\Delta n\\right|\\!\\!=\\!4\$", color="C3")
-text(53, 0.42, "\$\\left|\\Delta n\\right|\\!\\!=\\!5\$", color="C4")
-text(60, 0.632, "(A)")
-setp(ax1[:get_xticklabels](), visible=false)
-
-ax2 = subplot(212)
-subplots_adjust(hspace=0)
-plot(0:nmax, p_heat(coupling_ax, nmax + 1), label="Axial")
-plot(0:nmax_r, p_heat(coupling_ra1, nmax_r + 1), label="Radial (axis 2)")
-plot(0:nmax_r, p_heat(coupling_ra2, nmax_r + 1), label="Radial (axis 3)")
-text(2, 4.2, "(B)")
-grid()
-legend(fontsize=18)
-ylim([0, 5.5])
-xlim([0, nmax])
-ylabel("\$\\overline{|\\Delta n|}\$ after OP")
-xlabel("Motional state")
-
-maybe_save(joinpath(@__DIR__, "imgs/fig2_raman_op"))
-
-maybe_show()
+prn_heating_ax("Na", 20.9, η_ax_op, 1)
+prn_heating_ax("Cs projection Ax", 6.0, 0.37, 2)
+prn_heating_ra("Cs projection Ra", 6.0, 0.37, 2)
+prn_heating_ax("Cs", 9.2, 0.32, 2)
+prn_heating_ax("Rb", 8, 0.34, 2)

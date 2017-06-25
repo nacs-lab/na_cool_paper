@@ -100,13 +100,13 @@
 \end{figure*}
 \begin{figure}[b]
   \includegraphics[width=8.5cm]{imgs/fig2_raman_op.pdf}
-  \caption{Matrix elements and heating probabilities as a function of motional state.
-    The range plotted covers $99\%$ of the initial thermal distribution.
+  \caption{Matrix elements and heating as a function of motional state.
+    The range plotted covers $95\%$ of the initial thermal distribution.
     (A) Matrix elements for Raman transition in the axial direction showing deviation from
     $\sqrt{n}$ scaling and multiple minimums for different sideband orders.
-    (B) Heating probability during the optical pumping step for all three axis.
+    (B) Average change in motional state after the optical pumping step for all three axis.
     Due to the large Lamb-Dicke parameter,
-    there is a high probability of heating especially in the axial direction.
+    there is a high probability of $n$ changing especially in the axial direction.
     \label{f-ld}}
 \end{figure}
 \begin{figure*}
@@ -156,7 +156,8 @@ allowing rapid preparation of atoms in complex geometries with high fidelity \fx
 In order to achieve long coherence times and full quantum control of the system,
 it is typically necessary to cool the atom to the
 three dimensional motional ground state in the optical tweezer.
-This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012} and Cs\cite{Liu2017}
+This has been demonstrated for neutral Rb\cite{Thompson2013,Kaufman2012}
+and Cs\cite{Li2012,Liu2017}
 in experiments that had low initial temperature and small Lamb-Dicke parameter.
 These features may not be easily achievable for other systems,
 such as directly laser-cooled polar molecules \fxnote{REF},
@@ -208,9 +209,12 @@ Moreover, due to the small hyperfine splitting in the $3^2P_{3/2}$ manifold,
 the sub-Doppler cooling in sodium is also less efficient and we start the
 Raman sideband cooling with a initial temperature of 70 $\mu$K. Combined with the high $\eta$, this gives us a initial effective optical pumping LD parameters of
 $\{\eta^{OP}_{1\eff},\eta^{OP}_{2\eff},\eta^{OP}_{3\eff}\} = \{4.0(1), 0.67(2), 0.50(1)\}$
-As a result, there is a very high probability of heating during the optical pumping step
-(figure \ref{f-ld}B) causing an estimated $30\%$ average heating probability during optical pumping
-in the weakly confined axial direction \fxnote{So what?  Is 30\% too high?  Can we interpret this in terms of an observable, like best-possible ground state fraction?}.
+As a result, there is a very high average change of motional state during the optical pumping step
+(figure \ref{f-ld}B). The averaged change in motional states over the initial distribution
+is $2.4$ in the axial direction.
+Compare to $0.89-0.95$ in the axis with the weakest confinement in previous experiments
+\cite{Thompson2013,Kaufman2012,Li2012,Liu2017} this causes greater uncertainty in the motional
+state making it harder to cool.
 
 Fortunately, the high LD parameters also
 provide us with tools to overcome this issue. The Raman transitions in our configuration have $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$. As shown in
