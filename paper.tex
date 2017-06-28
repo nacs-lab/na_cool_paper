@@ -170,9 +170,18 @@ we are able to achieve a ground state probability of $77(4)\%$
 by utilizing several new cooling techniques and a carefully optimized cooling sequence.
 Our approach is quite general, and opens up ground-state cooling for other systems.
 
-The Raman sideband cooling we use to achieve the high ground state preparation fidelity
-consists of multiple cycles of laser pulses to manipulate the internal and
-motional states of the atoms.
+The experiment begins by loading the optical tweezer from a magneto-optical trap.
+The tweezer is created by focusing a $700$nm beam through an objective with NA $0.55$.
+With $45$mW of power, we measure a trapping frequencies of
+$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$.
+The successfulness of the loading is detected by taking an image of the single atom for $1.5$ms.
+The same imaging light is optimized for cooling and reduces the temperature of the single atom
+to $70$ $\mu$K which corresponds to an initial motional states of
+$\{\bar n_1, \bar n_2, \bar n_3\}=21(2), 3.4(2), 2.5(2)$.
+
+The Raman sideband cooling we use to further reduce the temperature of the single atom and
+achieve the high ground state preparation fidelity consists of multiple cycles of laser pulses
+to manipulate the internal and motional states of the atoms.
 Figure \ref{f-setup}A shows the schematic of the energy levels and the cooling sequence
 in our setup.
 Each cooling cycle starts with the sodium atom in the $|F=2, m_F=-2\rangle$
@@ -190,7 +199,6 @@ is the LD parameter for optical pumping (OP), $k^{OP}$ is the wavenumber of the 
 
 In order to reduce OP scattering on the $|F=2, m_F=-2\rangle$ state, which would causing heating, we use a $\sigma^-$-polarized laser resonant with the D1 line to address atoms in the $F=2$ state, so that $|F=2, m_F=-2\rangle$ is dark.  Compared to using a D2 OP beam, we find a reduction in the scattering rate of a factor of $130(20)$.
 
-
 The geometry of the relevant beams and their polarizations is shown in figure \ref{f-setup}B.
 The optical tweezer has one weakly confined axial direction (axis $1$) and
 two more strongly confined radial directions (axis $2$ and $3$).
@@ -199,16 +207,16 @@ isolate and maximize the coupling to different trap axis.
 
 In order to perform Raman sideband cooling efficiently and minimize
 the heating during the optical pumping, we need to have a low initial temperature and
-a small LD parameter. However, since the LD parameter $\eta\propto 1/(\sqrt[4]{m}\lambda)$ where $m$ is the mass of the atom and $\lambda$
-is the wavelength of the atomic transition,
+a small LD parameter. However, since the LD parameter $\eta\propto 1/(\sqrt[4]{m}\lambda)$ where $m$ is the mass of the atom and $\lambda$ is the wavelength of the atomic transition,
 it is larger for sodium at a given trap depth due to its low mass and short D line wavelength.
-With 45 mW of power in the trap, we measure trapping frequencies of
-$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$
-which corresponds to optical pumping LD parameters of
+With $45$ mW of power in the trap, which is what we use during the cooling sequence,
+the optical pumping LD parameters are
 $\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.602(5), 0.241(2), 0.206(1)\}$
 Moreover, due to the small hyperfine splitting in the $3^2P_{3/2}$ manifold,
-the sub-Doppler cooling in sodium is also less efficient and we start the
-Raman sideband cooling with a initial temperature of 70 $\mu$K. Combined with the high $\eta$, this gives us a initial effective optical pumping LD parameters of
+the sub-Doppler cooling in sodium is also less efficient and our initial temperature of 70 $\mu$K
+is higher than what is achieved for other atoms in previous experiments
+\cite{Thompson2013,Kaufman2012,Li2012,Liu2017}.
+Combined with the high $\eta$, this gives us a initial effective optical pumping LD parameters of
 $\{\eta^{OP}_{1\eff},\eta^{OP}_{2\eff},\eta^{OP}_{3\eff}\} = \{4.0(1), 0.67(2), 0.50(1)\}$
 As a result, there is a very high average change of motional state during the optical pumping step
 (figure \ref{f-ld}B). The averaged change in motional states over the initial distribution
@@ -217,9 +225,10 @@ Compare to $0.89-0.95$ in the axis with the weakest confinement in previous expe
 \cite{Thompson2013,Kaufman2012,Li2012,Liu2017} this causes greater uncertainty in the motional
 state making it harder to cool.
 
-Fortunately, the high LD parameters also
-provide us with tools to overcome this issue. The Raman transitions in our configuration have $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$. As shown in
-figure \ref{f-ld}A, this results in strong coupling to higher orders
+Fortunately, the high LD parameters also provide us with tools to overcome this issue.
+The Raman transitions in our configuration have
+$\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$.
+As shown in figure \ref{f-ld}A, this results in strong coupling to higher orders
 of cooling sidebands, especially for high motional states.
 This enables cooling of atoms in high motional states by driving higher order Raman sidebands,
 removing more motional energy in a single cooling pulse and offsetting the effect of heating. Since the heating probability is higher for high motional states,
@@ -274,8 +283,7 @@ This sequence gives good cooling performance which is then experimentally furthe
 by fine tuning of different parameters.
 
 For the more tightly confined radial directions,
-we begin the cooling with $\{\bar n_2, \bar n_3\}=3.4(2), 2.5(2)$.
-The radial sideband spectra of the initial distribution is shown in figure \ref{f-radial}A
+the radial sideband spectra of the initial distribution is shown in figure \ref{f-radial}A
 as orange and red lines, where we can clearly see the first order heating,
 first order cooling and second order cooling sidebands.
 After applying around 1000 cooling pulses cooling in all three dimensions
@@ -304,9 +312,8 @@ heating sidebands\cite{Meekhof1996}. This data is shown before and after cooling
 The data is fitted using same Monte-Carlo simulation we used to simulate the cooling
 which yields $89(2)\%$ and $92(2)\%$ showing good agreement between the two methods.
 
-The axial direction is much less confined and therefore has a much higher initial
-$\bar n_1=21(2)$ and effective LD parameter of $\eta^{OP}_{eff1}\approx 4.0(2)$,
-and is therefore more difficult to cool.
+The axial direction is much less confined which means a much higher initial
+effective LD parameter of $\eta^{OP}_{eff1}\approx 4.0(2)$ and is therefore more difficult to cool.
 The red line in figure \ref{f-axial}A shows the Raman spectrum in the axial direction
 before applying Raman sideband cooling; the clearly resolved sidebands
 up to eighth order indicates population in highly-excited motional levels.
@@ -330,7 +337,7 @@ we have achieved a 3D ground state probability of $77(4)\%$.
 We believe this is currently limited by off-resonant scattering from the Raman beams,
 which are measured to be between $3$ to $15$ kHz for the detuning and power we use,
 and the resonance shift caused by magnetic field fluctuations.
-Other imperfections of the current experiement include a $5\%$ loss during the single atom
+Other imperfections of the current experiment include a $5\%$ loss during the single atom
 imaging and an additional $10\%$ due to the heating from the Raman beams during cooling.
 We are planing to improve these by increasing the detuning of the Raman beams,
 implementing better control of the magnetic field and optimize the temperature during imaging.
@@ -344,9 +351,6 @@ including molecules and exotic atoms.
 
 % Missing:
 % ?? Blackman pulse vs square pulse
-% ?? Start from highest visible order
-% In the text, more description
-% Detail in appendix
 
 \bibliography{paper}
 \end{document}
