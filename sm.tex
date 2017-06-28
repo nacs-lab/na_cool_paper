@@ -58,14 +58,15 @@
 
 \maketitle
 
-\section{Simulation of Raman sideband cooling}
+\section{Simulation of 3D Raman sideband cooling}
 
 \subsection{Overview}
 
 We use a computer simulation to study the importance of different effects
-and guide the optimization of cooling. The simulation uses quantum jump method to accurately
-calculate the evolution within each laser pulse while different energy eigenstates are assumed
-to decohere immediately on spontaneous emission of photon and on pulse boundaries.
+and guide the optimization of cooling.
+The simulation uses quantum jump method\cite{Chretien2014} (or Monte-Carlo wavefunction method)
+to accurately calculate the evolution within each laser pulse while different energy eigenstates
+are assumed to decohere immediately on spontaneous emission of photon and on pulse boundaries.
 Such approxiations are valid for simulation of the cooling and greatly simplifies the computation
 at the cost of limiting the applicability of the simulation to processes that requires stronger
 coherence such as Ramsey spectroscopy and rapid push-out.
@@ -117,7 +118,7 @@ Therefore, this is further simplified by reducing the number of states to be kep
 the coherent propagation and apply quantum jump using a set of reduced jump operator that
 describes the total jump probability from a certain states (sum over all final states).
 The coherent propagation is then accurately solved in order to avoid having to use a time step
-much shorter than the scattering rate (up to hundreds of kHz)\footnote{\href{https://github.com/nacs-lab/yyc-data/blob/3b50baae233ba54456cc35260d91208a23021410/notes/precise-quantum-jump.pdf}{note about modification to the quantum jump method}}.
+much shorter than the scattering rate (up to hundreds of kHz)\footnote{\href{https://goo.gl/EZ13wt}{note about modification to the quantum jump method (https://goo.gl/EZ13wt)}}.
 
 In order to simulate a pulse, we first start with the coherent propagation that includes the
 modification from the jump operators as in quantum jump method.
@@ -142,7 +143,8 @@ goes above a certain threshold at any time) probability of being in certain stat
 \subsection{Code}
 
 The simulation is written in Julia. All code are available under GPLv3 license at
-\footnote{\href{https://github.com/nacs-lab/yyc-data/tree/3b50baae233ba54456cc35260d91208a23021410/lib}{Library code}} and
-\footnote{\href{https://github.com/nacs-lab/yyc-data/blob/3b50baae233ba54456cc35260d91208a23021410/calculations/sideband/sideband.jl}{Top level code}}
+\footnote{\href{https://goo.gl/WLJwJp}{Library code (https://goo.gl/WLJwJp)}} and
+\footnote{\href{https://goo.gl/XXVreq}{Top level code (https://goo.gl/XXVreq)}}
 
+\bibliography{paper}
 \end{document}
