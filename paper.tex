@@ -9,9 +9,6 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[colorlinks=true]{hyperref}
 
-\usepackage[final]{fixme}
-\fxsetup{layout=inline}
-
 \newcommand{\ud}{\mathrm{d}}
 \newcommand{\ue}{\mathrm{e}}
 \newcommand{\ui}{\mathrm{i}}
@@ -45,8 +42,7 @@
 \newcommand{\psddiff}[3][{}]{{\frac{\partial^{#1}}{\partial{}^{#1} {#3}} {#2}}}
 \newcommand{\sddiff}[3][{}]{{\frac{\ud^{#1}}{\ud {#3}{}^{#1}} {#2}}}
 \newcommand{\eff}{ef\! f}
-% Nick redefined fxnote so that the notes could be seen in the PDF since that is what Kang-Kuen is editing
-\renewcommand{\fxnote}[1]{{\textbf{[#1]}}}
+\newcommand{\fxnote}[1]{{\textbf{[#1]}}}
 
 \begin{document}
 \title{Motional Ground-State Cooling Outside the Lamb-Dicke Regime}
@@ -150,7 +146,7 @@ novel quantum phases~\cite{Labuhn2016}, and single-photon switches~\cite{Dayan20
 Advances of real-time re-arrangement of optical tweezers enable rapid preparation of atoms
 in large and complex geometries with high fidelity~\cite{Barredo2016,Endres2016}.
 Adding quantum motional control of individual
-atoms~\cite{Li2012,Kaufman2012,Thompson2013,qfLiu2017,Robens2017} further allows
+atoms~\cite{Li2012,Kaufman2012,Thompson2013,Liu2017,Robens2017} further allows
 efficient coupling of single atoms to photonic crystal cavity~\cite{Thompson2013a},
 high-fidelity single qubit gates~\cite{Wang2016},
 and laser-cooled bosons to exhibit indistinguishability
@@ -307,7 +303,11 @@ with a relatively large Raman Lamb-Dickes parameters $\eta^R$,
 we therefore use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
 and first-order heating(Fig. \ref{f-radial}C) sidebands
 to verify the ground-state population~\cite{Meekhof1996}.
-The data is fitted using the same Monte-Carlo simulation we used to simulate the cooling which yields $89(2)\%$ and $92(2)\%$ and show good agreement with the population extracted from the sideband thermometry. We also extracted the initial temperature before cooling from the motional-state decohered Rabi flopping and obtained \fxnote{70(?)} $\mu$K.
+The data is fitted using the same Monte-Carlo simulation we used to simulate the cooling
+which yields $89(2)\%$ and $92(2)\%$ and show good agreement with
+the population extracted from the sideband thermometry.
+We also extracted the initial temperature before cooling
+from the motional-state decohered Rabi flopping and obtained \fxnote{70(?)} $\mu$K.
 
 For the weaker axial direction, cooling is much more challenging
 due to the large $\eta^{OP}_{eff1}\approx 4.0(2)$.
