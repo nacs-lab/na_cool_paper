@@ -175,9 +175,9 @@ very high-order sidebands in a carefully optimized cooling sequence.
 Our approach is  general and opens up ground-state cooling for other systems.
 
 Our experiment begins by loading a single sodium atom into an optical tweezer from a MOT
-for \fxnote{??} ms~\cite{Hutzler2017-LightShifts} and repeats at 2Hz\fxnote{?}.
+for $250$ ms~\cite{Hutzler2017-LightShifts} and repeats at $2.5$ Hz.
 The tweezer is created by focusing a $700$nm laser beam through an NA=$0.55$ objective to
-a beam waist of 0.7 $\mu$m\fxnote{?}.
+a beam waist of $0.7$ $\mu$m\fxnote{?}.
 With $45$mW of tweezer power, the trapping frequencies are
 $\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$.
 Upon loading, an image is taken for $1.5$ms to determine its success.
@@ -238,7 +238,7 @@ near the coupling minima.
 Taking the large motional-state changing heating and cooling sources into account,
 it was not immediately clear that efficient cooling can be achieved.
 We therefore use a Monte-Carlo simulation to guide our search and
-to find a robust cooling sequence \fxnote{cite sm}.
+to find a robust cooling sequence\footnote{See supplemental material}.
 In the simulation, we indeed observe a high heating rate due to the large Lamb-Dicke parameters
 and confirm that cooling with higher-order Raman sidebands can suppress heating.
 In particular, we find that instead of cooling on only one sideband order repeatedly,
@@ -256,11 +256,18 @@ Therefore, the final cooling cycles utilize only the first-order sideband
 while alternating between different axes.
 
 Guided by the promising simulation results,
-we construct our axial part of cooling sequence by starting at the highest
+we construct our axial cooling sequence by starting at the highest
 two observed cooling sidebands (8th- and 7th-orders)
-and decreasing the orders after 6 to 15 cycles.
-This sequence gives good initial cooling performance which is further optimized experimentally
-by fine tuning of different parameters. \fxnote{which parameters? Elaborate more about the sequence including starting with the second-order radial to remove the most amount of energy initially.}
+and decreasing the orders after $6$ to $15$ cycles.
+This process is repeated until we reach the first order cooling sideband where most of the
+population are in the first few excited state at which point we switch to only cooling on the
+first order sideband with two different pulse lengths in order to efficiently cool atoms in the
+few remaining motional states.
+The radial cooling is done similarly to the axial cooling with the initial cooling orders being
+the 2nd and 1st order and switching to first order only after $20$ to $30$ pulses.
+This sequence gives good initial cooling performance which is used to measure experimental
+parameters, including the Rabi rates of the Raman beams and optical pumping rates,
+in order to optimize the sequence further.
 
 Two additional challenges of cooling single sodium atoms are
 further identified and addressed experimentally.
