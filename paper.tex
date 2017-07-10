@@ -100,6 +100,8 @@
     The range plotted covers $95\%$ of the initial thermal distribution.
     (A) Matrix elements for Raman transition in the axial direction showing deviation from
     $\sqrt{n}$ scaling and multiple minimums for different sideband orders.
+    ($k$ is the difference in wave vector of the Raman beams,
+    $r$ is the coordinate in axial direction).
     (B) Average change in motional state after the optical pumping step for all three axis.
     Due to the large Lamb-Dicke parameter,
     there is a high probability of $n$ changing especially in the axial direction.
@@ -298,20 +300,27 @@ In total, $1000$ cooling pulses (for $100$ ms) are applied along three axes with
 cooling begins on the radial second order to remove most energy initially.
 To characterize the single atom thermal occupation before and after cooling,
 we perform Raman sideband thermometry before and after cooling\fxnote{add citation?}.
-\fxnote{How is the thermometry done? pulse duration etc.}
 For the more tightly confined radial directions (non-degenerate),
 we observe clear first-order heating, first-order cooling,
 and second-order cooling sidebands before RSC as is shown in red in Figure \ref{f-radial}A.
+
 After cooling, the first and second order cooling sidebands on both radial axes are suppressed.
-Given the absence of the second order cooling sideband, we perform sideband thermometry
+It is important to note that the simple sideband thermometry formula,
+which predicts the ratio of the cooling and heating sideband heights to be $\bar n / (\bar n + 1)$,
+assumes that the coupling strength for different motional states to be proportional to $\sqrt{n}$.
+Outside of the Lamb-Dickes regime, however,
+the coupling strength deviates from this simple scaling rule rapidly
+as shown in figure \ref{f-ld}A and since the Raman spectroscopy is performed
+with a relatively large Raman Lamb-Dickes parameters $\eta^R$, we cannot use this formula to
+measure $\bar n$. Instead, given the absence of the second order cooling sideband,
+we assume that the atoms are colder than
+
+\fxnote{How is the thermometry done? pulse duration etc.}
+, we perform sideband thermometry
 by taking the ratio of the peaks of first-order cooling and heating sidebands to measure $\bar n / (\bar n + 1)$ \fxnote{cite}.
 We found $\{\bar n =,\bar n =\}$, which corresponds to a ground state population of $90(2)\%$
 and $94(3)\%$ along the two radial directions.
-It is important to note that the simple sideband thermometry formula assumes the coupling strength
-to be proportional to $\sqrt{n}$. Outside of the Lamb-Dickes regime,
-the coupling strength deviates from this simple scaling rule rapidly
-as shown in figure \ref{f-ld}A. Since the Raman spectroscopy is performed
-with a relatively large Raman Lamb-Dickes parameters $\eta^R$,
+
 we therefore use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
 and first-order heating(Fig. \ref{f-radial}C) sidebands
 to verify the ground-state population~\cite{Meekhof1996}.
