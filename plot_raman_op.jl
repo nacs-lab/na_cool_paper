@@ -112,20 +112,11 @@ const coupling_ra1 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra1), fal
 const coupling_ra2 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), false) *
                       op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), true))
 
-function p_heat(coupling, sz)
-    T = eltype(coupling)
-    res = Vector{T}(sz)
-    @inbounds for i in 1:sz
-        sump = zero(T)
-        avgΔn = zero(T)
-        @simd for j in 1:size(coupling, 1)
-            p = coupling[j, i]
-            sump += p
-            avgΔn += abs(j - i) * p
-        end
-        res[i] = avgΔn / sump
+function plot_op_sidebands(n1s, n2s, coupling)
+    for i in 1:length(n2s)
+        n2 = n2s[i]
+        plot(n1s, coupling[n2 + 1, n1s + 1], ".-")
     end
-    return res
 end
 
 function maybe_save(name)
@@ -155,30 +146,35 @@ end
 figure(figsize=[1.5, 1.1] * 4.8)
 
 ax1 = subplot(211)
-plot_sidebands(0:nmax, -1:-1:-5, η_ax)
-xlim([0, nmax])
-ylim([0, 0.75])
+plot_op_sidebands(0:nmax, [0, 1, 2, 5, 10, 20, 35, 55], coupling_ax)
+text(0.5, 0.8, "\$n_{init}\\!\\!=\\!\\!0\$", color="C0")
+text(1, 0.63, "\$n_{init}\\!\\!=\\!\\!1\$", color="C1")
+text(2, 0.47, "\$n_{init}\\!\\!=\\!\\!2\$", color="C2")
+text(3, 0.33, "\$n_{init}\\!\\!=\\!\\!5\$", color="C3")
+text(7, 0.21, "\$n_{init}\\!\\!=\\!\\!10\$", color="C4")
+text(19.5, 0.14, "\$n_{init}\\!\\!=\\!\\!20\$", color="C5")
+text(33, 0.12, "\$n_{init}\\!\\!=\\!\\!35\$", color="C6")
+text(49, 0.11, "\$n_{init}\\!\\!=\\!\\!55\$", color="C7")
+text(60, 0.78, "(A)")
 grid()
-ylabel("\$|\\langle n |e^{ikr}| n + \\Delta n \\rangle|\$")
-text(0, 0.65, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!1\$", color="C0")
-text(9, 0.55, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!2\$", color="C1")
-text(21, 0.47, "\$\\left|\\Delta n\\right|\\!\\!=\\!\\!3\$", color="C2")
-text(36, 0.44, "\$\\left|\\Delta n\\right|\\!\\!=\\!4\$", color="C3")
-text(53, 0.42, "\$\\left|\\Delta n\\right|\\!\\!=\\!5\$", color="C4")
-text(60, 0.632, "(A)")
+ylim([0, 0.9])
+xlim([0, nmax])
+ylabel("Probability")
 setp(ax1[:get_xticklabels](), visible=false)
 
 ax2 = subplot(212)
 subplots_adjust(hspace=0)
-plot(0:nmax, p_heat(coupling_ax, nmax + 1), label="Axial")
-plot(0:nmax_r, p_heat(coupling_ra1, nmax_r + 1), label="Radial (axis 2)")
-plot(0:nmax_r, p_heat(coupling_ra2, nmax_r + 1), label="Radial (axis 3)")
-text(2, 4.2, "(B)")
-grid()
-legend(fontsize=18)
-ylim([0, 5.5])
+plot_sidebands(0:nmax, -1:-1:-5, η_ax)
 xlim([0, nmax])
-ylabel("\$\\overline{|\\Delta n|}\$ after OP")
+ylim([0, 0.75])
+grid()
+ylabel("\$|\\langle n |e^{ikr}| n - \\Delta n \\rangle|\$")
+text(0, 0.65, "\$\\Delta n\\!\\!=\\!\\!1\$", color="C0")
+text(9, 0.55, "\$\\Delta n\\!\\!=\\!\\!2\$", color="C1")
+text(21, 0.47, "\$\\Delta n\\!\\!=\\!\\!3\$", color="C2")
+text(36, 0.44, "\$\\Delta n\\!\\!=\\!4\$", color="C3")
+text(53, 0.42, "\$\\Delta n\\!\\!=\\!5\$", color="C4")
+text(60, 0.632, "(B)")
 xlabel("Motional state")
 
 maybe_save(joinpath(@__DIR__, "imgs/fig2_raman_op"))
