@@ -92,6 +92,8 @@
     The two pulses in each radial directions are either addressing two neighboring cooling orders
     or having different length on the first order when most of the population are below $n=3$
     towards then end of the cooling sequence.
+    All of the Raman pulses use Blackman pulse envelopes to reduce the off resonance
+    coupling to carrier and heating sidebands.
     \label{f-setup}}
 \end{figure*}
 \begin{figure}[b]
@@ -284,10 +286,11 @@ further identified and addressed experimentally.
 First, the high initial temperature causes population in high motional states
 means that the atoms sample anharmonicity of the trap away from the center.
 In order to address trap anharmonicity, we drive sidebands with a large Rabi frequency
-and short pulses to Fourier broaden spectrum coverage.
+and short pulses to Fourier broaden spectrum coverage and we use Blackman pulse envelops
+to avoid unwanted coupling to the carrier and heating sidebands~\cite{Kasevich1992}.
 For the higher trap frequency radial directions, anharmonicity is calculated to be 1kHz/n,
 Rabi frequency of at least $15$ kHz is needed to couple to $99$\% population up to $n=15$.
-Second, the  tweezer trap  causes a large AC Stark shift (as large as $300$ MHz)
+Second, the tweezer trap causes a large AC Stark shift (as large as $300$ MHz)
 in the excited state. This creates  a large, position-dependent OP detuning
 and mixes the excited-state hyperfine levels, and therefore reduces the optical pumping fidelity.
 We solve this issue by switching the trapping light at 3 MHz during the whole cooling sequence,
@@ -375,9 +378,6 @@ We thank T. Rosenband and J. Hood for discussion.
 This work is supported by the NSF through the Harvard-MIT CUA,
 the AFOSR Young Investigator Program, the Arnold and Mabel Beckman Foundation,
 and the Alfred P. Sloan Foundation.
-
-% Missing:
-% ?? Blackman pulse vs square pulse
 
 \bibliography{paper}
 \end{document}
