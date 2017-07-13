@@ -297,36 +297,31 @@ Due to the large light shift, the optical pumping is effectively off when the tr
 Since the atom can only be addressed by the optical pumping light when the trap light is off,
 the effect of light shift on optical pumping fidelity is suppressed.
 
-%% TODO
-
 Our final cooling results are shown in Fig.~\ref{f-radial} and \ref{f-axial}.
 In total, $1000$ cooling pulses (for $100$ ms) are applied along three axes with
 cooling begins on the radial second order to remove most energy initially.
 To characterize the single atom thermal occupation before and after cooling,
-we perform Raman sideband thermometry before and after cooling\fxnote{add citation?}.
+we perform Raman sideband thermometry before and after cooling.
 For the more tightly confined radial directions (non-degenerate),
 we observe clear first-order heating, first-order cooling,
 and second-order cooling sidebands before RSC as is shown in red in Figure \ref{f-radial}A.
-
 After cooling, the first and second order cooling sidebands on both radial axes are suppressed.
 It is important to note that the simple sideband thermometry formula,
-which predicts the ratio of the cooling and heating sideband heights to be $\bar n / (\bar n + 1)$,
+which predicts the ratio of the cooling and heating sideband heights
+to be $\bar n / (\bar n + 1)$~\cite{Monroe1995},
 assumes that the coupling strength for different motional states to be proportional to $\sqrt{n}$.
 Outside of the Lamb-Dickes regime, however,
 the coupling strength deviates from this simple scaling rule rapidly
 as shown in figure \ref{f-ld}A and since the Raman spectroscopy is performed
 with a relatively large Raman Lamb-Dickes parameters $\eta^R$, we cannot use this formula to
-measure $\bar n$. Instead, given the absence of the second order cooling sideband,
+measure $\bar n$.
+Instead, given the absence of the second order cooling sideband,
 we assume that the atoms are cold enough to have stronger coupling to the first order cooling
-sideband than the second order, in which case the
-
-\fxnote{How is the thermometry done? pulse duration etc.}
-, we perform sideband thermometry
-by taking the ratio of the peaks of first-order cooling and heating sidebands to measure $\bar n / (\bar n + 1)$ \fxnote{cite}.
-We found $\{\bar n =,\bar n =\}$, which corresponds to a ground state population of $90(2)$\%
+sideband than the second order, in which case the lower bound of the ground state population
+can be computed from the heights of the sidebands by assuming all of the excitation are in the
+$n=1$ state. In doing this, we found a ground state population of $90(2)$\%
 and $94(3)$\% along the two radial directions.
-
-we therefore use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
+We also use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
 and first-order heating(Fig. \ref{f-radial}C) sidebands
 to verify the ground-state population~\cite{Meekhof1996}.
 The data is fitted using the same Monte-Carlo simulation we used to simulate the cooling
@@ -334,8 +329,6 @@ which yields $89(2)$\% and $92(2)$\% and show good agreement with
 the population extracted from the sideband thermometry.
 We also extracted the initial temperature before cooling
 from the motional-state decohered Rabi flopping and obtained $70 \mu$K.
-
-%% End of TODO
 
 For the weaker axial direction, cooling is much more challenging
 due to the large $\eta^{OP}_{eff1}\approx 4.0(2)$.
