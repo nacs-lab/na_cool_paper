@@ -1,4 +1,4 @@
-\documentclass[aps,twocolumn,secnumarabic,balancelastpage,amsmath,amssymb]{revtex4}
+\documentclass[aps,twocolumn,secnumarabic,amsmath,amssymb]{revtex4}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -46,6 +46,7 @@
 \title{Motional Quantum Ground-State Cooling Outside the Lamb-Dicke Regime -- Supplemental material}
 \author{Yichao Yu}
 \author{Nicholas R. Hutzler}
+\altaffiliation{Present address: California Institute of Technology, Division of Physics, Mathematics, and Astronomy.  Pasadena, CA, 91125}
 \author{Jessie T. Zhang}
 \author{Lee R. Liu}
 \author{Kang-Kuen Ni}
@@ -60,69 +61,50 @@
 
 \section{Simulation of 3D Raman sideband cooling}
 
-\subsection{Overview}
+%\subsection{Overview}
 
 We use a computer simulation to study the importance of different effects
-and guide the optimization of cooling.
-The simulation uses quantum jump method\cite{Chretien2014} (or Monte-Carlo wavefunction method)
-to accurately calculate the evolution within each laser pulse while different energy eigenstates
-are assumed to decohere immediately on spontaneous emission of photon and on pulse boundaries.
-Such approxiations are valid for simulation of the cooling and greatly simplifies the computation
+and guide the optimization of Raman sideband cooling.
+The simulation uses the quantum jump (or Monte-Carlo wavefunction) method~\cite{Chretien2014} 
+to accurately calculate the evolution within each laser pulse where different energy eigenstates
+are assumed to decohere immediately upon spontaneous emission and on pulse boundaries.
+Such approximations are valid and greatly simplifies the computation
 at the cost of limiting the applicability of the simulation to processes that requires stronger
-coherence such as Ramsey spectroscopy and rapid push-out.
+coherence, such as Ramsey spectroscopy or rapid push-out of the atoms from the trap.
 
-A few other approximations are used in the simulation either because they are proved to have
-negligible effect on the experiment or because they'll increase the complexity of the simulation
-and can be optimized through other methods in the experiment.
-A list of the most important approximations is,
+A number of other simplifying approximations, listed below, are also used in the simulation.  These either have a demonstrably negligible effect on the experiment, or result in a significant reduction of complexity for an effect that can be optimized more easily in the experiment.
 
 \begin{enumerate}
-\item All Raman pulses are assumed to be resonantly driving only one sideband/carrier order.\\
-  We tweak the pulse shape, power and length to suppress any deviation
-  from this in the experiment. We do still see deviation from this in the experiment
-  but the effect is small for the short pulse we use for cooling and is the most pronounced
-  for long detection pulses.
-\item No heating from other sources including trap switching.\\
-  We measured the heating rate and observed that it mainly comes from off-resonance scattering
-  of photons from various sources which we already include so additional heating can be
-  ignored.
-\item Trapping frequency difference between different states are ignored.\\
-  This effect is negligible for Na in the ground state due to the small fine structure.
+\item \emph{All Raman pulses resonantly drive only one sideband/carrier order.}  We tweak the pulse shape, power and length as discussed in the text, for example by using Blackman pulses, to reduce coupling to other orders. We do see deviation from this approximation in the experiment, though mostly in the long detection pulses, and it is less of a concern for the short cooling pulses.
+\item \emph{No heating from other sources.}\\
+  We measured the heating rate and found that it results mainly from off-resonant scattering
+  of photons, which is included in the simulation.  In particular, we can ignore heating from the switching trap.
+\item \emph{Same trapping frequency for all states.}\\
+  This effect is negligible for Na in the ground state due to the small fine structure splitting in the excited state.
   It is easy to include this effect if the calculation needs to be repeated on a system where
   this is not the case (e.g. directly laser cooled molecules)
 \end{enumerate}
 
-Some of the important effects that are included are,
-\begin{enumerate}
-\item Full 3D simulation.\\
-  This includes 3D motional states, accurate 3D wavevector, and different emission pattern
-  for different photon polarizations.
-\item Off resonant scattering from all beams.\\
-  Including Raman, optical pumping and dipole trap.
-\item Optical pumping polarization imperfection.
-\end{enumerate}
+Some effects that are important to include are all three dimensions (3D motional states, accurate 3D wavevector, and different emission pattern for different photon polarizations), off-resonant scattering from all laser beams, and optical pumping polarization imperfection.  The optical pumping polarization and off-resonant scattering are especially important
+for accurate simulation since they are the main limitation on cooling performance.
 
-The optical pumping polarization and the off resonant scattering are especially important
-for accurate simulation since they are the main heating source that is present
-for ground motional dark state atom and therefore are the main limation on cooling performance.
+%\subsection{Simulation of each pulse}
 
-\subsection{Simulation of each pulse}
-
-Each pulse in general has a coherent part from the Raman drive (zero for optical pumping pulse)
-and an incoherent part from scattering (optical pumping or off-resonance scattering).
-This nicely fits the general formula of the quantum jump method. Due to the large number of
-states that we need to take into account ($30-150$ states in each of the three axis and
-$8$ hyperfine states, giving a total of $10^6$ states),
-the generic wavefunction propagation is very inefficient.
-Therefore, this is further simplified by reducing the number of states to be kept track of during
-the coherent propagation and apply quantum jump using a set of reduced jump operator that
-describes the total jump probability from a certain states (sum over all final states).
+In general, each pulse has a coherent part from the Raman drive (which is absent for the optical pumping pulses)
+and an incoherent part from scattering (optical pumping or off-resonant).
+This nicely fits the general approach of the quantum jump method. Due to the large number of
+states that we need to take into account ($30-150$ motional per axis and
+$8$ hyperfine, giving a total of $10^6$),
+ generic wavefunction propagation is very inefficient.
+Therefore, we further simplify by reducing the number of states tracked during
+the coherent propagation and apply quantum jumps using a set of reduced jump operator that
+describes the total jump probability from a certain states (summed over all final states).
 The coherent propagation is then accurately solved in order to avoid having to use a time step
 much shorter than the scattering rate (up to hundreds of kHz)\footnote{\href{https://goo.gl/EZ13wt}{note about modification to the quantum jump method (https://goo.gl/EZ13wt)}}.
 
 In order to simulate a pulse, we first start with the coherent propagation that includes the
 modification from the jump operators as in quantum jump method.
-When a jump happens, we pick a final internal state to jump to based on the rates ratio
+When a jump happens, we pick a final internal state to jump to based on the relative rates
 of different scattering sources and their branching ratios.
 This process also determines the polarization and emission pattern of the photon and
 a particular wave vector for the emitted photon is then selected as the next step.
@@ -130,42 +112,38 @@ The recoil is now fixed so the final motional state of the atom can now be selec
 This process is then repeated on the same pulse until the pulse time is used up before
 we start to simulate the next pulse.
 
-\subsection{Measurements}
+%\subsection{Measurements}
 
-We apply ``virtual'' measurements on each results of the cooling which we then average to
-obtain the expected value of qualities that we are interested in.
+We apply ``virtual'' measurements on the results of each simulated cooling sequence which we then average to
+obtain the expected value of experimental quantities.
 Due to the decoherence approximation, the measurement has to commute with the Hamiltonian.
 Particularly useful measurements used in our simulation are hyperfine state distribution,
-Average motional energy, loss rate (where an atom is assumed to be lost if its motional energy
+average motional energy, loss rate (where an atom is assumed to be lost if its motional energy
 goes above a certain threshold at any time) probability of being in certain states
 (e.g. ground state).
 
-\subsection{Sample results}
-
-\begin{figure}
+\begin{figure}[t]
   \includegraphics[width=8.5cm]{imgs/simcool_no_scatter.pdf}
   \caption{Simulated ground state population as a function of cooling cycles without
     technical imperfections. The ground state probability reaches $>99\%$. \label{f-no-scatter}}
 \end{figure}
-
-\begin{figure}
+\begin{figure}[t]
   \includegraphics[width=8.5cm]{imgs/simcool_real.pdf}
   \caption{Simulated ground state population as a function of cooling cycles including effect of
     off-resonant scattering from all beams and OP misalignment.
-    For this particular sequence, the ground state probability saturates $\approx88\%$.
+    For this particular sequence, the ground state probability saturates to $\approx88\%$.
     \label{f-real}}
 \end{figure}
 
-When not considering the off-resonant scattering from the Raman beams and the tweezer as well
-as optical pumping polarization misalignment, the simulation shows that there isn't a cooling
+If off-resonant scattering and optical pumping polarization misalignment are ignored, the simulation shows that there isn't a cooling
 limit despite the large Lamb-Dicke parameter and high initial temperature (Fig \ref{f-no-scatter}).
 However, when these effects are taken into account, the ground state probability can saturate at
 a lower value (Fig \ref{f-real}) and require much more careful tweaking.
 
-\subsection{Code}
+%\subsection{Code}
 
 The simulation is written in Julia\cite{Bezanson2017}.
-All code are available under GPLv3 license at
+All code is available under the GPLv3 license at
 \footnote{\href{https://goo.gl/WLJwJp}{Library code (https://goo.gl/WLJwJp)}} and
 \footnote{\href{https://goo.gl/XXVreq}{Top level code (https://goo.gl/XXVreq)}}
 
