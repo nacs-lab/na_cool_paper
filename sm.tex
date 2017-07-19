@@ -61,18 +61,20 @@
 
 \section{Simulation of 3D Raman sideband cooling}
 
-%\subsection{Overview}
-
 We use a computer simulation to study the importance of different effects
 and guide the optimization of Raman sideband cooling.
-The simulation uses the quantum jump (or Monte-Carlo wavefunction) method~\cite{Chretien2014} 
+The simulation uses the quantum jump (or Monte-Carlo wavefunction) method~\cite{Chretien2014}
 to accurately calculate the evolution within each laser pulse where different energy eigenstates
 are assumed to decohere immediately upon spontaneous emission and on pulse boundaries.
-Such approximations are valid and greatly simplifies the computation
-at the cost of limiting the applicability of the simulation to processes that requires stronger
-coherence, such as Ramsey spectroscopy or rapid push-out of the atoms from the trap.
+Such approximations are valid and greatly simplify the computation
+at the cost of limiting the applicability of the simulation to processes that require stronger
+coherence, such as Ramsey spectroscopy or rapid push-out of the atoms from the trap
+(faster than a trap oscillation period).
 
-A number of other simplifying approximations, listed below, are also used in the simulation.  These either have a demonstrably negligible effect on the experiment, or result in a significant reduction of complexity for an effect that can be optimized more easily in the experiment.
+A number of other simplifying approximations, listed below, are also used in the simulation.
+These either have a demonstrably negligible effect on the experiment,
+or result in a significant reduction of complexity for an effect
+that can be optimized more easily in the experiment.
 
 \begin{enumerate}
 \item \emph{All Raman pulses resonantly drive only one sideband/carrier order.}  We tweak the pulse shape, power and length as discussed in the text, for example by using Blackman pulses, to reduce coupling to other orders. We do see deviation from this approximation in the experiment, though mostly in the long detection pulses, and it is less of a concern for the short cooling pulses.
@@ -85,37 +87,37 @@ A number of other simplifying approximations, listed below, are also used in the
   this is not the case (e.g. directly laser cooled molecules)
 \end{enumerate}
 
-Some effects that are important to include are all three dimensions (3D motional states, accurate 3D wavevector, and different emission pattern for different photon polarizations), off-resonant scattering from all laser beams, and optical pumping polarization imperfection.  The optical pumping polarization and off-resonant scattering are especially important
+Some effects that are important to include are all three dimensions (3D motional states,
+accurate 3D wavevector, and different emission pattern for different photon polarizations),
+off-resonant scattering from all laser beams, and optical pumping polarization imperfection.
+The optical pumping polarization and off-resonant scattering are especially important
 for accurate simulation since they are the main limitation on cooling performance.
 
-%\subsection{Simulation of each pulse}
-
-In general, each pulse has a coherent part from the Raman drive (which is absent for the optical pumping pulses)
+In general, each pulse has a coherent part from the Raman drive
+(which is absent for the optical pumping pulses)
 and an incoherent part from scattering (optical pumping or off-resonant).
-This nicely fits the general approach of the quantum jump method. Due to the large number of
-states that we need to take into account ($30-150$ motional per axis and
-$8$ hyperfine, giving a total of $10^6$),
- generic wavefunction propagation is very inefficient.
+This nicely fits the general approach of the quantum jump method.
+Due to the large number of states that we need to take into account
+($30-150$ motional per axis and $8$ hyperfine, giving a total of $10^6$),
+generic wavefunction propagation is very inefficient.
 Therefore, we further simplify by reducing the number of states tracked during
-the coherent propagation and apply quantum jumps using a set of reduced jump operator that
-describes the total jump probability from a certain states (summed over all final states).
+the coherent propagation and applying quantum jumps using a set of reduced jump operators that
+describe the total jump probability from a certain state (summed over all final states).
 The coherent propagation is then accurately solved in order to avoid having to use a time step
-much shorter than the scattering rate (up to hundreds of kHz)\footnote{\href{https://goo.gl/EZ13wt}{note about modification to the quantum jump method (https://goo.gl/EZ13wt)}}.
+much shorter than the inverse of scattering rate (up to hundreds of kHz)\footnote{\href{https://goo.gl/EZ13wt}{note about modification to the quantum jump method (https://goo.gl/EZ13wt)}}.
 
 In order to simulate a pulse, we first start with the coherent propagation that includes the
-modification from the jump operators as in quantum jump method.
+modification from the jump operators as in the quantum jump method.
 When a jump happens, we pick a final internal state to jump to based on the relative rates
 of different scattering sources and their branching ratios.
-This process also determines the polarization and emission pattern of the photon and
-a particular wave vector for the emitted photon is then selected as the next step.
-The recoil is now fixed so the final motional state of the atom can now be selected.
-This process is then repeated on the same pulse until the pulse time is used up before
-we start to simulate the next pulse.
+This process determines the polarization and emission pattern of the emitted photon,
+from which we randomly sample a particular wave vector.
+The photon recoil being defined, we can then assign a final motional state to the atom.
+This process is then repeated as long as the pulse is on,
+before we start to simulate the next pulse.
 
-%\subsection{Measurements}
-
-We apply ``virtual'' measurements on the results of each simulated cooling sequence which we then average to
-obtain the expected value of experimental quantities.
+We apply ``virtual'' measurements on the results of each simulated cooling sequence
+which we then average to obtain the expected value of experimental quantities.
 Due to the decoherence approximation, the measurement has to commute with the Hamiltonian.
 Particularly useful measurements used in our simulation are hyperfine state distribution,
 average motional energy, loss rate (where an atom is assumed to be lost if its motional energy
@@ -135,12 +137,11 @@ goes above a certain threshold at any time) probability of being in certain stat
     \label{f-real}}
 \end{figure}
 
-If off-resonant scattering and optical pumping polarization misalignment are ignored, the simulation shows that there isn't a cooling
-limit despite the large Lamb-Dicke parameter and high initial temperature (Fig \ref{f-no-scatter}).
+If off-resonant scattering and optical pumping polarization misalignment are ignored,
+the simulation shows that there isn't a cooling limit
+despite the large Lamb-Dicke parameter and high initial temperature (Fig \ref{f-no-scatter}).
 However, when these effects are taken into account, the ground state probability can saturate at
 a lower value (Fig \ref{f-real}) and require much more careful tweaking.
-
-%\subsection{Code}
 
 The simulation is written in Julia\cite{Bezanson2017}.
 All code is available under the GPLv3 license at

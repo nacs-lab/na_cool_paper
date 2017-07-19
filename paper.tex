@@ -90,10 +90,10 @@
     (C) Schematic of the cooling sequence. The tweezer switches at 3 MHz to
     reduce light shifts during optical pumping. Each cooling cycle consists of $8$ pulses.
     The four axial pulses are addressing two neighboring cooling orders.
-    The two pulses in each radial directions are either addressing two neighboring cooling orders
+    The two pulses in each radial direction are either addressing two neighboring cooling orders
     or having different length on the first order when most of the population are below $n=3$
-    towards then end of the cooling sequence.
-    All of the Raman pulses use Blackman pulse envelopes to reduce the off resonance
+    towards the end of the cooling sequence.
+    All of the Raman pulses use Blackman pulse envelopes to reduce the off-resonant
     coupling to carrier and heating sidebands.
     \label{f-setup}}
 \end{figure*}
@@ -119,8 +119,8 @@
     (B,C) Rabi flopping on axis 3 (B) carrier and (C) first order heating sideband
     before (red) and after (blue) cooling.
     Solid lines in (B) and (C) are theoretical calculation of the Rabi flopping.
-    The blue lines corresponds to a ground state probability of $93$\% after cooling and
-    the red lines corresponds to a thermal distribution of $70$ $\mu$K before cooling.
+    The blue lines correspond to a ground state probability of $93$\% after cooling and
+    the red lines correspond to a thermal distribution of $70$ $\mu$K before cooling.
     \label{f-radial}}
 \end{figure*}
 \begin{figure*}
@@ -138,7 +138,7 @@
     the red lines corresponds to a thermal distribution of $70$ $\mu$K before cooling.
     The blue lines do not take into account the effect of decoherence due to resonance
     fluctuation. By comparing it to the green line in (C), which includes a $3$ kHz fluctuation,
-    we can clearly see that this effect is the strongest for the after cooling data on
+    we can clearly see that this effect is the strongest for the post-cooling data on
     the axial heating sideband where the Rabi frequency is the lowest.
     \label{f-axial}}
 \end{figure*}
@@ -205,12 +205,12 @@ $|F=2, m_F=-2\rangle$ and  $|F=1, m_F=-1\rangle$ in the presence of a $8.8$ G ma
 Subsequently, an OP/repump pulse brings the atom back to $|F=2, m_F=-2\rangle$
 via spontaneous emission.
 
-It is important that the re-pumping step scatter as few photons as possible to minimize heating.  Therefore, we use a $\sigma^-$-polarized laser resonant with the D1 line since the $|F=2, m_F=-2\rangle$ is a dark state in this case \fxnote{cite ion and K39}.  Compared to using a D2 repump beam, from which the $|F=2, m_F=-2\rangle$ state could always scatter a photon via the excited $|F=r, m_F=-3\rangle$ state, we find a reduction in the scattering rate of a factor of $130(20)$.
+It is important that the re-pumping step scatter as few photons as possible to minimize heating.  Therefore, we use a $\sigma^-$-polarized laser resonant with the D1 line since the $|F=2, m_F=-2\rangle$ is a dark state in this case \fxnote{cite ion and K39}. Compared to using a D2 repump beam, from which the $|F=2, m_F=-2\rangle$ state could always scatter a photon via the excited $|F=3, m_F=-3\rangle$ state, we find a reduction in the scattering rate of a factor of $130(20)$.
 
 For an atom in motional level $n$, the OP could result in motional-state redistribution
 as shown in Fig.~\ref{f-ld}A. The state redistribution probability
 is approximately proportional to the effective LD parameter
-$\eta^{OP}_{\eff}=\sqrt{2n+1}\eta^{OP}$, where $\eta^{OP}=k z_0=k \sqrt{\hbar/2m\omega}$,
+$\eta^{OP}_{eff}=\sqrt{2n+1}\eta^{OP}$, where $\eta^{OP}=k z_0=k \sqrt{\hbar/2m\omega}$,
 $k$ is the wavenumber of the optical pumping beam, $z_0$ is the zero-point wavefunction spread,
 $m$ is the mass of the atom, and $\hbar$ is the reduced Planck constant.
 Such heating presents a major challenge for efficient cooling of single Na atoms
@@ -221,7 +221,7 @@ Combined with a relatively large PGC temperature gives initial
 $\{\eta^{OP}_{1\eff},\eta^{OP}_{2\eff},\eta^{OP}_{3\eff}\} = \{4.0(1), 0.67(2), 0.50(1)\}$.
 For the weak axial direction, $(\eta^{OP}_{1\eff})^2>1$ is far outside of the LD regime.
 As a result, the average change of motional state per OP step is large,
-which creates a large uncertainty on the motional state at the end of a full RSC step, and possibly leading to runaway heating.
+which creates a large uncertainty on the motional state at the end of a full RSC step, possibly leading to runaway heating.
 For example, the average change in motional states over the initial distribution
 is $2.4$ in the axial direction, which is significantly greater than $0.89-0.95$
 in previous experiments of RSC of Rb and Cs~\cite{Li2012,Kaufman2012,Thompson2013,Liu2017}.
@@ -229,7 +229,7 @@ in previous experiments of RSC of Rb and Cs~\cite{Li2012,Kaufman2012,Thompson201
 Fortunately, the large LD parameters also provide opportunities to overcome OP heating.
 The Raman transitions in our configuration have
 $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$,
-which allow strong coupling to higher order sidebands for atoms in large motional states
+which allow strong coupling to higher order sidebands for atoms in higher motional states
 as calculated in Figure~\ref{f-ld}B.
 To offset heating from OP initially, higher-order Raman cooling sidebands can be utilized
 to remove more motional quanta in a single cooling pulse.
@@ -281,9 +281,9 @@ and mixes the excited-state hyperfine levels, which reduces the optical pumping 
 We address this by switching the trapping light at 3 MHz during the whole cooling sequence,
 similar to our loading and imaging process~\cite{Hutzler2017-LightShifts},
 while leaving OP on with constant intensity.
-Due to the large light shift, the optical pumping is effectively off when the trap light is on.
+Due to the large light shift, the OP is effectively off whenever the trap light switches back on.
 Since the atom can only be addressed by the optical pumping light when the trap light is off,
-the effect of light shift on optical pumping fidelity is suppressed.
+the effect of light shifts on OP fidelity is suppressed.
 
 Our final cooling results are shown in Fig.~\ref{f-radial} and \ref{f-axial}.
 In total, $1000$ cooling pulses (with a total duration of $100$ ms) are applied along three axes with
@@ -298,14 +298,15 @@ It is important to note that the simple sideband thermometry formula,
 which predicts the ratio of the cooling and heating sideband heights
 to be $\bar n / (\bar n + 1)$~\cite{Monroe1995},
 assumes that the coupling strength for different motional states to be proportional to $\sqrt{n}$.
-However, outside of the LD regime, the coupling strength deviates from this simple scaling rule rapidly,
+However, outside of the LD regime,
+the coupling strength rapidly deviates from this simple scaling rule,
 as shown in figure \ref{f-ld}A.  Since the Raman spectroscopy is performed
 with relatively large Raman LD parameters $\eta^R$, we cannot use this formula to
 measure $\bar n$.
 Instead, given the absence of the second order cooling sideband,
 we assume \fxnote{[What is the cutoff for the validity of this assumption, and are we below that cutoff?]} that the atoms are cold enough to have stronger coupling to the first order cooling
 sideband than the second order, in which case the lower bound of the ground state population
-can be computed from the heights of the sidebands by assuming all of the excitation are in the
+can be computed from the heights of the sidebands by assuming all of the excitations are in the
 $n=1$ state. In doing this, we found a ground state population of $90(2)$\%
 and $94(3)$\% along the two radial directions.
 We also use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
@@ -318,16 +319,16 @@ We also extracted the initial temperature before cooling
 from the motional-state decohered Rabi flopping to obtain the initial temperature of $70 \mu$K.
 
 For the weaker axial direction, cooling is much more challenging
-due to the large $\eta^{OP}_{eff1}\approx 4.0(2)$.
+due to the large $\eta^{OP}_{1eff}\approx 4.0(2)$.
 We observe up to 8th-order Raman cooling sidebands initially,
 which indicates population in highly-excited motional states.
 Nevertheless, our cooling sequence works efficiently as all the cooling sidebands are suppressed
 after RSC (Fig.~\ref{f-axial}).
-The ground state probability calculated using the ratio of first-order sideband heights yields
+The ground state population calculated using the ratio of first-order sideband heights yields
 $92(3)$\%. We also perform Rabi flopping on the carrier(Figure~\ref{f-axial}B)
 and extracted a ground state population of $91(2)$\%, in agreement with the other method.
 For the first-order heating sideband Rabi flopping (Figure~\ref{f-axial}C),
-we observed additional decoherence that is more produced due to the slower Rabi frequency.
+we observed additional decoherence that is more pronounced due to the slower Rabi frequency.
 The decoherence time scale is consistent with magnetic field fluctuations of $1.5$ mG
 that we measure independently in the lab, which produces a Zeeman shift of $\sim 3$ kHz.
 
@@ -340,10 +341,12 @@ from the Raman beams,
 which are measured to be between $3$ to $15$ kHz for the detuning and power we use,
 and the resonance shift caused by magnetic field fluctuations.
 
-There is an additional $5$\% loss from finite imaging fidelity and $10$\% loss from very high-lying initial motional states
-that are not efficiently cooled by RSC, but off-resonantly heated by the Raman beams.  These give us a $66(3)$\% probability of ground state atom after each successful loading event.
+There is an additional $5$\% loss from finite imaging fidelity and $10$\% loss
+from very high-lying initial motional states that are not efficiently cooled by RSC,
+but instead off-resonantly heated by the Raman beams.
+These give us a $66(3)$\% probability of ground state atom after each successful loading event.
 We are planning to improve these by increasing the detuning of the Raman beams,
-addressing wider range of trap anharmonicity by frequency sweeps,
+addressing a wider range of trap anharmonicity by frequency sweeps,
 implementing better control of the magnetic field, and optimizing the temperature during imaging.
 Another improvement could be to implement grey molasses cooling to achieve
 a lower starting temperature before RSC\cite{Colzi2016}.
@@ -361,6 +364,27 @@ We thank T. Rosenband and J. Hood for valuable discussions.
 This work is supported by the NSF through the Harvard-MIT CUA,
 the AFOSR Young Investigator Program, the Arnold and Mabel Beckman Foundation,
 and the Alfred P. Sloan Foundation.
+
+% Define \eta_R
+% Lamb-Dicke parameter square explain
+% why not just molecules instead of polar molecules
+% entropy
+% use different line shape for rabi flopping
+% mention axis definitions
+% heating from trap -> decrease of ground state procetage (maybe add temprature too)
+% Differetial AC starck shift **between excited states and ground states**?
+% at the same time, the atom is cooled via PGC instead of "the same imaging light is used to"
+% 1 sentence to explain why anisotropy?
+% is strobed at 3MHz instead of is switching at...
+% Cite Na loading paper in caption?
+% Make sure the caption for the before cooling axial rabi flopping mentions decoherence
+% Mention after cooling is non-thermal?
+% Make it clear that we cool for 6-15 cycles each time before going to the next set of orders in axial
+
+% sm:
+% mention the simulation results are 3d
+% effect of changing groups.
+% mention effects that are included first.
 
 \bibliography{paper}
 \end{document}
