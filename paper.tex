@@ -64,7 +64,7 @@
   We report Raman sideband cooling of a single sodium atom to its three-dimensional
   motional ground state in an optical tweezer.
   Despite having a very large Lamb-Dicke parameter, high initial temperature, and
-  large differential AC Stark shifts in the excited state,
+  large differential AC Stark shifts between the excited state and the ground state,
   we achieve a ground state preparation fidelity of $77(4)$\% after $100$ ms of cooling.
   Our technique includes addressing very high-order sidebands and
   fast modulation of the optical tweezer trap.
@@ -87,8 +87,9 @@
     state to minimize heating on the atom in the $|F=2,m_F=-2\rangle$ state
     (B) Geometry and polarizations of the Raman and optical pumping beams relative to the
     optical tweezer and bias magnetic field.
-    (C) Schematic of the cooling sequence. The tweezer switches at 3 MHz to
-    reduce light shifts during optical pumping. Each cooling cycle consists of $8$ pulses.
+    (C) Schematic of the cooling sequence. The tweezer is strobed at 3 MHz to
+    reduce light shifts during optical pumping~\cite{Hutzler2017-LightShifts}.
+    Each cooling cycle consists of $8$ pulses.
     The four axial pulses are addressing two neighboring cooling orders.
     The two pulses in each radial direction are either addressing two neighboring cooling orders
     or having different length on the first order when most of the population are below $n=3$
@@ -227,10 +228,13 @@ is $2.4$ in the axial direction, which is significantly greater than $0.89-0.95$
 in previous experiments of RSC of Rb and Cs~\cite{Li2012,Kaufman2012,Thompson2013,Liu2017}.
 
 Fortunately, the large LD parameters also provide opportunities to overcome OP heating.
-The Raman transitions in our configuration have
+The Raman transitions in our configuration have LD parameters of
 $\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$,
 which allow strong coupling to higher order sidebands for atoms in higher motional states
 as calculated in Figure~\ref{f-ld}B.
+The LD parameter for Raman transitions is defined as $\eta^R\equiv\Delta k z_0$ similar to OP
+where $\Delta k$ being the wave vector difference
+between the two beams that drives the Raman transition.
 To offset heating from OP initially, higher-order Raman cooling sidebands can be utilized
 to remove more motional quanta in a single cooling pulse.
 Since the coupling strengths of different orders do not reach minima for the same pulse duration,
@@ -278,7 +282,7 @@ Rabi frequency of at least $15$ kHz is needed to couple to $99$\% population up 
 Second, the tweezer trap causes a large AC Stark shift (as large as $300$ MHz)
 in the excited state. This creates a large, position-dependent OP detuning
 and mixes the excited-state hyperfine levels, which reduces the optical pumping fidelity.
-We address this by switching the trapping light at 3 MHz during the whole cooling sequence,
+We address this by strobing the trapping light at 3 MHz during the whole cooling sequence,
 similar to our loading and imaging process~\cite{Hutzler2017-LightShifts},
 while leaving OP on with constant intensity.
 Due to the large light shift, the OP is effectively off whenever the trap light switches back on.
@@ -286,8 +290,8 @@ Since the atom can only be addressed by the optical pumping light when the trap 
 the effect of light shifts on OP fidelity is suppressed.
 
 Our final cooling results are shown in Fig.~\ref{f-radial} and \ref{f-axial}.
-In total, $1000$ cooling pulses (with a total duration of $100$ ms) are applied along three axes with
-cooling beginning on the radial second order.
+In total, $1000$ cooling pulses (with a total duration of $100$ ms) are applied
+along three axes with cooling beginning on the radial second order.
 To characterize the single atom thermal occupation before and after cooling,
 we perform Raman sideband thermometry.
 For the more tightly confined (non-degenerate) radial directions,
@@ -365,18 +369,14 @@ This work is supported by the NSF through the Harvard-MIT CUA,
 the AFOSR Young Investigator Program, the Arnold and Mabel Beckman Foundation,
 and the Alfred P. Sloan Foundation.
 
-% Define \eta_R
 % Lamb-Dicke parameter square explain
 % why not just molecules instead of polar molecules
 % entropy
 % use different line shape for rabi flopping
 % mention axis definitions
 % heating from trap -> decrease of ground state procetage (maybe add temprature too)
-% Differetial AC starck shift **between excited states and ground states**?
 % at the same time, the atom is cooled via PGC instead of "the same imaging light is used to"
 % 1 sentence to explain why anisotropy?
-% is strobed at 3MHz instead of is switching at...
-% Cite Na loading paper in caption?
 % Make sure the caption for the before cooling axial rabi flopping mentions decoherence
 % Mention after cooling is non-thermal?
 % Make it clear that we cool for 6-15 cycles each time before going to the next set of orders in axial

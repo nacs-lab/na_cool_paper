@@ -242,7 +242,7 @@ const δΩ_r3_init = 15e3
 
 figure()
 ts_r3_0 = linspace(0, 80e-6, 256)
-plot_data(data_after_r3_0, 1, fmt="C0o")
+plot_data(data_after_r3_0, 1, fmt="C0s")
 plot_f1(f_r3, ts_r3_0, 2π / τ_r3 * meles_r3_0[1:3], p_r3, color="C0")
 ts_r3_0_init = linspace(0, 30e-6, 256)
 plot_data(data_before_r3_0, 1, fmt="C3o")
@@ -258,7 +258,7 @@ maybe_save("$(prefix)_r3_0")
 
 figure()
 ts_r3_p1 = linspace(0, 180e-6, 256)
-plot_data(data_after_r3_p1, 1, fmt="C0o")
+plot_data(data_after_r3_p1, 1, fmt="C0s")
 plot_f1(f_r3, ts_r3_p1, 2π / τ_r3 * meles_r3_p1[1:3], p_r3, color="C0")
 ts_r3_p1_init = linspace(0, 160e-6, 256)
 plot_data(data_before_r3_p1, 1, fmt="C3o")
@@ -283,7 +283,7 @@ const δΩ_r2_init = 15e3
 
 figure()
 ts_r2_0 = linspace(0, 80e-6, 256)
-plot_data(data_after_r2_0, 1, fmt="C0o")
+plot_data(data_after_r2_0, 1, fmt="C0s")
 plot_f1(f_r2, ts_r2_0, 2π / τ_r2 * meles_r2_0[1:3], p_r2, color="C0")
 ts_r2_0_init = linspace(0, 30e-6, 256)
 plot_data(data_before_r2_0, 1, fmt="C3o")
@@ -299,7 +299,7 @@ maybe_save("$(prefix)_r2_0")
 
 figure()
 ts_r2_p1 = linspace(0, 180e-6, 256)
-plot_data(data_after_r2_p1, 1, fmt="C0o")
+plot_data(data_after_r2_p1, 1, fmt="C0s")
 plot_f1(f_r2, ts_r2_p1, 2π / τ_r2 * meles_r2_p1[1:3], p_r2, color="C0")
 ts_r2_p1_init = linspace(0, 140e-6, 256)
 plot_data(data_before_r2_p1, 1, fmt="C3o")
@@ -326,7 +326,7 @@ const δΩ_a1_init_p1 = 50e3
 
 figure()
 ts_a1_0 = linspace(0, 300e-6, 256)
-plot_data(data_after_a1_0, 1, fmt="C0o")
+plot_data(data_after_a1_0, 1, fmt="C0s")
 plot_f1(f_a1, ts_a1_0, 2π / τ_a1 * (meles_a1_0[1:3] * meles_r3_0[1:3]'), p_a1 * p_r3', color="C0")
 ts_a1_0_init = linspace(0, 150e-6, 256)
 plot_data(data_before_a1_0, 1, fmt="C3o")
@@ -342,11 +342,11 @@ maybe_save("$(prefix)_a1_0")
 
 figure()
 ts_a1_p1 = linspace(0, 450e-6, 256)
-plot_data(data_after_a1_p1, 1, fmt="C0o")
+plot_data(data_after_a1_p1, 1, fmt="C0s")
 plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
         p_a1 * p_r3', 0, color="C0")
 plot_f1(f_a1, ts_a1_p1, 2π / τ_a1 * (meles_a1_p1[1:3] * meles_r3_0[1:3]'),
-        p_a1 * p_r3', δΩ_a1, color="C2")
+        p_a1 * p_r3', δΩ_a1, color="C2", ls="--")
 ts_a1_p1_init = linspace(0, 400e-6, 256)
 plot_data(data_before_a1_p1, 1, fmt="C3o")
 plot_f1_thermal2(f_a1, ts_a1_p1_init, 2π / τ_a1_init * meles_a1_p1, nbar_init_a1,
