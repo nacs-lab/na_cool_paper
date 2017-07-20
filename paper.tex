@@ -49,7 +49,7 @@
 \author{Yichao Yu}
 \email{yichaoyu@g.harvard.edu}
 \author{Nicholas R. Hutzler}
-\altaffiliation{Present address: California Institute of Technology, Division of Physics, Mathematics, and Astronomy.  Pasadena, CA, 91125}
+\altaffiliation{Present address: California Institute of Technology, Division of Physics, Mathematics, and Astronomy. Pasadena, CA, 91125}
 \author{Jessie T. Zhang}
 \author{Lee R. Liu}
 \author{Kang-Kuen Ni}
@@ -141,6 +141,7 @@
     fluctuation. By comparing it to the green line in (C), which includes a $3$ kHz fluctuation,
     we can clearly see that this effect is the strongest for the post-cooling data on
     the axial heating sideband where the Rabi frequency is the lowest.
+    The asymptotic values for the red lines are low also because of resonance fluctuation.
     \label{f-axial}}
 \end{figure*}
 
@@ -180,11 +181,13 @@ Our experiment begins by loading a single sodium atom into an optical tweezer fr
 for $250$ ms~\cite{Hutzler2017-LightShifts}, and has an overall repetition rate of $2.5$ Hz.
 The tweezer is created by focusing a $700$ nm laser beam through an NA=$0.55$ objective to
 create a focused beam with waist $0.7 \mu$m.
-With $45$ mW of tweezer power, the trapping frequencies are
-$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$.
+With $45$ mW of tweezer power, the trapping frequencies along the three axes are
+$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$
+where axis 1 is along the weakly confined axial direction and axis 2 and 3 are along the
+tightly confined radial directions.
 After attempting to load an atom from the MOT, an image is taken with $1.5$ ms exposure time to determine if it was a success.
-The same imaging light is used for polarization gradient cooling (PGC), which
-reduces the temperature of the single atom to $70$ $\mu$K,
+At the same time, the atom is cooled via polarization gradient cooling (PGC),
+which reduces the temperature of the single atom to $70$ $\mu$K,
 corresponding to an initial mean motional state along the three different axes of
 $\{\bar n_1, \bar n_2, \bar n_3\}=\{21(2),\, 3.4(2),\, 2.5(2)\}$, and therefore initial 3D ground state probability of $P_0=0.3$\%.
 A beam with $\sigma^-$-polarization is used to initialize the atom into
@@ -202,11 +205,16 @@ driving a coherent Raman transition while removing motional quanta, followed by 
 RSC is applied repeatedly until the motional ground state is populated with high probability.
 
 Specifically, Raman transitions are driven in Na between the hyperfine states
-$|F=2, m_F=-2\rangle$ and  $|F=1, m_F=-1\rangle$ in the presence of a $8.8$ G magnetic field to suppress vector light shifts~\cite{Kaufman2012,Thompson2013}.
+$|F=2, m_F=-2\rangle$ and $|F=1, m_F=-1\rangle$ in the presence of a $8.8$ G magnetic field to suppress vector light shifts~\cite{Kaufman2012,Thompson2013}.
 Subsequently, an OP/repump pulse brings the atom back to $|F=2, m_F=-2\rangle$
 via spontaneous emission.
 
-It is important that the re-pumping step scatter as few photons as possible to minimize heating.  Therefore, we use a $\sigma^-$-polarized laser resonant with the D1 line since the $|F=2, m_F=-2\rangle$ is a dark state in this case \fxnote{cite ion and K39}. Compared to using a D2 repump beam, from which the $|F=2, m_F=-2\rangle$ state could always scatter a photon via the excited $|F=3, m_F=-3\rangle$ state, we find a reduction in the scattering rate of a factor of $130(20)$.
+It is important that the re-pumping step scatter as few photons as possible to minimize heating.
+Therefore, we use a $\sigma^-$-polarized laser resonant with the D1 line
+since $|F=2, m_F=-2\rangle$ is a dark state in this case \fxnote{cite ion and K39}.
+Compared to using a D2 repump beam, from which the $|F=2, m_F=-2\rangle$ state
+could always scatter a photon via the excited $|F=3, m_F=-3\rangle$ state,
+we find a reduction in the scattering rate of a factor of $130(20)$.
 
 For an atom in motional level $n$, the OP could result in motional-state redistribution
 as shown in Fig.~\ref{f-ld}A. The state redistribution probability
@@ -260,9 +268,9 @@ as the atom approaches the ground state, so the final cooling cycles utilize onl
 Guided by the simulation results,
 we construct our axial cooling sequence by starting at the two highest
 observed cooling sidebands (8th- and 7th-orders)
-and decreasing the orders after $6$ to $15$ cycles.
+and decreasing the orders to the next pair after every $6$ to $15$ cycles.
 This process is repeated until we reach the first order cooling sideband, and most of the
-population is in the first few excited states.  We then switch to cooling only on the
+population is in the first few excited states. We then switch to cooling only on the
 first order sideband with two different pulse lengths in order to efficiently cool atoms in the
 few remaining motional states.
 The radial cooling is performed similarly to the axial cooling with the initial cooling orders being
@@ -304,7 +312,7 @@ to be $\bar n / (\bar n + 1)$~\cite{Monroe1995},
 assumes that the coupling strength for different motional states to be proportional to $\sqrt{n}$.
 However, outside of the LD regime,
 the coupling strength rapidly deviates from this simple scaling rule,
-as shown in figure \ref{f-ld}A.  Since the Raman spectroscopy is performed
+as shown in figure \ref{f-ld}A. Since the Raman spectroscopy is performed
 with relatively large Raman LD parameters $\eta^R$, we cannot use this formula to
 measure $\bar n$.
 Instead, given the absence of the second order cooling sideband,
@@ -315,7 +323,7 @@ $n=1$ state. In doing this, we found a ground state population of $90(2)$\%
 and $94(3)$\% along the two radial directions.
 We also use an independent measurement of Rabi flopping on the carrier (Fig. \ref{f-radial}B)
 and first-order heating(Fig. \ref{f-radial}C) sidebands
-to verify the ground state population~\cite{Meekhof1996}.
+to verify our assumption about the distribution and the ground state population~\cite{Meekhof1996}.
 The data is fitted using the same Monte-Carlo simulation we used to simulate the cooling
 which yields $89(2)$\% and $92(2)$\% and show good agreement with
 the population extracted from the sideband thermometry.
@@ -338,8 +346,9 @@ that we measure independently in the lab, which produces a Zeeman shift of $\sim
 
 Combining the axial and radial cooling results,
 we have prepared a single Na atom with 3D ground state probability of $77(4)$\%.
-We measuring a heating rate of the single atoms in the tweezer to be $0.9$\%/s
-due to off-resonant scattering of the trapping light\cite{Grimm2000}.
+We measured a heating rate of the single atoms in the tweezer to be $67$nK/ms
+due to off-resonant scattering of the trapping light, which
+corresponds to $0.9$\%/ms decrease in ground state population\cite{Grimm2000}.
 The ground state preparation fidelity is currently limited by off-resonant scattering
 from the Raman beams,
 which are measured to be between $3$ to $15$ kHz for the detuning and power we use,
@@ -371,20 +380,9 @@ and the Alfred P. Sloan Foundation.
 
 % Lamb-Dicke parameter square explain
 % why not just molecules instead of polar molecules
-% entropy
-% use different line shape for rabi flopping
-% mention axis definitions
-% heating from trap -> decrease of ground state procetage (maybe add temprature too)
-% at the same time, the atom is cooled via PGC instead of "the same imaging light is used to"
+% use entropy to describe the effect of large \eta_{eff}
 % 1 sentence to explain why anisotropy?
-% Make sure the caption for the before cooling axial rabi flopping mentions decoherence
 % Mention after cooling is non-thermal?
-% Make it clear that we cool for 6-15 cycles each time before going to the next set of orders in axial
-
-% sm:
-% mention the simulation results are 3d
-% effect of changing groups.
-% mention effects that are included first.
 
 \bibliography{paper}
 \end{document}

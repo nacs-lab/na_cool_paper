@@ -83,8 +83,8 @@ that can be optimized more easily in the experiment.
   of photons, which is included in the simulation.  In particular, we can ignore heating from the switching trap.
 \item \emph{Same trapping frequency for all states.}\\
   This effect is negligible for Na in the ground state due to the small fine structure splitting in the excited state.
-  It is easy to include this effect if the calculation needs to be repeated on a system where
-  this is not the case (e.g. directly laser cooled molecules)
+  It is straightforward to include this effect if the calculation needs to be repeated
+  on a system where this is not the case (e.g. directly laser cooled molecules).
 \end{enumerate}
 
 Some effects that are important to include are all three dimensions (3D motional states,
@@ -126,27 +126,30 @@ goes above a certain threshold at any time) probability of being in certain stat
 
 \begin{figure}[t]
   \includegraphics[width=8.5cm]{imgs/simcool_no_scatter.pdf}
-  \caption{Simulated ground state population as a function of cooling cycles without
+  \caption{Simulated 3D ground state population as a function of cooling cycles without
     technical imperfections. The ground state probability reaches $>99\%$. \label{f-no-scatter}}
 \end{figure}
 \begin{figure}[t]
   \includegraphics[width=8.5cm]{imgs/simcool_real.pdf}
-  \caption{Simulated ground state population as a function of cooling cycles including effect of
+  \caption{Simulated 3D ground state population as a function of cooling cycles including effect of
     off-resonant scattering from all beams and OP misalignment.
     For this particular sequence, the ground state probability saturates to $\approx88\%$.
     \label{f-real}}
 \end{figure}
 
 If off-resonant scattering and optical pumping polarization misalignment are ignored,
-the simulation shows that there isn't a cooling limit
+the simulation shows that there is not a cooling limit
 despite the large Lamb-Dicke parameter and high initial temperature (Fig \ref{f-no-scatter}).
 However, when these effects are taken into account, the ground state probability can saturate at
 a lower value (Fig \ref{f-real}) and require much more careful tweaking.
+The change of slop in these plots corresponds to changing the sideband orders used for cooling.
 
 The simulation is written in Julia\cite{Bezanson2017}.
 All code is available under the GPLv3 license at
 \footnote{\href{https://goo.gl/WLJwJp}{Library code (https://goo.gl/WLJwJp)}} and
 \footnote{\href{https://goo.gl/XXVreq}{Top level code (https://goo.gl/XXVreq)}}
+
+% mention effects that are included first?
 
 \bibliography{paper}
 \end{document}
