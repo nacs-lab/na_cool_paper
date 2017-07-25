@@ -119,22 +119,22 @@ fig = figure(figsize=[1.6, 1] * 4.8)
 
 # Without cooling
 # Radial 2
-plot_data(data_nocool_r2[1], 1, fmt="C3^-", label="Ax 2 before")
+plot_data(data_nocool_r2[1], 1, fmt="C3^-", label="\$x\$ initial")
 plot_data(data_nocool_r2[2], 1, fmt="C3^-")
 plot_data(data_nocool_r2[3], 1, fmt="C3^-")
 # Radial 3
-plot_data(data_nocool_r3[1], 1, fmt="C3o--", label="Ax 3 before")
+plot_data(data_nocool_r3[1], 1, fmt="C3o--", label="\$y\$ initial")
 plot_data(data_nocool_r3[2], 1, fmt="C3o--")
 plot_data(data_nocool_r3[3], 1, fmt="C3o--")
 text(-660, 0.9, "(A)")
 
 # With cooling
 # Radial 2
-plot_data(data_cool_r2[1], 1, fmt="C0v-", label="Ax 2 after")
+plot_data(data_cool_r2[1], 1, fmt="C0v-", label="\$x\$ cooled")
 plot_data(data_cool_r2[2], 1, fmt="C0v-")
 plot_data(data_cool_r2[3], 1, fmt="C0v-")
 # Radial 3
-plot_data(data_cool_r3[1], 1, fmt="C0s--", label="Ax 3 after")
+plot_data(data_cool_r3[1], 1, fmt="C0s--", label="\$y\$ cooled")
 plot_data(data_cool_r3[2], 1, fmt="C0s--")
 plot_data(data_cool_r3[3], 1, fmt="C0s--")
 grid()
@@ -148,13 +148,13 @@ maybe_save("$(prefix)_r")
 
 fig = figure(figsize=[1.6, 1] * 4.8)
 # Without cooling
-plot_data(data_nocool_a1[1], 1, fmt="C3o-", label="Ax 1 before")
+plot_data(data_nocool_a1[1], 1, fmt="C3o-", label="\$z\$ initial")
 plot_data(data_nocool_a1[2], 1, fmt="C3o-")
 plot_data(data_nocool_a1_0, 1, fmt="C3o-")
 plot_data(data_nocool_a1_hi, 1, fmt="C3o-")
 
 # With cooling
-plot_data(data_cool_a1[1], 1, fmt="C0s-", label="Ax 1 after")
+plot_data(data_cool_a1[1], 1, fmt="C0s-", label="\$z\$ cooled")
 plot_data(data_cool_a1[2], 1, fmt="C0s-")
 plot_data(data_cool_a1_hi, 1, fmt="C0s-")
 grid()
