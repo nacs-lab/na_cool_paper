@@ -182,14 +182,14 @@ for $250$ ms~\cite{Hutzler2017-LightShifts}, and has an overall repetition rate 
 The tweezer is created by focusing a $700$ nm laser beam through an NA=$0.55$ objective to
 create a focused beam with waist $0.7 \mu$m.
 With $45$ mW of tweezer power, the trapping frequencies along the three axes are
-$\{\omega_1,\omega_2,\omega_3\}/2\pi = \{69(1), 430(4), 590(5)\}\ \text{\text{kHz}}$
-where axis 1 is along the weakly confined axial direction and axis 2 and 3 are along the
+$\{\omega_x,\omega_y,\omega_z\}/2\pi = \{430(4), 590(5), 69(1)\}\ \text{\text{kHz}}$
+where axis z is along the weakly confined axial direction and axis x and y are along the
 tightly confined radial directions.
 After attempting to load an atom from the MOT, an image is taken with $1.5$ ms exposure time to determine if it was a success.
 At the same time, the atom is cooled via polarization gradient cooling (PGC),
 which reduces the temperature of the single atom to $70$ $\mu$K,
 corresponding to an initial mean motional state along the three different axes of
-$\{\bar n_1, \bar n_2, \bar n_3\}=\{21(2),\, 3.4(2),\, 2.5(2)\}$, and therefore initial 3D ground state probability of $P_0=0.3$\%.
+$\{\bar n_x, \bar n_y, \bar n_z\}=\{3.4(2),\, 2.5(2),\, 21(2)\}$, and therefore initial 3D ground state probability of $P_0=0.3$\%.
 A beam with $\sigma^-$-polarization is used to initialize the atom into
 the $|F=2, m_F=-2\rangle$ stretched state via optical pumping.
 The hyperfine state detection is performed by pushing out atoms in the stretched state with a strong
@@ -219,16 +219,16 @@ we find a reduction in the scattering rate of a factor of $130(20)$.
 For an atom in motional level $n$, the OP could result in motional-state redistribution
 as shown in Fig.~\ref{f-ld}A. The state redistribution probability
 is approximately proportional to the effective LD parameter
-$\eta^{OP}_{eff}=\sqrt{2n+1}\eta^{OP}$, where $\eta^{OP}=k z_0=k \sqrt{\hbar/2m\omega}$,
+$\eta^{\textrm{OP}}_{\textrm{eff}}=\sqrt{2n+1}\eta^{\textrm{OP}}$, where $\eta^{\textrm{OP}}=k z_0=k \sqrt{\hbar/2m\omega}$,
 $k$ is the wavenumber of the optical pumping beam, $z_0$ is the zero-point wavefunction spread,
 $m$ is the mass of the atom, and $\hbar$ is the reduced Planck constant.
 Such heating presents a major challenge for efficient cooling of single Na atoms
 which feature a light mass and short D-line wavelengths.
 For our trap frequencies and beam geometry,
-$\{\eta^{OP}_1,\eta^{OP}_2,\eta^{OP}_3\} = \{0.602(5), 0.241(2), 0.206(1)\}$.
+$\{\eta^{\textrm{OP}}_x,\eta^{\textrm{OP}}_y,\eta^{\textrm{OP}}_z\} = \{0.241(2), 0.206(1), 0.602(5)\}$.
 Combined with a relatively large PGC temperature gives initial
-$\{\eta^{OP}_{1\eff},\eta^{OP}_{2\eff},\eta^{OP}_{3\eff}\} = \{4.0(1), 0.67(2), 0.50(1)\}$.
-For the weak axial direction, $(\eta^{OP}_{1\eff})^2>1$ is far outside of the LD regime.
+$\{\eta^{\textrm{OP}}_{x,\textrm{eff}},\eta^{\textrm{OP}}_{y,\textrm{eff}},\eta^{\textrm{OP}}_{z,\textrm{eff}}\} = \{0.67(2), 0.50(1), 4.0(1)\}$.
+For the weak axial direction, $(\eta^{\textrm{OP}}_{z,\textrm{eff}})^2>1$ is far outside of the LD regime.
 As a result, the average change of motional state per OP step is large,
 which creates a large uncertainty on the motional state at the end of a full RSC step, possibly leading to runaway heating.
 For example, the average change in motional states over the initial distribution
@@ -237,7 +237,7 @@ in previous experiments of RSC of Rb and Cs~\cite{Li2012,Kaufman2012,Thompson201
 
 Fortunately, the large LD parameters also provide opportunities to overcome OP heating.
 The Raman transitions in our configuration have LD parameters of
-$\{\eta^R_{1},\eta^R_{2},\eta^R_{3}\} = \{0.40(1), 0.341(2), 0.291(1)\}$,
+$\{\eta^R_x,\eta^R_y,\eta^R_z\} = \{0.341(2), 0.291(1), 0.40(1)\}$,
 which allow strong coupling to higher order sidebands for atoms in higher motional states
 as calculated in Figure~\ref{f-ld}B.
 The LD parameter for Raman transitions is defined as $\eta^R\equiv\Delta k z_0$ similar to OP
@@ -332,7 +332,7 @@ We also extracted the initial temperature before cooling
 from the motional-state decohered Rabi flopping to obtain the initial temperature of $70 \mu$K.
 
 For the weaker axial direction, cooling is much more challenging
-due to the large $\eta^{OP}_{1eff}\approx 4.0(2)$.
+due to the large $\eta^{\textrm{OP}}_{z,\textrm{eff}}\approx 4.0(2)$.
 We observe up to 8th-order Raman cooling sidebands initially,
 which indicates population in highly-excited motional states.
 Nevertheless, our cooling sequence works efficiently as all the cooling sidebands are suppressed
@@ -365,7 +365,7 @@ implementing better control of the magnetic field, and optimizing the temperatur
 Another improvement could be to implement grey molasses cooling to achieve
 a lower starting temperature before RSC\cite{Colzi2016}.
 
-\fxnote{[The distinction between 77 and 66 percent is confusing, we should discuss it]}
+\fxnote{The distinction between 77 and 66 percent is confusing, we should discuss it}
 
 We have shown that despite the difficulty in achieving a low optical cooling temperature
 of light mass sodium atoms, reliable three dimensional cooling
