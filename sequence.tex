@@ -47,10 +47,10 @@
       \draw[line width=1,blue] plot[domain={2.8*\i}:{2.8*\i+1.6},variable=\x]
       ({\x}, {sin((\x-2.8*\i) * 112.5)^4}) -- (2.8*\i + 2.8, 0);
     }
-    \path[blue] (2.8*2+0.8, 0) node[below,align=center] {\textbf{Axis 1}\\\textit{Axial}};
+    \path[blue] (2.8*2+0.8, 1) node[above,align=center] {\textit{Axial $z$}};
     \foreach \i in {0,...,3} {
-      \path (5.6*\i + 0.8, 1) node[above,blue,align=center] {\textbf{$n$-th}\\\textbf{order}};
-      \path (5.6*\i + 3.6, 1) node[above,blue,align=center] {\textbf{$(n-1)$-th}\\\textbf{order}};
+      \path (5.6*\i + 0.8, -0.15) node[below,blue,align=center] {\textbf{$n$-th}\\\textbf{order}};
+      \path (5.6*\i + 3.6, -0.15) node[below,blue,align=center] {\textbf{$(\!n-1\!)$-th}\\\textbf{order}};
     }
 
     %% Radial 2
@@ -61,7 +61,9 @@
       \draw[line width=1,red] (5.6*\i, 0) -- plot[domain={5.6*\i+1.9}:{5.6*\i+2.5},variable=\x]
       ({\x}, {1.5*sin((\x-5.6*\i-1.9) * 300)^4}) -- (5.6*\i+5.6, 0);
     }
-    \path[red] (5.6*1+2.2, 1.5) node[above,align=center] {\textbf{Axis 2}\\\textit{Radial}};
+    \path[red] (5.6*1+2.2, 1.5) node[above,align=center] {\textit{Radial $x$}};
+    \path[red] (5.6*1+2.1, 0.05) node[below,align=center] {\textbf{pulse $1$}};
+    \path[red] (5.6*2+2.1, 0.05) node[below,align=center] {\textbf{pulse $2$}};
 
     %% Radial 3
     \foreach \i in {0,...,3} {
@@ -71,14 +73,16 @@
       \draw[line width=1,black] (5.6*\i, 0) -- plot[domain={5.6*\i+4.7}:{5.6*\i+5.3},variable=\x]
       ({\x}, {1.5*sin((\x-5.6*\i-4.7) * 300)^4}) -- (5.6*\i+5.6, 0);
     }
-    \path[black] (5.6*1+5.0, 1.5) node[above,align=center] {\textbf{Axis 3}\\\textit{Radial}};
+    \path[black] (5.6*1+5.0, 1.5) node[above,align=center] {\textit{Radial $y$}};
+    \path[black] (5.6*1+5.2, 0.05) node[below,align=center] {\textbf{pulse $1$}};
+    \path[black] (5.6*2+5.2, 0.05) node[below,align=center] {\textbf{pulse $2$}};
 
     %% OP
     \foreach \i in {0,...,7} {
       \filldraw[fill=orange!30,draw=orange,line width=1.2]
-      (2.8*\i+1.58, -2) rectangle (2.8*\i+1.91, -0.7);
+      (2.8*\i+1.58, -2) rectangle (2.8*\i+1.91, -1);
       \filldraw[fill=orange!30,draw=orange,line width=1.2]
-      (2.8*\i+2.48, -2) rectangle (2.8*\i+2.81, -0.7);
+      (2.8*\i+2.48, -2) rectangle (2.8*\i+2.81, -1);
     }
     \draw[line width=2,orange] (0,-2) -- (22.4,-2);
   \end{scope}
