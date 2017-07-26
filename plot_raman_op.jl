@@ -162,6 +162,7 @@ xlim([0, nmax])
 ylabel("Probability")
 setp(ax1[:get_xticklabels](), visible=false)
 ax1[:tick_params](axis="x", length=0)
+ax1[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
 
 ax2 = subplot(212)
 subplots_adjust(hspace=0.08)
@@ -176,7 +177,8 @@ text(21, 0.47, "\$\\Delta n\\!\\!=\\!\\!3\$", color="C2")
 text(36, 0.44, "\$\\Delta n\\!\\!=\\!4\$", color="C3")
 text(53, 0.42, "\$\\Delta n\\!\\!=\\!5\$", color="C4")
 text(60, 0.632, "(B)")
-xlabel("Motional state")
+ax2[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
+xlabel("Motional state \$n\$")
 
 maybe_save(joinpath(@__DIR__, "imgs/fig2_raman_op"))
 

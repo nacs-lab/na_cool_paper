@@ -67,8 +67,8 @@
   large differential AC Stark shifts between the excited state and the ground state,
   we achieve a ground state preparation fidelity of $77(4)$\% after $100$ ms of cooling.
   Our technique includes addressing very high-order sidebands and
-  fast modulation of the optical tweezer trap.
-  We demonstrate that Raman sideband cooling to the 3D motional ground state is applicable
+  fast modulation of the optical tweezer.
+  We demonstrate that Raman sideband cooling to the 3D motional ground state is possible
   outside the Lamb-Dicke regime, for example in
   systems where tight confinement and low initial temperature are difficult to realize.
   This is particularly relevant for systems which are challenging to laser-cool,
@@ -157,13 +157,13 @@ Advances in real-time re-arrangement of optical tweezers enable rapid preparatio
 in large and complex geometries with high fidelity~\cite{Barredo2016,Endres2016}.
 Adding quantum motional control of individual
 atoms~\cite{Li2012,Kaufman2012,Thompson2013,Liu2017,Robens2017} enables
-efficient coupling of single atoms to photonic crystal cavities~\cite{Thompson2013a},
+studies of the atomic Hong-Ou-Mandel effect~\cite{Kaufman2014},
 high-fidelity single qubit gates~\cite{Wang2016},
-and studies of the atomic Hong-Ou-Mandel effect~\cite{Kaufman2014}.
+and efficient coupling of single atoms to photonic crystal cavities~\cite{Thompson2013a}.
 
 Extending optical tweezer array techniques to include polar molecules will open up a large range of
 new applications that exploit their many long-lived internal states
-and highly tunable interactions~\cite{DeMille2002,Ni2008,Gorshkov2011,Yan2013}.
+and highly tunable long range interactions~\cite{DeMille2002,Ni2008,Gorshkov2011,Yan2013}.
 Molecules could be assembled from atom pairs in the optical tweezer~\cite{Liu2017},
 or directly loaded from magneto-optical traps
 (MOTs)~\cite{Barry2014,Truppe2017SubDoppler,Anderegg2017}.
@@ -173,27 +173,33 @@ quantum state is important for realizing long coherence times in quantum applica
 Preparation of single atoms in the motional ground state has been achieved in optical tweezers~\cite{Kaufman2012,Thompson2013,Liu2017,Robens2017}
  using Raman sideband cooling (RSC)~\cite{Monroe1995,Kerman2000,Han2000}.
 However, RSC in these systems has been applied in the Lamb-Dicke (LD) regime, where
-the size of the atomic wavefunction is much smaller than the wavelength of light used to address them.
-Extending ground state cooling to systems outside the LD regime, such as light atoms or polar molecules, is challenging.
-In this letter we demonstrate cooling of single sodium atoms in optical tweezers, initially outside of the LD regime, to the motional ground state.
+the size of the wavefunction is much smaller than the wavelength of light used to address them.
+Systems with a large wavefunction size, either due to small mass or high initial temperature,
+fall outside of the LD regieme and result in strong heating during RSC.
+Extending RSC outside of the LD regime opens up the possibility
+for ground state cooling of light atoms or systems with poor cooling such as polar molecules.
+In this letter we demonstrate cooling of single sodium atoms in an optical tweezer,
+initially outside of the LD regime, to the motional ground state.
 We achieve a ground state probability of $P_0=77(4)$\% by utilizing cooling of
 very high-order sidebands in a carefully optimized cooling sequence.
 Our approach is general and opens up ground state cooling for other systems.
 
-Our experiment begins by loading a single sodium atom into an optical tweezer from a MOT
-for $250$ ms~\cite{Hutzler2017-LightShifts}, and has an overall repetition rate of $2.5$ Hz.
-The tweezer is created by focusing a $700$ nm laser beam through an NA=$0.55$ objective to
-create a focused beam with waist $0.7 \mu$m.
+Our experiment has an overall repetition rate of $2.5$ Hz and
+begins by loading a single sodium atom into an optical tweezer from a MOT
+for $250$ ms~\cite{Hutzler2017-LightShifts}.
+The tweezer is created by sending a $700$ nm laser beam through an NA=$0.55$ objective to
+focus the light down to a waist of $0.7 \mu$m.
 With $45$ mW of tweezer power, the trapping frequencies along the three axes are
-$\{\omega_x,\omega_y,\omega_z\}/2\pi = \{430(4), 590(5), 69(1)\}\ \text{\text{kHz}}$
-where axis z is along the weakly confined axial direction and axis x and y are along the
-tightly confined radial directions.
-After attempting to load an atom from the MOT, an image is taken with $1.5$ ms exposure time to determine if it was a success.
-At the same time, the atom is cooled via polarization gradient cooling (PGC),
+$\{\omega_x,\omega_y,\omega_z\}/2\pi = \{430(4), 590(5), 69(1)\}\ \text{\text{kHz}}$,
+where axis z is along the weakly confined axial direction,
+and axis x and y are along the tightly confined radial directions.
+After attempting to load an atom from the MOT, an image is taken with a $1.5$ ms exposure time
+to determine if it was a success.
+During the imaging, the atom is cooled via polarization gradient cooling (PGC),
 which reduces the temperature of the single atom to $70$ $\mu$K,
 corresponding to an initial mean motional state along the three different axes of
 $\{\bar n_x, \bar n_y, \bar n_z\}=\{3.4(2),\, 2.5(2),\, 21(2)\}$, and therefore initial 3D ground state probability of $P_0=0.3$\%.
-A beam with $\sigma^-$-polarization is used to initialize the atom into
+Light with $\sigma^-$-polarization is used to initialize the atom into
 the $|F=2, m_F=-2\rangle$ stretched state via optical pumping.
 The hyperfine state detection is performed by pushing out atoms in the stretched state with a strong
 beam on resonance with the $|F=2, m_F=-2\rangle$ to $|F'=3, m_{F'}=-3\rangle$ transition before
@@ -208,56 +214,61 @@ driving a coherent Raman transition while removing motional quanta, followed by 
 RSC is applied repeatedly until the motional ground state is populated with high probability.
 
 Specifically, Raman transitions are driven in Na between the hyperfine states
-$|F=2, m_F=-2\rangle$ and $|F=1, m_F=-1\rangle$ in the presence of a $8.8$ G magnetic field to suppress vector light shifts~\cite{Kaufman2012,Thompson2013}.
+$|F=2, m_F=-2\rangle$ and $|F=1, m_F=-1\rangle$ in the presence of a $8.8$ G magnetic field
+orthogonal to the effective magnetic field from the tweezer
+in order to suppress the vector light shifts~\cite{Kaufman2012,Thompson2013}.
 Subsequently, an OP/repump pulse brings the atom back to $|F=2, m_F=-2\rangle$
 via spontaneous emission.
 
 It is important that the re-pumping step scatter as few photons as possible to minimize heating.
 Therefore, we use a $\sigma^-$-polarized laser resonant with the D1 line
 since $|F=2, m_F=-2\rangle$ is a dark state in this case~\cite{Grobner2017}\fxnote{cite ion}.
-Compared to using a D2 repump beam, from which the $|F=2, m_F=-2\rangle$ state
-could always scatter a photon via the excited $|F=3, m_F=-3\rangle$ state,
-we find a reduction in the scattering rate of a factor of $130(20)$.
+We find a reduction in the scattering rate by a factor of $130(20)$,
+as compared to using a D2 repump, from which the $|F=2, m_F=-2\rangle$ state
+could always scatter a photon via the excited $|F=3, m_F=-3\rangle$ state.
 
-For an atom in motional level $n$, the OP could result in motional-state redistribution
-as shown in Fig.~\ref{f-ld}A. The state redistribution probability
-is approximately proportional to the effective LD parameter
-$\eta^{\textrm{OP}}_{\textrm{eff}}=\sqrt{2n+1}\eta^{\textrm{OP}}$, where $\eta^{\textrm{OP}}=k z_0=k \sqrt{\hbar/2m\omega}$,
-$k$ is the wavenumber of the optical pumping beam, $z_0$ is the zero-point wavefunction spread,
-$m$ is the mass of the atom, and $\hbar$ is the reduced Planck constant.
+For an atomm starting in motional level $n_{\textrm{init}}$ the OP sequence results in
+a motional-state redistribution, as shown in Fig.~\ref{f-ld}A.
+The state redistribution probability is approximately proportional to the effective LD parameter
+$\eta^{\textrm{OP}}_{\textrm{eff}}=\sqrt{2n+1}\eta^{\textrm{OP}}$,
+where the optical pumping LD parameter $\eta^{\textrm{OP}} = kz_0$ is the wavenumber $k$
+multiplied by the zero-point wavefunction spread $z_0 = \sqrt{\hbar/2m\omega}$.
+Here, $m$ is the mass of the atom, $\omega$ is the trap frequency,
+and $\hbar$ is the reduced Planck constant.
 Such heating presents a major challenge for efficient cooling of single Na atoms
 which feature a light mass and short D-line wavelengths.
-For our trap frequencies and beam geometry,
+For our trap frequencies and beam geometry, the LD parameters are
 $\{\eta^{\textrm{OP}}_x,\eta^{\textrm{OP}}_y,\eta^{\textrm{OP}}_z\} = \{0.241(2), 0.206(1), 0.602(5)\}$.
-Combined with a relatively large PGC temperature gives initial
+The relatively large PGC temperature results in initial effective LD parameters of
 $\{\eta^{\textrm{OP}}_{x,\textrm{eff}},\eta^{\textrm{OP}}_{y,\textrm{eff}},\eta^{\textrm{OP}}_{z,\textrm{eff}}\} = \{0.67(2), 0.50(1), 4.0(1)\}$.
 For the weak axial direction, $(\eta^{\textrm{OP}}_{z,\textrm{eff}})^2>1$ is far outside of the LD regime.
 As a result, the average change of motional state per OP step is large,
 which creates a large uncertainty on the motional state at the end of a full RSC step, possibly leading to runaway heating.
-For example, the average change in motional states over the initial distribution
+For example, the average change in the motional states for the initial distribution
 is $2.4$ in the axial direction, which is significantly greater than $0.89-0.95$
 in previous experiments of RSC of Rb and Cs~\cite{Li2012,Kaufman2012,Thompson2013,Liu2017}.
 
 Fortunately, the large LD parameters also provide opportunities to overcome OP heating.
+The LD parameter for Raman transitions is defined as $\eta^R\equiv\Delta k z_0$,
+where the wave vector is replaced by the wave vector difference $\Delta k$
+between the two beams that drive the Raman transition.
 The Raman transitions in our configuration have LD parameters of
 $\{\eta^R_x,\eta^R_y,\eta^R_z\} = \{0.341(2), 0.291(1), 0.40(1)\}$,
 which allow strong coupling to higher order sidebands for atoms in higher motional states
 as calculated in Figure~\ref{f-ld}B.
-The LD parameter for Raman transitions is defined as $\eta^R\equiv\Delta k z_0$ similar to OP
-where $\Delta k$ being the wave vector difference
-between the two beams that drives the Raman transition.
 To offset heating from OP initially, higher-order Raman cooling sidebands can be utilized
 to remove more motional quanta in a single cooling pulse.
 Since the coupling strengths of different orders do not reach minima for the same pulse duration,
 using multiple orders of cooling sidebands avoids accumulations of population
 near the coupling minima.
 
-Taking the large motional-state changing heating and cooling sources into account,
+Taking the large motional-state changing heating and cooling sources
+during optical pumping into account,
 it is not immediately clear that efficient cooling can be achieved.
-We therefore use a Monte-Carlo simulation to guide our search and
-to find a robust cooling sequence\footnote{See supplemental material}.
-In the simulation, we indeed observe a high heating rate due to the large LD parameters
-and confirm that cooling with higher-order Raman sidebands can suppress heating.
+We use a Monte-Carlo simulation to guide our search and
+to find a robust cooling sequence~\footnote{See supplemental material}.
+In the simulation, we indeed observe a high heating rate due to the large LD parameters,
+and we confirm that the heating can be supressed by cooling with higher order Raman sidebands.
 In particular, we find that instead of cooling on only one sideband order repeatedly,
 it is more efficient to alternate the cooling pulses (Fig.~\ref{f-setup}C) between two
 neighboring orders for the axial direction and 2nd- and 1st-orders for the radial directions
@@ -290,7 +301,7 @@ and short pulses to Fourier broaden the spectrum coverage, and use Blackman puls
 to avoid unwanted coupling to the carrier and heating sidebands~\cite{Kasevich1992}.
 The anharmonicity in the radial directions is calculated to be 1kHz/n, meaning that a
 Rabi frequency of at least $15$ kHz is needed to couple to $99$\% population up to $n=15$.
-Second, the tweezer trap causes a large AC Stark shift (as large as $300$ MHz)
+Second, the tweezer causes a large AC Stark shift (as large as $300$ MHz)
 in the excited state. This creates a large, position-dependent OP detuning
 and mixes the excited-state hyperfine levels, which reduces the optical pumping fidelity.
 We address this by strobing the trapping light at 3 MHz during the whole cooling sequence,
