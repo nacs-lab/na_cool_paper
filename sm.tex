@@ -1,4 +1,4 @@
-\documentclass[aps,twocolumn,secnumarabic,amsmath,amssymb]{revtex4}
+\documentclass[aps,secnumarabic,amsmath,amssymb]{revtex4}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -7,6 +7,7 @@
 \usepackage[pdftex]{graphicx}
 \usepackage[utf8x]{inputenc}
 \usepackage[colorlinks=true]{hyperref}
+\usepackage{listings}
 
 \newcommand{\ud}{\mathrm{d}}
 \newcommand{\ue}{\mathrm{e}}
@@ -150,7 +151,8 @@ All code is available under the GPLv3 license at
 \footnote{\href{https://goo.gl/WLJwJp}{Library code (https://goo.gl/WLJwJp)}} and
 \footnote{\href{https://goo.gl/XXVreq}{Top level code (https://goo.gl/XXVreq)}}
 
-% mention effects that are included first?
+\section{Cooling sequence}
+\lstinputlisting[language=Matlab]{CoolingSequence.m}
 
 \bibliography{paper}
 \end{document}
