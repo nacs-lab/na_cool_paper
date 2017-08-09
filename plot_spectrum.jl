@@ -142,7 +142,7 @@ ylim([0, 1])
 xlim([-700, 1500])
 legend()
 xlabel("\$\\delta\$, Detuning from carrier (kHz)")
-ylabel("Survival")
+ylabel("F=1 population")
 
 maybe_save("$(prefix)_r")
 
@@ -163,7 +163,7 @@ xlim([-100, 620])
 legend()
 text(-86, 0.54, "(A)")
 xlabel("\$\\delta\$, Detuning from carrier (kHz)")
-ylabel("Survival")
+ylabel("F=1 population")
 maybe_save("$(prefix)_a1")
 
 maybe_show()
