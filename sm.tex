@@ -154,22 +154,165 @@ All code is available under the GPLv3 license at
 \section{Cooling sequence}
 
 \subsection{Optical pumping parameters}
-All optical pumping pulses has the same length of $40\mu$s with a
-$|F=1,m_F=-1\rangle$ scattering rate of $$
-
+All optical pumping pulses has the same length of $40\mu$s
+with a $|F=1,m_F=-1\rangle$ scattering rate of $0.14$ MHz
+and a $|F=2,m_F=-1\rangle$ scattering rate of $0.39$ MHz.
 
 \subsection{Raman pulse parameters}
+Each of the Raman pulse in the cooling sequence is followed immediately by an optical pumping
+pulse with the parameters given above.
+The parameters for the Raman pulses are different between different groups and are listed below.
+The full Rabi frequency is the two-photon Rabi frequency $\Omega$ excluding the matrix element
+from wavefunction overlap.
+For a Raman pulse with a power ramp,
+the full Rabi frequency gives the arithmetics mean over the duration of the pulse.
+The power ramp field gives, if any,
+the beam (in terms of their corresponding $F$ number)
+that ramps with a Blackman profile during the pulse.
 \subsubsection{Group 1}
+This group is repeated 5 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $x$&-2&25&$2\pi\times34$&F1\\\hline
+    $y$&-2&25&$2\pi\times34$&F1\\\hline
+    $x$&-1&25&$2\pi\times34$&F1\\\hline
+    $y$&-1&21&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 2}
+This group is repeated 5 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-8&80&$2\pi\times14$&\\\hline
+    $x$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-7&80&$2\pi\times14$&\\\hline
+    $y$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-8&80&$2\pi\times14$&\\\hline
+    $x$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-7&80&$2\pi\times14$&\\\hline
+    $y$&-1&21&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 3}
+This group is repeated 6 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-7&80&$2\pi\times14$&\\\hline
+    $x$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-6&80&$2\pi\times14$&\\\hline
+    $y$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-7&80&$2\pi\times14$&\\\hline
+    $x$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-6&80&$2\pi\times14$&\\\hline
+    $y$&-1&21&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 4}
+This group is repeated 7 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-6&80&$2\pi\times14$&\\\hline
+    $x$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-5&60&$2\pi\times14$&\\\hline
+    $y$&-2&25&$2\pi\times34$&F1\\\hline
+    $z$&-6&80&$2\pi\times14$&\\\hline
+    $x$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-5&60&$2\pi\times14$&\\\hline
+    $y$&-1&21&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 5}
+This group is repeated 7 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-5&90&$2\pi\times17$&F2\\\hline
+    $x$&-1&38&$2\pi\times34$&F1\\\hline
+    $z$&-4&75&$2\pi\times17$&F2\\\hline
+    $y$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-5&90&$2\pi\times17$&F2\\\hline
+    $x$&-1&43&$2\pi\times34$&F1\\\hline
+    $z$&-4&75&$2\pi\times17$&F2\\\hline
+    $y$&-1&28&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 6}
+This group is repeated 8 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-4&75&$2\pi\times17$&F2\\\hline
+    $x$&-1&38&$2\pi\times34$&F1\\\hline
+    $z$&-3&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-4&75&$2\pi\times17$&F2\\\hline
+    $x$&-1&43&$2\pi\times34$&F1\\\hline
+    $z$&-3&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&28&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 7}
+This group is repeated 10 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-3&60&$2\pi\times17$&F2\\\hline
+    $x$&-1&38&$2\pi\times34$&F1\\\hline
+    $z$&-2&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-3&60&$2\pi\times17$&F2\\\hline
+    $x$&-1&43&$2\pi\times34$&F1\\\hline
+    $z$&-2&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&28&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 8}
+This group is repeated 10 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-2&60&$2\pi\times17$&F2\\\hline
+    $x$&-1&38&$2\pi\times34$&F1\\\hline
+    $z$&-1&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-2&60&$2\pi\times17$&F2\\\hline
+    $x$&-1&43&$2\pi\times34$&F1\\\hline
+    $z$&-1&60&$2\pi\times17$&F2\\\hline
+    $y$&-1&28&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 \subsubsection{Group 9}
-
-% \lstinputlisting[language=Matlab]{CoolingSequence.m}
+This group is repeated 40 times.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Axis&Order&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    $z$&-1&70&$2\pi\times9$&F2\\\hline
+    $z$&-1&100&$2\pi\times9$&F2\\\hline
+    $x$&-1&38&$2\pi\times34$&F1\\\hline
+    $z$&-1&70&$2\pi\times9$&F2\\\hline
+    $z$&-1&100&$2\pi\times9$&F2\\\hline
+    $y$&-1&25&$2\pi\times34$&F1\\\hline
+    $z$&-1&70&$2\pi\times9$&F2\\\hline
+    $z$&-1&100&$2\pi\times9$&F2\\\hline
+    $x$&-1&43&$2\pi\times34$&F1\\\hline
+    $z$&-1&70&$2\pi\times9$&F2\\\hline
+    $z$&-1&100&$2\pi\times9$&F2\\\hline
+    $y$&-1&28&$2\pi\times34$&F1\\\hline
+  \end{tabular}
+\end{center}
 
 \bibliography{paper}
 \end{document}
