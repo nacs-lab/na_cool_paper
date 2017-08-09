@@ -46,14 +46,16 @@
 
   \arrowthreeD{orange}{(0.3, 0)}{-90}{0.3}{1.2};
 
-  \def\tiltratio{0.4}
-  \fill[blue!50!black,opacity=0.15] (-1.4, 1.2 + \tiltratio) -- (1.4, 1.2 - \tiltratio)
-  -- (1.4, -1.2 - \tiltratio) -- (-1.4, -1.2 + \tiltratio) -- cycle;
-  \draw[blue!50!black, densely dotted] (-1.4, 1.2 + \tiltratio) -- (1.4, 1.2 - \tiltratio)
-  -- (1.4, -1.2 - \tiltratio) -- (-1.4, -1.2 + \tiltratio) -- cycle;
-
-  \arrowthreeD{red}{(0, -0.2)}{180}{0.3}{0.55};
-  \arrowthreeD{orange}{(-0.2, 0.2 * \tiltratio / 1.4)}{90-16}{0.3}{0.7};
+  \begin{scope}[transform canvas={cm={1,-0.28,0,1,(0, 0)}}]
+    \fill[blue!50!black,opacity=0.15] (-1.4, 1.2) -- (1.4, 1.2)
+    -- (1.4, -1.2) -- (-1.4, -1.2) -- cycle;
+    \draw[blue!50!black, densely dotted] (-1.4, 1.2) -- (1.4, 1.2)
+    -- (1.4, -1.2) -- (-1.4, -1.2) -- cycle;
+    \arrowthreeD{red}{(0, -0.2)}{180}{0.3}{0.55};
+    \arrowthreeD{orange}{(-0.2, 0)}{90}{0.3}{0.7};
+    \arrowthreeD{blue}{(0.2, 0)}{-90}{0.3}{0.7};
+    \arrowthreeD{red}{(0, 0.2)}{0}{0.3}{0.55};
+  \end{scope}
 
   \fill[left color=red!50!black,right color=red!50!black,middle color=red!43,
   shading=axis,rotate=-50,shading angle=40]
@@ -64,9 +66,6 @@
   \fill[red!50!gray,rotate=-50]
   ({-sqrt(1 + (\waist)^2) * \xscale}, -\theight*1.05)
   arc (180:{360+180}:\radiush cm and \radiusv cm);
-
-  \arrowthreeD{blue}{(0.2, -0.2 * \tiltratio / 1.4)}{-90-16}{0.3}{0.7};
-  \arrowthreeD{red}{(0, 0.2)}{0}{0.3}{0.55};
 \end{tikzpicture}
 
 \end{document}
