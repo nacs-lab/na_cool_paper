@@ -20,18 +20,16 @@
 \begin{document}
 \newcommand*{\arrowthreeD}[5]{%
   \fill[left color=#1!50!black,right color=#1!50!black,middle color=#1!43,
-  shift = {#2},
   opacity=0.9,
-  rotate=#3,shading=axis,shading angle=90+#3]
+  transform canvas={shift={#2}, rotate=#3},shading=axis,shading angle=90]
   (0,0) -- (80:#4) arc (80:100:#4) -- cycle;
   \fill[left color=#1!50!black,right color=#1!50!black,middle color=#1!43,
-  shift = {#2},
   opacity=0.9,
-  rotate=#3,shading=axis,shading angle=90+#3]
+  transform canvas={shift={#2}, rotate=#3},shading=axis,shading angle=90]
   (87:#4) -- ++(0, #5) -- ++(-{2 * #4 * sin(3)}, 0) -- (93:#4) -- cycle;
 }
 \begin{tikzpicture}
-  \pgfmathsetmacro{\radiush}{1.6}
+  \pgfmathsetmacro{\radiush}{1.5}
   \pgfmathsetmacro{\theight}{4}
   \pgfmathsetmacro{\radiusv}{.7 * \radiush}
   \pgfmathsetmacro{\waist}{.15}
@@ -44,13 +42,15 @@
   -- plot[domain={-1}:{1}, smooth, variable=\y] ({-sqrt((\y)^2 + (\waist)^2) * \xscale}, -\y * \theight)
   arc (180:360:\radiush cm and \radiusv cm);
 
-  \arrowthreeD{orange}{(0.6, 0)}{-90}{0.4}{3.2};
-  \path (3.4, 0) node[above,orange!80!black] {Raman F2};
-  \path (3, 0) node[below,orange!80!black] {\textbf{R3}};
+  \begin{scope}[transform canvas={rotate={4}}]
+    \arrowthreeD{orange}{(0.6, 0)}{-90}{0.4}{3.2};
+    \path (3.4, 0) node[above,orange!80!black] {Raman F2};
+    \path (3, 0) node[below,orange!80!black] {\textbf{R3}};
+  \end{scope}
 
   \draw[orange!50!black, <->, densely dotted, >=stealth, line width=0.8]
-  (-1:3.4) arc (-2:-29:3.4 and 1.65);
-  \path (-10:3.3) node[orange!50!black, right] {$42^\circ$};
+  (3:3.4) arc (3:-32:3.4 and 1.65);
+  \path (-6:3.3) node[orange!50!black, right] {$42^\circ$};
 
   \begin{scope}[transform canvas={cm={1,-0.28,0,1,(0, 0)}}]
     \draw[blue, dotted, line width=0.5] (-4.0, 0) -- (4.0, 0);
