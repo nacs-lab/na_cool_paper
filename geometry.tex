@@ -36,7 +36,7 @@
   \pgfmathsetmacro{\xscale}{\radiush / sqrt(1 + (\waist)^2)}
 
   \fill[left color=red!50!black,right color=red!50!black,middle color=red!43,
-  shading=axis,rotate=-50,shading angle=32]
+  shading=axis,rotate=-45,shading angle=32]
   plot[domain={-1}:{1}, smooth, variable=\y] ({sqrt((\y)^2 + (\waist)^2) * \xscale}, \y * \theight)
   arc (0:180:\radiush cm and \radiusv cm)
   -- plot[domain={-1}:{1}, smooth, variable=\y] ({-sqrt((\y)^2 + (\waist)^2) * \xscale}, -\y * \theight)
@@ -95,16 +95,16 @@
   (-2.24, -0.25+2.24*0.28) arc (-90:-240:0.13 and 0.25);
 
   \fill[left color=red!50!black,right color=red!50!black,middle color=red!43,
-  shading=axis,rotate=-50,shading angle=40]
+  shading=axis,rotate=-45,shading angle=40]
   plot[domain={-1}:{0}, smooth, variable=\y] ({sqrt((\y)^2 + (\waist)^2) * \xscale}, \y * \theight)
   arc (0:180:{(\radiush)*(\waist)} and {(\radiusv)*(\waist)})
   -- plot[domain={0}:{1}, smooth, variable=\y] ({-sqrt((\y)^2 + (\waist)^2) * \xscale}, -\y * \theight)
   arc (180:360:\radiush cm and \radiusv cm);
-  \fill[red!50!gray,rotate=-50]
+  \fill[red!50!gray,rotate=-45]
   ({-sqrt(1 + (\waist)^2) * \xscale}, -\theight*1.05)
   arc (180:{360+180}:\radiush cm and \radiusv cm);
 
-  \path (-140:\theight) node[white] {\Large \textbf{Tweezer}};
+  \path (-135:\theight) -- ++(-0.2, 0) node[white] {\Large \textbf{Tweezer}};
 \end{tikzpicture}
 
 \end{document}
