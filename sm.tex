@@ -62,100 +62,14 @@
 
 \maketitle
 
-\section{Simulation of 3D Raman sideband cooling}
-
-We use a computer simulation to study the importance of different effects
-and guide the optimization of Raman sideband cooling.
-The simulation uses the quantum jump (or Monte-Carlo wavefunction) method~\cite{Dalibard1992,Chretien2014}
-to accurately calculate the evolution within each laser pulse where different energy eigenstates
-are assumed to decohere immediately upon spontaneous emission and on pulse boundaries.
-Such approximations are valid and greatly simplify the computation
-at the cost of limiting the applicability of the simulation to processes that require stronger
-coherence, such as Ramsey spectroscopy or rapid push-out of the atoms from the trap
-(faster than a trap oscillation period).
-
-A number of other simplifying approximations, listed below, are also used in the simulation.
-These either have a demonstrably negligible effect on the experiment,
-or result in a significant reduction of complexity for an effect
-that can be optimized more easily in the experiment.
-
-\begin{enumerate}
-\item \emph{All Raman pulses resonantly drive only one sideband/carrier order.}  We tweak the pulse shape, power and length as discussed in the text, for example by using Blackman pulses, to reduce coupling to other orders. We do see deviation from this approximation in the experiment, though mostly in the long detection pulses, and it is less of a concern for the short cooling pulses.
-\item \emph{No heating from other sources.}\\
-  We measured the heating rate and found that it results mainly from off-resonant scattering
-  of photons, which is included in the simulation.  In particular, we can ignore heating from the switching trap.
-\item \emph{Same trapping frequency for all states.}\\
-  This effect is negligible for Na in the ground state due to the small fine structure splitting in the excited state.
-  It is straightforward to include this effect if the calculation needs to be repeated
-  on a system where this is not the case (e.g. directly laser cooled molecules).
-\end{enumerate}
-
-Some effects that are important to include are all three dimensions (3D motional states,
-accurate 3D wavevector, and different emission pattern for different photon polarizations),
-off-resonant scattering from all laser beams, and optical pumping polarization imperfection.
-The optical pumping polarization and off-resonant scattering are especially important
-for accurate simulation since they are the main limitation on cooling performance.
-
-In general, each pulse has a coherent part from the Raman drive
-(which is absent for the optical pumping pulses)
-and an incoherent part from scattering (optical pumping or off-resonant).
-This nicely fits the general approach of the quantum jump method.
-Due to the large number of states that we need to take into account
-($30-150$ motional per axis and $8$ hyperfine, giving a total of $10^6$),
-generic wavefunction propagation is very inefficient.
-Therefore, we further simplify by reducing the number of states tracked during
-the coherent propagation and applying quantum jumps using a set of reduced jump operators that
-describe the total jump probability from a certain state (summed over all final states).
-The coherent propagation is then accurately solved in order to avoid having to use a time step
-much shorter than the inverse of scattering rate (up to hundreds of kHz)\footnote{\href{https://goo.gl/EZ13wt}{note about modification to the quantum jump method (https://goo.gl/EZ13wt)}}.
-
-In order to simulate a pulse, we first start with the coherent propagation that includes the
-modification from the jump operators as in the quantum jump method.
-When a jump happens, we pick a final internal state to jump to based on the relative rates
-of different scattering sources and their branching ratios.
-This process determines the polarization and emission pattern of the emitted photon,
-from which we randomly sample a particular wave vector.
-The photon recoil being defined, we can then assign a final motional state to the atom.
-This process is then repeated as long as the pulse is on,
-before we start to simulate the next pulse.
-
-We apply ``virtual'' measurements on the results of each simulated cooling sequence
-which we then average to obtain the expected value of experimental quantities.
-Due to the decoherence approximation, the measurement has to commute with the Hamiltonian.
-Particularly useful measurements used in our simulation are hyperfine state distribution,
-average motional energy, loss rate (where an atom is assumed to be lost if its motional energy
-goes above a certain threshold at any time) probability of being in certain states
-(e.g. ground state).
-
-\begin{figure}[t]
-  \includegraphics[width=8.5cm]{imgs/simcool_no_scatter.pdf}
-  \caption{Simulated 3D ground state population as a function of cooling cycles without
-    technical imperfections. The ground state probability reaches $>99\%$. \label{f-no-scatter}}
-\end{figure}
-\begin{figure}[t]
-  \includegraphics[width=8.5cm]{imgs/simcool_real.pdf}
-  \caption{Simulated 3D ground state population as a function of cooling cycles including effect of
-    off-resonant scattering from all beams and OP misalignment.
-    For this particular sequence, the ground state probability saturates to $\approx88\%$.
-    \label{f-real}}
-\end{figure}
-
-If off-resonant scattering and optical pumping polarization misalignment are ignored,
-the simulation shows that there is not a cooling limit
-despite the large Lamb-Dicke parameter and high initial temperature (Fig \ref{f-no-scatter}).
-However, when these effects are taken into account, the ground state probability can saturate at
-a lower value (Fig \ref{f-real}) and require much more careful tweaking.
-The change of slop in these plots corresponds to changing the sideband orders used for cooling.
-
-The simulation is written in Julia\cite{Bezanson2017}.
-All code is available under the GPLv3 license at
-\footnote{\href{https://goo.gl/WLJwJp}{Library code (https://goo.gl/WLJwJp)}} and
-\footnote{\href{https://goo.gl/XXVreq}{Top level code (https://goo.gl/XXVreq)}}
-
 \section{Raman Sideband Cooling Pulse Sequence}
 
 \subsection{Optical pumping parameters}
-All optical pumping pulses has the same length of $40\mu$s
+The optical pumping is done with a $\sigma^-$ polarized beam aligned with the bias magnetic field.
+There are two frequencies in the beam that are on resonance with
+the $|F=2,m_F=-1\rangle$ to $|F'=2,m_{F'}=-2\rangle$ D1 transition
+and the $|F=1,m_F=-1\rangle$ to $|F'=2,m_{F'}=-2\rangle$ D2 transition respectively.
+All optical pumping pulses have the same length of $40\mu$s
 with a $|F=1,m_F=-1\rangle$ scattering rate of $0.14$ MHz
 and a $|F=2,m_F=-1\rangle$ scattering rate of $0.39$ MHz.
 
@@ -169,11 +83,11 @@ For a Raman pulse with a power ramp,
 the full Rabi frequency gives the arithmetics mean over the duration of the pulse.
 The power ramp field gives, if any,
 the beam (in terms of their corresponding $F$ number)
-that ramps with a Blackman profile during the pulse.
-$\delta'$ is the two photon detuning relative to the zero field HF splitting
+that ramps with a Blackman profile during the pulse~\cite{Kasevich1992}.
+$\delta'$ is the two photon detuning relative to the zero field hyperfine splitting
 of $1.7716261288(10)$GHz.
 All of the relative detunings are negetive indicating that the frequency difference is smaller
-than the zero field HF splitting.
+than the zero field hyperfine splitting.
 A more negative number corresponds to lower order cooling sidebands
 and a more negative number corresponds to higher order ones.
 $\delta'_0$ the relative detuning for the carrier with the specific powers in the Raman beams.
