@@ -62,41 +62,47 @@
 
 \maketitle
 
-\section{Raman Sideband Cooling Pulse Sequence}
+\section{Raman Sideband Cooling Pulse Parameters and Sequence}
+Here, we list the full Raman sideband cooling (RSC) pulse  parameters and  sequence used to obtain the result in [our paper]. A step of RSC contains a Raman pulse and an optical pumping pulse. The full RSC sequence includes about 1000 pulses in 100 ms.
 
 \subsection{Optical pumping parameters}
-The optical pumping is done with a $\sigma^-$ polarized beam aligned with the bias magnetic field.
-There are two frequencies in the beam that are on resonance with
-the $|F=2,m_F=-1\rangle$ to $|F'=2,m_{F'}=-2\rangle$ D1 transition
-and the $|F=1,m_F=-1\rangle$ to $|F'=2,m_{F'}=-2\rangle$ D2 transition respectively.
-All optical pumping pulses have the same length of $40\mu$s
-with a $|F=1,m_F=-1\rangle$ scattering rate of $0.14$ MHz
-and a $|F=2,m_F=-1\rangle$ scattering rate of $0.39$ MHz.
+The optical pumping is performed with a $\sigma^-$-polarized beam aligned with an 8.8 G bias magnetic field.
+There are two frequencies in the beam: one is on resonance with
+the $|F=2,m_F=-1\rangle$ of $3^2S_{1/2}$ to $|F'=2,m_{F'}=-2\rangle$ of $3^2P_{1/2}$ D1 transition
+and the other is on resonance with the $|F=1,m_F=-1\rangle$ of $3^2S_{1/2}$ to $|F'=2,m_{F'}=-2\rangle$ of $3^2P_{3/2}$ D2 transition.
+All optical pumping pulses have the  length of $40\,\mu$s
+with a  scattering rate of $0.14$ MHz for atoms in $|F=1,m_F=-1\rangle$
+and a  scattering rate of $0.39$ MHz for atoms in $|F=2,m_F=-1\rangle$.
 
 \subsection{Raman pulse parameters}
-Each of the Raman pulse in the cooling sequence is followed immediately by an optical pumping
-pulse with the parameters given above.
-The parameters for the Raman pulses are different between different groups and are listed below.
-The full Rabi frequency is the two-photon Rabi frequency $\Omega$ excluding the matrix element
-from wavefunction overlap.
+Each Raman pulse in the cooling sequence is followed immediately by an optical pumping
+pulse.
+The full parameters  for the Raman pulses, including the cooling ``axis'', the sideband ``order ($\Delta n$)'', the cooling frequency ``$\delta '$", the carrier ($\Delta n=0$) frequency ``$\delta_0'$'', the pulse ``duration'', the pulse strength in ``full Rabi frequency'', and the beam of which a non-uniform ``power ramp'' is applied,   are  listed in 9 groups below.
+The applied cooling frequency, $\delta'$,  is the two-photon detuning given relative to the zero-field $F=1$ and $F=2$ hyperfine splitting
+of $1.7716261288(10)$GHz[cite].
+%All of the relative detunings are negative indicating that the frequency difference is smaller than the zero-field hyperfine splitting. Higher-order sidebands for cooling
+%A more negative number corresponds to lower order cooling sidebands
+%and a more negative number corresponds to higher order ones.
+Due to the Stark shifts of the Raman beams, the carrier  transition, $\delta'_0$, varies with the power of the Raman beams. $\delta'_0$ is given also relative to the zero-field  hyperfine splitting.
+The strength of the pulses given in ``Full Rabi frequency'' is the measured two-photon Rabi frequency $\Omega$ divided by the wave function overlap for each order of cooling. The difference between $\delta'$ and $\delta'_0$ gives the motional sideband frequency, $\delta$.
+%The full Rabi frequency is given as the two-photon Rabi frequency $\Omega$ including only electronic dipole matrix element excluding the matrix element
+%from wavefunction overlap.
+Many Raman pulses include a ``power ramp'' with a Blackman envelope~\cite{Kasevich1992} to minimize off-resonant excitations.
+Because each Raman pulse is a product of two spatial- and temporal-overlapped laser beams, the ``power ramp'' is applied only to one of the beams for simplicity (we label the beam by the corresponding $F$ number) while the other beam has  a square-pulse shape.
 For a Raman pulse with a power ramp,
 the full Rabi frequency gives the arithmetics mean over the duration of the pulse.
-The power ramp field gives, if any,
-the beam (in terms of their corresponding $F$ number)
-that ramps with a Blackman profile during the pulse~\cite{Kasevich1992}.
-$\delta'$ is the two photon detuning relative to the zero field hyperfine splitting
-of $1.7716261288(10)$GHz.
-All of the relative detunings are negetive indicating that the frequency difference is smaller
-than the zero field hyperfine splitting.
-A more negative number corresponds to lower order cooling sidebands
-and a more negative number corresponds to higher order ones.
-$\delta'_0$ the relative detuning for the carrier with the specific powers in the Raman beams.
+
+%The power ramp field gives, if any,
+%the beam (in terms of their corresponding $F$ number)
+%that ramps with a Blackman profile during the pulse~\cite{Kasevich1992}.
+\newpage
+
 \subsubsection{Group 1}
 This group is repeated 5 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $x$&-2&$-17.6375$&$-18.42$&25&$2\pi\times34$&F1\\\hline
     $y$&-2&$-17.2825$&$-18.47$&25&$2\pi\times34$&F1\\\hline
     $x$&-1&$-18.03$&$-18.42$&25&$2\pi\times34$&F1\\\hline
@@ -108,7 +114,7 @@ This group is repeated 5 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-8&$-17.966$&$-18.506$&80&$2\pi\times14$&\\\hline
     $x$&-2&$-17.6375$&$-18.42$&25&$2\pi\times34$&F1\\\hline
     $z$&-7&$-18.0335$&$-18.506$&80&$2\pi\times14$&\\\hline
@@ -124,7 +130,7 @@ This group is repeated 6 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-7&$-18.0335$&$-18.506$&80&$2\pi\times14$&\\\hline
     $x$&-2&$-17.6375$&$-18.42$&25&$2\pi\times34$&F1\\\hline
     $z$&-6&$-18.101$&$-18.506$&80&$2\pi\times14$&\\\hline
@@ -135,12 +141,14 @@ This group is repeated 6 times.
     $y$&-1&$-17.875$&$-18.47$&21&$2\pi\times34$&F1\\\hline
   \end{tabular}
 \end{center}
+
+\newpage
 \subsubsection{Group 4}
 This group is repeated 7 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-6&$-18.101$&$-18.506$&80&$2\pi\times14$&\\\hline
     $x$&-2&$-17.6375$&$-18.42$&25&$2\pi\times34$&F1\\\hline
     $z$&-5&$-18.1685$&$-18.506$&60&$2\pi\times14$&\\\hline
@@ -156,7 +164,7 @@ This group is repeated 7 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-5&$-18.1685$&$-18.506$&90&$2\pi\times17$&F2\\\hline
     $x$&-1&$-18.03$&$-18.42$&38&$2\pi\times34$&F1\\\hline
     $z$&-4&$-18.236$&$-18.506$&75&$2\pi\times17$&F2\\\hline
@@ -172,7 +180,7 @@ This group is repeated 8 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-4&$-18.236$&$-18.506$&75&$2\pi\times17$&F2\\\hline
     $x$&-1&$-18.03$&$-18.42$&38&$2\pi\times34$&F1\\\hline
     $z$&-3&$-18.3035$&$-18.506$&60&$2\pi\times17$&F2\\\hline
@@ -183,12 +191,14 @@ This group is repeated 8 times.
     $y$&-1&$-17.875$&$-18.47$&28&$2\pi\times34$&F1\\\hline
   \end{tabular}
 \end{center}
+
+\newpage
 \subsubsection{Group 7}
 This group is repeated 10 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-3&$-18.3035$&$-18.506$&60&$2\pi\times17$&F2\\\hline
     $x$&-1&$-18.03$&$-18.42$&38&$2\pi\times34$&F1\\\hline
     $z$&-2&$-18.371$&$-18.506$&60&$2\pi\times17$&F2\\\hline
@@ -204,7 +214,7 @@ This group is repeated 10 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-2&$-18.371$&$-18.506$&60&$2\pi\times17$&F2\\\hline
     $x$&-1&$-18.03$&$-18.42$&38&$2\pi\times34$&F1\\\hline
     $z$&-1&$-18.4385$&$-18.506$&60&$2\pi\times17$&F2\\\hline
@@ -220,7 +230,7 @@ This group is repeated 40 times.
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Axis&Order&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Time ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
+    Axis&$\Delta n$&$\delta'$ (MHz)&$\delta'_0$ (MHz)&Duration ($\mu$s)&Full Rabi frequency (kHz)&Power ramp\\\hline
     $z$&-1&$-18.3615$&$-18.429$&70&$2\pi\times9$&F2\\\hline
     $z$&-1&$-18.3615$&$-18.429$&100&$2\pi\times9$&F2\\\hline
     $x$&-1&$-18.03$&$-18.42$&38&$2\pi\times34$&F1\\\hline
