@@ -127,7 +127,7 @@ function maybe_show()
     end
 end
 
-const prefix = joinpath(@__DIR__, "imgs/rabi_flop")
+const prefix = joinpath(@__DIR__, "rabi_flop")
 
 data_before_r2_0 = [data_a[:after][1][1]; data_a[:before][1]]
 data_before_r3_0 = [data_a[:after][1][1]; data_a[:before][2]]

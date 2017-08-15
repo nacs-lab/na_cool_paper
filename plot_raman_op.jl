@@ -180,6 +180,6 @@ text(60, 0.632, "(B)")
 ax2[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
 xlabel("Motional state \$n\$")
 
-maybe_save(joinpath(@__DIR__, "imgs/fig2_raman_op"))
+maybe_save(joinpath(@__DIR__, "fig2_raman_op"))
 
 maybe_show()

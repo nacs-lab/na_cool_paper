@@ -96,7 +96,7 @@ function maybe_show()
     end
 end
 
-const prefix = joinpath(@__DIR__, "imgs/spectrum")
+const prefix = joinpath(@__DIR__, "spectrum")
 
 to_sideband(f) = (i, v)->(v - f) * 1000
 
