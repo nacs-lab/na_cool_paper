@@ -4,11 +4,9 @@ push!(LOAD_PATH, joinpath(@__DIR__, "../../lib"))
 
 using NaCsCalc.Utils: interactive
 using NaCsData
+using NaCsPlot
 using PyPlot
 using DataStructures
-matplotlib["rcParams"][:update](Dict("font.size" => 20))
-matplotlib[:rc]("xtick", labelsize=15)
-matplotlib[:rc]("ytick", labelsize=15)
 
 const iname_a = joinpath(@__DIR__, "../../experiments/misc/data/data_20170402_205344.csv")
 const iname_b = joinpath(@__DIR__, "../../experiments/misc/data/data_20170404_133229.csv")
@@ -72,30 +70,6 @@ const split_b = NaCsData.split_data(data_b, spec_b)
 const split_c = NaCsData.split_data(data_c, spec_c)
 const split_d = NaCsData.split_data(data_d, spec_d)
 
-function plot_data(data, scale=1; kws...)
-    params, ratios, uncs = NaCsData.get_values(data)
-    perm = sortperm(params)
-    params = params[perm]
-    ratios = ratios[perm, 2] .* scale
-    uncs = uncs[perm, 2] .* scale
-    errorbar(params, ratios, uncs; kws...)
-end
-
-function maybe_save(name)
-    if !interactive()
-        savefig("$name.pdf"; bbox_inches="tight", transparent=true)
-        savefig("$name.png"; bbox_inches="tight", transparent=true)
-        savefig("$name.svg", bbox_inches="tight", transparent=true)
-        close()
-    end
-end
-
-function maybe_show()
-    if interactive()
-        show()
-    end
-end
-
 const prefix = joinpath(@__DIR__, "spectrum")
 
 to_sideband(f) = (i, v)->(v - f) * 1000
@@ -119,24 +93,24 @@ fig = figure(figsize=[1.6, 1] * 4.8)
 
 # Without cooling
 # Radial 2
-plot_data(data_nocool_r2[1], 1, fmt="C3^-", label="\$x\$ initial")
-plot_data(data_nocool_r2[2], 1, fmt="C3^-")
-plot_data(data_nocool_r2[3], 1, fmt="C3^-")
+NaCsPlot.plot_survival_data(data_nocool_r2[1], fmt="C3^-", label="\$x\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_r2[2], fmt="C3^-")
+NaCsPlot.plot_survival_data(data_nocool_r2[3], fmt="C3^-")
 # Radial 3
-plot_data(data_nocool_r3[1], 1, fmt="C3o--", label="\$y\$ initial")
-plot_data(data_nocool_r3[2], 1, fmt="C3o--")
-plot_data(data_nocool_r3[3], 1, fmt="C3o--")
+NaCsPlot.plot_survival_data(data_nocool_r3[1], fmt="C3o--", label="\$y\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_r3[2], fmt="C3o--")
+NaCsPlot.plot_survival_data(data_nocool_r3[3], fmt="C3o--")
 text(-660, 0.9, "(A)")
 
 # With cooling
 # Radial 2
-plot_data(data_cool_r2[1], 1, fmt="C0v-", label="\$x\$ cooled")
-plot_data(data_cool_r2[2], 1, fmt="C0v-")
-plot_data(data_cool_r2[3], 1, fmt="C0v-")
+NaCsPlot.plot_survival_data(data_cool_r2[1], fmt="C0v-", label="\$x\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_r2[2], fmt="C0v-")
+NaCsPlot.plot_survival_data(data_cool_r2[3], fmt="C0v-")
 # Radial 3
-plot_data(data_cool_r3[1], 1, fmt="C0s--", label="\$y\$ cooled")
-plot_data(data_cool_r3[2], 1, fmt="C0s--")
-plot_data(data_cool_r3[3], 1, fmt="C0s--")
+NaCsPlot.plot_survival_data(data_cool_r3[1], fmt="C0s--", label="\$y\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_r3[2], fmt="C0s--")
+NaCsPlot.plot_survival_data(data_cool_r3[3], fmt="C0s--")
 grid()
 ylim([0, 1])
 xlim([-700, 1500])
@@ -144,19 +118,19 @@ legend()
 xlabel("\$\\delta\$, Detuning from carrier (kHz)")
 ylabel("F=1 population")
 
-maybe_save("$(prefix)_r")
+NaCsPlot.maybe_save("$(prefix)_r")
 
 fig = figure(figsize=[1.6, 1] * 4.8)
 # Without cooling
-plot_data(data_nocool_a1[1], 1, fmt="C3o-", label="\$z\$ initial")
-plot_data(data_nocool_a1[2], 1, fmt="C3o-")
-plot_data(data_nocool_a1_0, 1, fmt="C3o-")
-plot_data(data_nocool_a1_hi, 1, fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_a1[1], fmt="C3o-", label="\$z\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_a1[2], fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_a1_0, fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_a1_hi, fmt="C3o-")
 
 # With cooling
-plot_data(data_cool_a1[1], 1, fmt="C0s-", label="\$z\$ cooled")
-plot_data(data_cool_a1[2], 1, fmt="C0s-")
-plot_data(data_cool_a1_hi, 1, fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cool_a1[1], fmt="C0s-", label="\$z\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_a1[2], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cool_a1_hi, fmt="C0s-")
 grid()
 ylim([0, 0.6])
 xlim([-100, 620])
@@ -164,6 +138,6 @@ legend()
 text(-86, 0.54, "(A)")
 xlabel("\$\\delta\$, Detuning from carrier (kHz)")
 ylabel("F=1 population")
-maybe_save("$(prefix)_a1")
+NaCsPlot.maybe_save("$(prefix)_a1")
 
-maybe_show()
+NaCsPlot.maybe_show()
