@@ -4,18 +4,18 @@ push!(LOAD_PATH, joinpath(@__DIR__, "../../lib"))
 
 import NaCsCalc.Utils: interactive
 import NaCsCalc: Trap
+using NaCsPlot
 using Cubature
 using PyPlot
 
-PyPlot.matplotlib["rcParams"][:update](Dict("font.size" => 20))
-PyPlot.matplotlib[:rc]("xtick", labelsize=15)
-PyPlot.matplotlib[:rc]("ytick", labelsize=15)
+matplotlib["rcParams"][:update](Dict("font.weight" => "normal"))
 
 const m_Na = 23e-3 / 6.02e23
-const η_az = Trap.η(m_Na, 67e3, 2π / 589e-9) / √(2)
-const η_az_op = Trap.η(m_Na, 67e3, 2π / 589e-9)
-const η_rx = Trap.η(m_Na, 430e3, 2π / 589e-9)
-const η_ry = Trap.η(m_Na, 590e3, 2π / 589e-9)
+const m_Na = 23e-3 / 6.02e23
+const η_rx = Trap.η(m_Na, 479e3, 2π / 589e-9) * √(2) * 0.96
+const η_ry = Trap.η(m_Na, 492e3, 2π / 589e-9) * √(2) * 0.933
+const η_az = Trap.η(m_Na, 85.7e3, 2π / 589e-9) * 0.67
+const η_az_op = Trap.η(m_Na, 85.7e3, 2π / 589e-9)
 
 """
     emission(v, isσ::Bool) -> (sinθ, cosθ)
@@ -107,34 +107,19 @@ end
 
 const coupling_az = (op_heating_all(op_heating_az, 100, 100, Float32(η_az_op), false) *
                      op_heating_all(op_heating_az, 100, 100, Float32(η_az_op), true))
-const coupling_rx = (op_heating_all(op_heating_r, 30, 30, Float32(η_rx), false) *
-                     op_heating_all(op_heating_r, 30, 30, Float32(η_rx), true))
-const coupling_ry = (op_heating_all(op_heating_r, 30, 30, Float32(η_ry), false) *
-                     op_heating_all(op_heating_r, 30, 30, Float32(η_ry), true))
+# const coupling_rx = (op_heating_all(op_heating_r, 30, 30, Float32(η_rx), false) *
+#                      op_heating_all(op_heating_r, 30, 30, Float32(η_rx), true))
+# const coupling_ry = (op_heating_all(op_heating_r, 30, 30, Float32(η_ry), false) *
+#                      op_heating_all(op_heating_r, 30, 30, Float32(η_ry), true))
 
 function plot_op_sidebands(n1s, n2s, coupling)
     for i in 1:length(n2s)
         n2 = n2s[i]
-        plot(n1s, coupling[n2 + 1, n1s + 1], ".-")
+        plot(n1s, coupling[n2 + 1, n1s .+ 1], ".-")
     end
 end
 
-function maybe_save(name)
-    if !interactive()
-        savefig("$name.pdf"; bbox_inches="tight", transparent=true)
-        savefig("$name.png"; bbox_inches="tight", transparent=true)
-        savefig("$name.svg", bbox_inches="tight", transparent=true)
-        close()
-    end
-end
-
-function maybe_show()
-    if interactive()
-        show()
-    end
-end
-
-const nmax = 70
+const nmax = 95
 const nmax_r = 15
 
 function plot_sidebands(ns, Δns, η)
@@ -146,16 +131,16 @@ end
 figure(figsize=[1.5, 1.1] * 4.8)
 
 ax1 = subplot(211)
-plot_op_sidebands(0:nmax, [0, 1, 2, 5, 10, 20, 35, 55], coupling_az)
+plot_op_sidebands(0:nmax, [0, 1, 2, 6, 14, 27, 45, 70], coupling_az)
 text(0.5, 0.8, "\$n_{init}\\!\\!=\\!\\!0\$", color="C0")
 text(1, 0.63, "\$n_{init}\\!\\!=\\!\\!1\$", color="C1")
 text(2, 0.47, "\$n_{init}\\!\\!=\\!\\!2\$", color="C2")
-text(3, 0.33, "\$n_{init}\\!\\!=\\!\\!5\$", color="C3")
-text(7, 0.21, "\$n_{init}\\!\\!=\\!\\!10\$", color="C4")
-text(19.5, 0.14, "\$n_{init}\\!\\!=\\!\\!20\$", color="C5")
-text(33, 0.12, "\$n_{init}\\!\\!=\\!\\!35\$", color="C6")
-text(49, 0.11, "\$n_{init}\\!\\!=\\!\\!55\$", color="C7")
-text(60, 0.78, "(A)")
+text(3, 0.33, "\$n_{init}\\!\\!=\\!\\!6\$", color="C3")
+text(7, 0.22, "\$n_{init}\\!\\!=\\!\\!14\$", color="C4")
+text(17, 0.13, "\$n_{init}\\!\\!=\\!\\!27\$", color="C5")
+text(38, 0.13, "\$n_{init}\\!\\!=\\!\\!45\$", color="C6")
+text(60, 0.11, "\$n_{init}\\!\\!=\\!\\!70\$", color="C7")
+text(85, 0.78, "(A)")
 grid()
 ylim([0, 0.9])
 xlim([0, nmax])
@@ -165,21 +150,21 @@ ax1[:tick_params](axis="x", length=0)
 ax1[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
 
 ax2 = subplot(212)
-subplots_adjust(hspace=0.08)
+subplots_adjust(hspace=0.05)
 plot_sidebands(0:nmax, -1:-1:-5, η_az)
 xlim([0, nmax])
 ylim([0, 0.75])
 grid()
 ylabel("\$|\\langle n |e^{i\\Delta\\vec k\\cdot\\vec z}| n + \\Delta n \\rangle|\$")
-text(0, 0.65, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!1\$", color="C0")
-text(9, 0.55, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!2\$", color="C1")
-text(21, 0.47, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!3\$", color="C2")
-text(36, 0.44, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!4\$", color="C3")
-text(53, 0.42, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!5\$", color="C4")
-text(60, 0.632, "(B)")
+text(0, 0.61, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!1\$", color="C0")
+text(12, 0.51, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!2\$", color="C1")
+text(29, 0.46, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!3\$", color="C2")
+text(47, 0.42, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!4\$", color="C3")
+text(74, 0.40, "\$\\Delta n\\!\\!=\\!\\!\\!-\\!5\$", color="C4")
+text(85, 0.632, "(B)")
 ax2[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
 xlabel("Motional state \$n\$")
 
-maybe_save(joinpath(@__DIR__, "fig2_raman_op"))
+NaCsPlot.maybe_save(joinpath(@__DIR__, "fig2_raman_op"))
 
-maybe_show()
+NaCsPlot.maybe_show()
