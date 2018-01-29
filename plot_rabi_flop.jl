@@ -203,7 +203,7 @@ end
 
 const τ_rx = 18.451e-6
 const p_rx = [0.975, 0.10, 0.0]
-const δΩ_rx = 15.54e3
+const δΩ_rx = 0 * 15.54e3
 
 const nbar_hot_rx = 3.459
 const τ_hot_rx = 19.926e-6
@@ -249,7 +249,7 @@ NaCsPlot.maybe_save("$(prefix)_rx_p1")
 
 const τ_ry = 12.3e-6
 const p_ry = [0.95, 0.10, 0.0]
-const δΩ_ry = 15.54e3
+const δΩ_ry = 0 * 15.54e3
 
 const nbar_hot_ry = 3.224
 const τ_hot_ry = 12.347e-6
@@ -307,7 +307,7 @@ figure()
 ts_az_0 = linspace(0, 285e-6, 1001)
 ts_az_0_hot = linspace(0, 120e-6, 501)
 plot_f1(f_az, ts_az_0, 2π / τ_az * (meles_az_0[1:3] * meles_ry_0[1:3]'),
-        p_az * p_ry', δΩ_az, offsetΩ=offsetΩ_az, color="C0")
+        p_az * p_ry', δΩ_az * 0, offsetΩ=offsetΩ_az * 0, color="C0")
 NaCsPlot.plot_survival_data(data_cold_z0, fmt="C0o", label="Cold")
 plot_f1_thermal2(f_az, ts_az_0_hot, 2π / τ_hot_az * meles_az_0, nbar_hot_az,
                  meles_ry_0, nbar_hot_ry, δΩ_hot_az2, offset=0.027, offsetΩ=30e3, color="C3")
