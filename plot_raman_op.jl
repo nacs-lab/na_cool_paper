@@ -11,7 +11,6 @@ using PyPlot
 matplotlib["rcParams"][:update](Dict("font.weight" => "normal"))
 
 const m_Na = 23e-3 / 6.02e23
-const m_Na = 23e-3 / 6.02e23
 const η_rx = Trap.η(m_Na, 479e3, 2π / 589e-9) * √(2) * 0.96
 const η_ry = Trap.η(m_Na, 492e3, 2π / 589e-9) * √(2) * 0.933
 const η_az = Trap.η(m_Na, 85.7e3, 2π / 589e-9) * 0.67
