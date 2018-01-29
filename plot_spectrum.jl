@@ -74,43 +74,43 @@ const prefix = joinpath(@__DIR__, "spectrum")
 
 to_sideband(f) = (i, v)->(v - f) * 1000
 
-data_nocool_r2 = NaCsData.map_params(to_sideband(-18.4625), split_a[:nocool_pm12][1])
-data_nocool_r2_0 = NaCsData.map_params(to_sideband(-18.4625), split_a[:nocool_0][1])
-data_cool_r2 =  NaCsData.map_params(to_sideband(-18.4575), split_d[1])
+data_nocool_rx = NaCsData.map_params(to_sideband(-18.4625), split_a[:nocool_pm12][1])
+data_nocool_rx_0 = NaCsData.map_params(to_sideband(-18.4625), split_a[:nocool_0][1])
+data_cool_rx =  NaCsData.map_params(to_sideband(-18.4575), split_d[1])
 
-data_nocool_r3 = NaCsData.map_params(to_sideband(-18.485), split_a[:nocool_pm12][2])
-data_nocool_r3_0 = NaCsData.map_params(to_sideband(-18.485), split_a[:nocool_0][2])
-data_cool_r3 =  NaCsData.map_params(to_sideband(-18.480), split_d[2])
+data_nocool_ry = NaCsData.map_params(to_sideband(-18.485), split_a[:nocool_pm12][2])
+data_nocool_ry_0 = NaCsData.map_params(to_sideband(-18.485), split_a[:nocool_0][2])
+data_cool_ry =  NaCsData.map_params(to_sideband(-18.480), split_d[2])
 
-data_nocool_a1 = NaCsData.map_params(to_sideband(-18.4965), split_a[:nocool_pm12][3])
-data_nocool_a1_0 = NaCsData.map_params(to_sideband(-18.4965), split_a[:nocool_0][3])
-data_nocool_a1_hi = [NaCsData.map_params(to_sideband(-18.5015), split_a[:nocool_a8]);
+data_nocool_az = NaCsData.map_params(to_sideband(-18.4965), split_a[:nocool_pm12][3])
+data_nocool_az_0 = NaCsData.map_params(to_sideband(-18.4965), split_a[:nocool_0][3])
+data_nocool_az_hi = [NaCsData.map_params(to_sideband(-18.5015), split_a[:nocool_a8]);
                      NaCsData.map_params(to_sideband(-18.4965), split_b[4])]
-data_cool_a1 =  NaCsData.map_params(to_sideband(-18.488), split_d[3])
-data_cool_a1_hi =  NaCsData.map_params(to_sideband(-18.488), split_c[4])
+data_cool_az =  NaCsData.map_params(to_sideband(-18.488), split_d[3])
+data_cool_az_hi =  NaCsData.map_params(to_sideband(-18.488), split_c[4])
 
 fig = figure(figsize=[1.6, 1] * 4.8)
 
 # Without cooling
 # Radial 2
-NaCsPlot.plot_survival_data(data_nocool_r2[1], fmt="C3^-", label="\$x\$ initial")
-NaCsPlot.plot_survival_data(data_nocool_r2[2], fmt="C3^-")
-NaCsPlot.plot_survival_data(data_nocool_r2[3], fmt="C3^-")
+NaCsPlot.plot_survival_data(data_nocool_rx[1], fmt="C3^-", label="\$x\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_rx[2], fmt="C3^-")
+NaCsPlot.plot_survival_data(data_nocool_rx[3], fmt="C3^-")
 # Radial 3
-NaCsPlot.plot_survival_data(data_nocool_r3[1], fmt="C3o--", label="\$y\$ initial")
-NaCsPlot.plot_survival_data(data_nocool_r3[2], fmt="C3o--")
-NaCsPlot.plot_survival_data(data_nocool_r3[3], fmt="C3o--")
+NaCsPlot.plot_survival_data(data_nocool_ry[1], fmt="C3o--", label="\$y\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_ry[2], fmt="C3o--")
+NaCsPlot.plot_survival_data(data_nocool_ry[3], fmt="C3o--")
 text(-660, 0.9, "(A)")
 
 # With cooling
 # Radial 2
-NaCsPlot.plot_survival_data(data_cool_r2[1], fmt="C0v-", label="\$x\$ cooled")
-NaCsPlot.plot_survival_data(data_cool_r2[2], fmt="C0v-")
-NaCsPlot.plot_survival_data(data_cool_r2[3], fmt="C0v-")
+NaCsPlot.plot_survival_data(data_cool_rx[1], fmt="C0v-", label="\$x\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_rx[2], fmt="C0v-")
+NaCsPlot.plot_survival_data(data_cool_rx[3], fmt="C0v-")
 # Radial 3
-NaCsPlot.plot_survival_data(data_cool_r3[1], fmt="C0s--", label="\$y\$ cooled")
-NaCsPlot.plot_survival_data(data_cool_r3[2], fmt="C0s--")
-NaCsPlot.plot_survival_data(data_cool_r3[3], fmt="C0s--")
+NaCsPlot.plot_survival_data(data_cool_ry[1], fmt="C0s--", label="\$y\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_ry[2], fmt="C0s--")
+NaCsPlot.plot_survival_data(data_cool_ry[3], fmt="C0s--")
 grid()
 ylim([0, 1])
 xlim([-700, 1500])
@@ -122,15 +122,15 @@ NaCsPlot.maybe_save("$(prefix)_r")
 
 fig = figure(figsize=[1.6, 1] * 4.8)
 # Without cooling
-NaCsPlot.plot_survival_data(data_nocool_a1[1], fmt="C3o-", label="\$z\$ initial")
-NaCsPlot.plot_survival_data(data_nocool_a1[2], fmt="C3o-")
-NaCsPlot.plot_survival_data(data_nocool_a1_0, fmt="C3o-")
-NaCsPlot.plot_survival_data(data_nocool_a1_hi, fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_az[1], fmt="C3o-", label="\$z\$ initial")
+NaCsPlot.plot_survival_data(data_nocool_az[2], fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_az_0, fmt="C3o-")
+NaCsPlot.plot_survival_data(data_nocool_az_hi, fmt="C3o-")
 
 # With cooling
-NaCsPlot.plot_survival_data(data_cool_a1[1], fmt="C0s-", label="\$z\$ cooled")
-NaCsPlot.plot_survival_data(data_cool_a1[2], fmt="C0s-")
-NaCsPlot.plot_survival_data(data_cool_a1_hi, fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cool_az[1], fmt="C0s-", label="\$z\$ cooled")
+NaCsPlot.plot_survival_data(data_cool_az[2], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cool_az_hi, fmt="C0s-")
 grid()
 ylim([0, 0.6])
 xlim([-100, 620])
@@ -138,6 +138,6 @@ legend()
 text(-86, 0.54, "(A)")
 xlabel("\$\\delta\$, Detuning from carrier (kHz)")
 ylabel("F=1 population")
-NaCsPlot.maybe_save("$(prefix)_a1")
+NaCsPlot.maybe_save("$(prefix)_az")
 
 NaCsPlot.maybe_show()

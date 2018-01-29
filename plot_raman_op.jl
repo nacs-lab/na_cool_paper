@@ -12,10 +12,10 @@ PyPlot.matplotlib[:rc]("xtick", labelsize=15)
 PyPlot.matplotlib[:rc]("ytick", labelsize=15)
 
 const m_Na = 23e-3 / 6.02e23
-const η_ax = Trap.η(m_Na, 67e3, 2π / 589e-9) / √(2)
-const η_ax_op = Trap.η(m_Na, 67e3, 2π / 589e-9)
-const η_ra1 = Trap.η(m_Na, 430e3, 2π / 589e-9)
-const η_ra2 = Trap.η(m_Na, 590e3, 2π / 589e-9)
+const η_az = Trap.η(m_Na, 67e3, 2π / 589e-9) / √(2)
+const η_az_op = Trap.η(m_Na, 67e3, 2π / 589e-9)
+const η_rx = Trap.η(m_Na, 430e3, 2π / 589e-9)
+const η_ry = Trap.η(m_Na, 590e3, 2π / 589e-9)
 
 """
     emission(v, isσ::Bool) -> (sinθ, cosθ)
@@ -74,12 +74,12 @@ function op_coupling(n1, n2, η::T, v::T, φ::T, isσ::Bool, cosθ_dri::T,
     return Trap.sideband(n1, n2, abs(η_eff))^2 / π
 end
 
-function op_heating_ax(n1, n2, η::T, isσ) where T
+function op_heating_az(n1, n2, η::T, isσ) where T
     hcubature(x->op_coupling(n1, n2, η, T(x[1]), T(x[2]), isσ, T(0), (T(1), T(0))),
               [0.0, 0.0], [1.0, π], abstol=1e-6)[1]
 end
 
-function op_heating_ra(n1, n2, η::T, isσ) where T
+function op_heating_r(n1, n2, η::T, isσ) where T
     hcubature(x->op_coupling(n1, n2, η, T(x[1]), T(x[2]), isσ,
                              sqrt(T(0.5)), (sqrt(T(0.5)), sqrt(T(0.5)))),
               [0.0, 0.0], [1.0, π], abstol=1e-6)[1]
@@ -105,12 +105,12 @@ function op_heating_all(cb::Function, sz1, sz2, η::T, isσ) where T
     res
 end
 
-const coupling_ax = (op_heating_all(op_heating_ax, 100, 100, Float32(η_ax_op), false) *
-                     op_heating_all(op_heating_ax, 100, 100, Float32(η_ax_op), true))
-const coupling_ra1 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra1), false) *
-                      op_heating_all(op_heating_ra, 30, 30, Float32(η_ra1), true))
-const coupling_ra2 = (op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), false) *
-                      op_heating_all(op_heating_ra, 30, 30, Float32(η_ra2), true))
+const coupling_az = (op_heating_all(op_heating_az, 100, 100, Float32(η_az_op), false) *
+                     op_heating_all(op_heating_az, 100, 100, Float32(η_az_op), true))
+const coupling_rx = (op_heating_all(op_heating_r, 30, 30, Float32(η_rx), false) *
+                     op_heating_all(op_heating_r, 30, 30, Float32(η_rx), true))
+const coupling_ry = (op_heating_all(op_heating_r, 30, 30, Float32(η_ry), false) *
+                     op_heating_all(op_heating_r, 30, 30, Float32(η_ry), true))
 
 function plot_op_sidebands(n1s, n2s, coupling)
     for i in 1:length(n2s)
@@ -146,7 +146,7 @@ end
 figure(figsize=[1.5, 1.1] * 4.8)
 
 ax1 = subplot(211)
-plot_op_sidebands(0:nmax, [0, 1, 2, 5, 10, 20, 35, 55], coupling_ax)
+plot_op_sidebands(0:nmax, [0, 1, 2, 5, 10, 20, 35, 55], coupling_az)
 text(0.5, 0.8, "\$n_{init}\\!\\!=\\!\\!0\$", color="C0")
 text(1, 0.63, "\$n_{init}\\!\\!=\\!\\!1\$", color="C1")
 text(2, 0.47, "\$n_{init}\\!\\!=\\!\\!2\$", color="C2")
@@ -166,7 +166,7 @@ ax1[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
 
 ax2 = subplot(212)
 subplots_adjust(hspace=0.08)
-plot_sidebands(0:nmax, -1:-1:-5, η_ax)
+plot_sidebands(0:nmax, -1:-1:-5, η_az)
 xlim([0, nmax])
 ylim([0, 0.75])
 grid()

@@ -3,23 +3,23 @@
 push!(LOAD_PATH, joinpath(@__DIR__, "../../lib"))
 import NaCsCalc.Format: Unc
 
-const a1m1 = [0.0410, 0.0182]
-const a1p1 = [0.476, 0.411]
+const azm1 = [0.0410, 0.0182]
+const azp1 = [0.476, 0.411]
 
-const r2m1 = [0.0656, 0.0366]
-const r2p1 = [0.656, 0.593]
+const rxm1 = [0.0656, 0.0366]
+const rxp1 = [0.656, 0.593]
 
-const r3m1 = [0.0310, 0.0121]
-const r3p1 = [0.459, 0.395]
+const rym1 = [0.0310, 0.0121]
+const ryp1 = [0.459, 0.395]
 
-const a1m10 = [0.419, 0.317]
-const a1p10 = [0.497, 0.396]
+const azm10 = [0.419, 0.317]
+const azp10 = [0.497, 0.396]
 
-const r2m10 = [0.599, 0.500]
-const r2p10 = [0.820, 0.740]
+const rxm10 = [0.599, 0.500]
+const rxp10 = [0.820, 0.740]
 
-const r3m10 = [0.455, 0.355]
-const r3p10 = [0.664, 0.574]
+const rym10 = [0.455, 0.355]
+const ryp10 = [0.664, 0.574]
 
 function naive_ground(m1, p1)
     avg_m1 = (m1[1] + m1[2]) / 2
@@ -46,10 +46,10 @@ function show_ground(m1, p1, name)
     println("  nbar: ", n)
 end
 
-show_ground(a1m1, a1p1, "Axial (z) cooled")
-show_ground(r2m1, r2p1, "Radial (x) cooled")
-show_ground(r3m1, r3p1, "Radial (y) cooled")
+show_ground(rxm1, rxp1, "Radial (x) cooled")
+show_ground(rym1, ryp1, "Radial (y) cooled")
+show_ground(azm1, azp1, "Axial (z) cooled")
 
-show_ground(a1m10, a1p10, "Axial (z) initial")
-show_ground(r2m10, r2p10, "Radial (x) initial")
-show_ground(r3m10, r3p10, "Radial (y) initial")
+show_ground(rxm10, rxp10, "Radial (x) initial")
+show_ground(rym10, ryp10, "Radial (y) initial")
+show_ground(azm10, azp10, "Axial (z) initial")
