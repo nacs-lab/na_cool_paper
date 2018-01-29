@@ -66,7 +66,7 @@
   motional ground state in an optical tweezer.
   Despite a large Lamb-Dicke parameter, high initial temperature, and
   large differential light shifts between the excited state and the ground state,
-  we achieve a ground state population of $93.5(7)$\% after $100$ ms of cooling,
+  we achieve a ground state population of $93.5(7)$\% after $53$ ms of cooling,
   for the 96\% of atoms that survive re-imaging. %% survives the first image?
   Our technique includes addressing high-order sidebands,
   where several motional quanta are removed by a single laser pulse, and
@@ -120,7 +120,7 @@ molecules that can be laser-cooled.
 
 Our experiment has an overall repetition rate of $2.5$ Hz and
 begins by loading a single sodium atom into an optical tweezer from a MOT~\cite{Hutzler2017-LightShifts}.
-The tweezer is created by focussing a $700$ nm wavelength laser beam through an NA=$0.55$ objective to an elliptical waist with radii $\{w_{0,x},w_{0,y}\}\approx \{0.79,0.57\}\,\mu$m.
+The tweezer is created by focussing a $700$ nm wavelength laser beam through an NA=$0.55$ objective to an elliptical waist with radii $\{w_{0,x},w_{0,y}\}\approx \{0.70,0.69\}\,\mu$m.
 For $45$ mW of optical power, the trapping frequencies along the three axes are
 $\{\omega_x,\omega_y,\omega_z\}/2\pi = \{479(4), 492(5), 86(1)\}\ \text{\text{kHz}}$,
 where $z$ is the weakly confined axial direction,
@@ -177,7 +177,7 @@ while keeping the target state dark, we apply light resonant with $3^2P_{1/2}$~\
   \includegraphics[width=8.5cm]{fig2_raman_op.pdf}
   \caption{Optical pumping motional-state redistribution and Raman coupling for large LD parameters for the axial direction ($z$). The range plotted covers $95$\% of the initial thermal distribution.
     (A) Motional state distribution after one OP cycle for different initial states motion,
-    $n_{\textrm{init}}$. Due to photon-recoil and the large LD parameter, $\eta^{\textrm{OP}}_z=0.6$,
+    $n_{\textrm{init}}$. Due to photon-recoil and the large LD parameter, $\eta^{\textrm{OP}}_z=0.55$,
     there is a high probability of $n$ changing.
     (B) Matrix elements for Raman transition deviate from
     $\sqrt{n}$ scaling with multiple minima. During cooling, we utilize the fact that high motional states couple most effectively to sidebands with large $|\Delta n|$.
@@ -248,7 +248,7 @@ of the optical tweezers via perturbation theory.
 In the paraxial approximation, we find $A_{i,n}=\frac{-3n\hbar}{4\pi m d_i^2}$,
 where $d_i$ equals the beam radius for the radial directions and
 $d_z\approx\pi w_{0,x}w_{0,y}/\lambda_{\textrm{trap}}$.
-Numerically, $\{A_{x,n},A_{y,n},A_{z,n}\}=\{-1.1, -2.0, -0.16\}n$~kHz.
+Numerically, $\{A_{x,n},A_{y,n},A_{z,n}\}=\{-1.4, -1.4, -0.16\}n$~kHz.
 For mixed states, this broadens high-order sidebands due to the $n$-dependence of the transitions.
 In order to mitigate this, we drive the sidebands with a large Rabi frequency
 and short pulses to Fourier broaden the spectrum.
@@ -265,31 +265,26 @@ and prevent effective cooling.
     Solid lines in (B) and (C) are fits to a Rabi-flopping
     that includes a thermal distribution of motional states~\cite{Meekhof1996}
     as well as off-resonant scattering from the Raman beams.
-    The curves reach a maximum contrast of 85\% (horizontal dashed line)
-    because 5\% of atoms are lost from one imaging step to the next,
-    and 10\% of atoms are additionally lost during Raman cooling.
-    The blue lines correspond to a 1D ground state probability of $93$\%
-    after cooling (not including loss) and
-    the red lines correspond to a thermal distribution of $70$ $\mu$K before RSC.
+    The blue lines correspond to a 1D ground state probability of $98.1$\% after cooling
+    and the red lines correspond to a thermal distribution of $80$ $\mu$K before RSC.
     \label{f-radial}}
 \end{figure*}
 \begin{figure*}
   \includegraphics[height=4.2cm]{spectrum_a1.pdf}
   \includegraphics[height=4.2cm]{rabi_flop_a1_0.pdf}
   \includegraphics[height=4.2cm]{rabi_flop_a1_p1.pdf}
-  \caption{(A) Left to right: Axial Raman sideband spectrum from $\Delta n_z=1,0,-1,\ldots,-8$
+  \caption{(A) Left to right: Axial Raman sideband spectrum from $\Delta n_z=1,0,-1,\ldots,-5$
     before and after Raman sideband cooling.
     (B,C) Rabi flopping on axial (B) carrier $\Delta n_z=0$  and (C) $\Delta n_z=1$ sideband
     before (red circle) and after (blue square) RSC.
     Solid blue lines in (B) and (C), similar to Fig.~\ref{f-radial}B and C,
-    are fits to the Rabi flopping and yield a ground state probability of $92$\%
+    are fits to the Rabi flopping and yield a ground state probability of $95$\%
     after cooling and
     the red lines correspond to a thermal distribution of $80$ $\mu$K before RSC.
     The green line in (C), includes the additional decoherence due to
     a fluctuation of the hyperfine splitting of magnitude $3$ kHz.
     We see that the decoherence effect is strongest for the post-cooling data on
     the $\Delta n_z=1$ sideband where the Rabi frequency is the lowest.
-    The horizontal dashed line shows the overall survival after cooling and imaging.
     \label{f-axial}}
 \end{figure*}
 
@@ -303,7 +298,7 @@ Since the atom is still addressed by optical pumping light when the trap light i
 OP remains effective.
 
 Our final cooling results are shown in Fig.~\ref{f-radial} and \ref{f-axial}.
-In total, $1000$ cooling pulses (total duration $100$ ms) are applied
+In total, $540$ cooling pulses (total duration $53$ ms) are applied
 along three axes with cooling beginning on the radial second order and axial eighth order.
 The full RSC pulse sequence is given in~\footnote{See supplemental material}.
 To characterize the single atom thermal state before and after cooling,
@@ -316,20 +311,20 @@ The formula that equates the ratio of $\Delta n=-1$ and $\Delta n=1$ sideband he
 $\bar{n}/(\bar{n}+1)$ ($\bar{n}$ is the mean motional quantum number of the assumed thermal state)
 was derived in the LD regime~\cite{Monroe1995}.
 However, it is also valid outside the LD regime.
-The resulting $\bar{n}_x=0.09(3)$ and $\bar{n}_y=0.05(2)$ correspond to
-ground-state fractions of 92(2)\% and 95(2)\%,
-in agreement with fitted values of 89(2)\% and 92(2)\%
+The resulting $\bar{n}_x=0.019(4)$ and $\bar{n}_y=0.024(3)$ correspond to
+ground-state fractions of 98.1(5)\% and 97.6(3)\%,
+in agreement with fitted values of 98(1)\% and 95(3)\%
 from the Rabi flopping curves~\cite{Meekhof1996} in Fig.~\ref{f-radial}B and \ref{f-radial}C.
-The initial temperature of $70\,\mu$K before RSC is obtained from similar fits.
+The initial temperature of $80\,\mu$K before RSC is obtained from similar fits.
 
 For the weak axial direction, cooling is challenging because the atom starts outside the LD regime.
-We observe up to 8th-order Raman cooling sidebands initially,
+We observe up to 5th-order Raman cooling sidebands initially,
 which indicates population in highly-excited motional states.
 Nevertheless, our cooling sequence works efficiently as all the $\Delta n<0$ sidebands are reduced
 after RSC (Fig.~\ref{f-axial}A).
-Using the ratio of first-order sideband heights, we obtain $\bar{n}_z=0.07(3)$,
+Using the ratio of first-order sideband heights, we obtain $\bar{n}_z=0.024(5)$,
 which corresponds to a ground state population of
-93(3)\%, in agreement with a ground state population of 91(2)\% extracted from Rabi flopping
+97.6(5)\%, in agreement with a ground state population of 95(4)\% extracted from Rabi flopping
 when $\Delta n=0$ (Fig.~\ref{f-axial}B).
 For the $\Delta n=1$ sideband (Fig.~\ref{f-axial}C),
 we observe additional decoherence that is more pronounced due to the slower Rabi frequency.
@@ -337,11 +332,10 @@ The decoherence rate is consistent with magnetic field fluctuations of $1.5$ mG
 measured independently in the lab, which would produce a Zeeman shift of $\sim 3$ kHz.
 
 Combining the axial and radial cooling results,
- a single Na atom is in the 3D ground state with a probability of 81(4)\% after RSC.
- We note that there is an additional 5\% population loss from imaging and 10\% loss
-from high-lying initial motional states that are not efficiently cooled by RSC,
-but instead heated out of the trap by off-resonant scattering from the Raman beams.
-The cooling efficiency is limited by spontaneous scattering rate (0.5-1 kHz) from the Raman beams,
+a single Na atom is in the 3D ground state with a probability of 93.5(7)\% after RSC.
+We note that there is an additional 4\% population loss from imaging.
+The cooling efficiency is limited by spontaneous scattering rate
+(0.1-0.2 kHz) from the Raman beams,
 as well as spectral broadening from magnetic field fluctuations and trap anharmonicity.
 
 We measure a heating rate that corresponds to decreasing 3D ground state population
@@ -349,7 +343,7 @@ at a rate of $\sim0.9$\%/ms.
 The rate is consistent with off-resonant scattering of the trapping light~\cite{Grimm2000},
 and is predominantly in the axial direction where the trapping beam propagates.
 
-We expect to reduce atom losses and enhance the ground state probability after RSC
+We expect to enhance the ground state probability after RSC
 by increasing the detuning of the Raman beams,
 addressing a wider range of axial trap anharmonicity,
 implementing better control of the magnetic field, and optimizing imaging.
