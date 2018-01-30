@@ -1625,7 +1625,7 @@ L 417.816698 107.080315
 L 418.173818 107.06177 
 L 418.530938 106.260021 
 L 418.530938 106.260021 
-" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
+" style="fill:none;stroke:#2ca02c;stroke-dasharray:9.6,2.4,1.5,2.4;stroke-dashoffset:0;stroke-width:1.5;"/>
    </g>
    <g id="line2d_26">
     <path clip-path="url(#p1da729468f)" d="M 61.410938 278.518987 
@@ -2276,7 +2276,7 @@ L 417.102458 107.284307
 L 417.459578 105.605116 
 L 418.530938 98.50219 
 L 418.530938 98.50219 
-" style="fill:none;stroke:#2ca02c;stroke-dasharray:9.6,2.4,1.5,2.4;stroke-dashoffset:0;stroke-width:1.5;"/>
+" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
    </g>
    <g id="line2d_27">
     <path clip-path="url(#p1da729468f)" d="M 61.410938 271.333963 
