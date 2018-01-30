@@ -52,6 +52,7 @@
 \altaffiliation{Present address: California Institute of Technology, Division of Physics, Mathematics, and Astronomy. Pasadena, CA, 91125}
 \author{J. T. Zhang}
 \author{L. R. Liu}
+\author{J. D. Hood}
 \author{T. Rosenband}
 \author{K.-K. Ni}
 \email{ni@chemistry.harvard.edu}
@@ -252,8 +253,6 @@ Numerically, $\{A_{x,n},A_{y,n},A_{z,n}\}=\{-1.4, -1.4, -0.16\}n$~kHz.
 For mixed states, this broadens high-order sidebands due to the $n$-dependence of the transitions.
 In order to mitigate this, we drive the sidebands with a large Rabi frequency
 and short pulses to Fourier broaden the spectrum.
-However, anharmonicity may still shift high-$n$ states out of resonance
-and prevent effective cooling.
 
 \begin{figure*}
   \includegraphics[height=4.2cm]{spectrum_r.pdf}
@@ -299,11 +298,11 @@ OP remains effective.
 
 Our final cooling results are shown in Fig.~\ref{f-radial} and \ref{f-axial}.
 In total, $540$ cooling pulses (total duration $53$ ms) are applied
-along three axes with cooling beginning on the radial second order and axial eighth order.
+along three axes with cooling beginning on the radial second order and axial fifth order.
 The full RSC pulse sequence is given in~\footnote{See supplemental material}.
 To characterize the single atom thermal state before and after cooling,
 we perform Raman sideband thermometry~\cite{Monroe1995, Meekhof1996}.
-For the more tightly confined (non-degenerate) radial directions,
+For the more tightly confined radial directions,
 we observe clear $\Delta n=1$, $\Delta n=-1$, and $\Delta n=-2$ sidebands before RSC,
 as is shown in Fig.~\ref{f-radial}A.
 After RSC, the $\Delta n=-1$ and $\Delta n=-2$ sidebands on both radial axes are strongly reduced.
@@ -336,7 +335,7 @@ a single Na atom is in the 3D ground state with a probability of 93.5(7)\% after
 We note that there is an additional 4\% population loss from imaging.
 The cooling efficiency is limited by spontaneous scattering rate
 (0.1-0.2 kHz) from the Raman beams,
-as well as spectral broadening from magnetic field fluctuations and trap anharmonicity.
+as well as spectral broadening from magnetic field fluctuations.
 
 We measure a heating rate that corresponds to decreasing 3D ground state population
 at a rate of $\sim0.9$\%/ms.
@@ -345,7 +344,6 @@ and is predominantly in the axial direction where the trapping beam propagates.
 
 We expect to enhance the ground state probability after RSC
 by increasing the detuning of the Raman beams,
-addressing a wider range of axial trap anharmonicity,
 implementing better control of the magnetic field, and optimizing imaging.
 Another improvement could be to implement grey molasses cooling to achieve
 a lower starting temperature before RSC~\cite{Colzi2016}.
@@ -364,3 +362,10 @@ and the Alfred P. Sloan Foundation.
 
 \bibliography{paper}
 \end{document}
+
+%% TODO
+% Plot marker
+% Remove plot title
+% Remove mention of imaging loss in the text and move it to the figure caption
+% Add 96% survival line.
+% 94(1) ?
