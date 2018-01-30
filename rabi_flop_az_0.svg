@@ -1897,6 +1897,11 @@ L 211.777253 228.980597
 " style="fill:none;stroke:#d62728;stroke-linecap:square;stroke-width:1.5;"/>
    </g>
    <g id="line2d_27">
+    <path clip-path="url(#p1da729468f)" d="M 61.410938 23.543308 
+L 418.530938 23.543308 
+" style="fill:none;stroke:#99aaaa;stroke-dasharray:9.6,2.4,1.5,2.4;stroke-dashoffset:0;stroke-width:1.5;"/>
+   </g>
+   <g id="line2d_28">
     <defs>
      <path d="M -3 3 
 L 3 3 
@@ -1949,7 +1954,7 @@ z
      <use style="fill:#1f77b4;stroke:#1f77b4;stroke-linejoin:miter;" x="412.265674" xlink:href="#m9e0ac68bfd" y="84.638699"/>
     </g>
    </g>
-   <g id="line2d_28">
+   <g id="line2d_29">
     <defs>
      <path d="M 0 3 
 C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
