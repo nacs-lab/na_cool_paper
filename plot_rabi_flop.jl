@@ -321,7 +321,7 @@ figure()
 ts_az_p1 = linspace(0, 520e-6, 1001)
 ts_az_p1_hot = linspace(0, 280e-6, 501)
 plot_f1(f_az, ts_az_p1, 2π / τ_az * (meles_az_p1[1:3] * meles_ry_0[1:3]'),
-        p_az * p_ry', δΩ_az, offsetΩ=offsetΩ_az, color="C2", ls="-.")
+        p_az * p_ry', δΩ_az, offsetΩ=offsetΩ_az, color="C2", ls="--")
 plot_f1(f_az, ts_az_p1, 2π / τ_az * (meles_az_p1[1:3] * meles_ry_0[1:3]'),
         p_az * p_ry', 0, offsetΩ=0, color="C0")
 NaCsPlot.plot_survival_data(data_cold_zp1, fmt="C0s")
