@@ -120,7 +120,7 @@ molecules that can be laser-cooled.
 
 Our experiment has an overall repetition rate of $2.5$ Hz and
 begins by loading a single sodium atom into an optical tweezer from a MOT~\cite{Hutzler2017-LightShifts}.
-The tweezer is created by focussing a $700$ nm wavelength laser beam through an NA=$0.55$ objective to a waist with slight elliptical radii $\{w_{0,x},w_{0,y}\}\approx \{0.70,0.69\}\,\mu$m.
+The tweezer is created by focussing a $700$ nm wavelength laser beam through an NA=$0.55$ objective to an elliptical waist with radii $\{w_{0,x},w_{0,y}\}\approx \{0.70,0.69\}\,\mu$m.
 For $45$ mW of optical power, the trapping frequencies along the three axes are
 $\{\omega_x,\omega_y,\omega_z\}/2\pi = \{479(4), 492(5), 86(1)\}\ \text{\text{kHz}}$,
 where $z$ is the weakly confined axial direction,
@@ -133,7 +133,7 @@ corresponding to mean motional states along the three trap axes of
 $\{\bar n_x, \bar n_y, \bar n_z\}=\{3.5(3),\, 3.2(3),\, 20(4)\}$, and therefore initial 3D ground state probability of $P_0=0.4$\%.
 The atom is then initialized into
 the $|F=2, m_F=2\rangle$ stretched state via optical pumping (OP).
-Each experimental cycle ends with a second imaging sequence that measures the hyperfine state of the atom as $|F=2\rangle$ or $|F=1\rangle$~\footnote{The final hyperfine state sensitive detection employs a strong beam that is resonant with the $F=2$ to $F'=3$ cycling transition, to heat the $F=2$ population out of the trap. Therefore, any atoms which survive this heat out procedure are interpreted as having been in the $F=1$ state.}. The data analysis includes only those experiments where the first image reveals successful atom loading.
+Each experimental cycle ends with a second imaging sequence that measures the hyperfine state of the atom as $|F=2\rangle$ or $|F=1\rangle$~\footnote{The final hyperfine state sensitive detection employs a strong beam that is resonant with the $F=2$ to $F'=3$ cycling transition, to heat the $F=2$ population out of the trap. Therefore, any atoms which survive this heat out procedure are interpreted as having been in the $F=1$ state.}. The data analysis includes only those experiments where the first image reveals successful atom loading.  It should be noted that 4~\% of atoms are lost from one image to the next due to recoil heating.
 
 To reduce the temperature of the single atom and
  achieve high ground state population, we apply Raman sideband cooling~\cite{Monroe1995, Kaufman2012}.
@@ -249,9 +249,7 @@ In the paraxial approximation, we find $A_{i,n}=\frac{-3n\hbar}{4\pi m d_i^2}$,
 where $d_i$ equals the beam radius for the radial directions and
 $d_z\approx\pi w_{0,x}w_{0,y}/\lambda_{\textrm{trap}}$.
 Numerically, $\{A_{x,n},A_{y,n},A_{z,n}\}=\{-1.4, -1.4, -0.16\}n$~kHz.
-For mixed states, this broadens high-order sidebands due to the $n$-dependence of the transitions.
-In order to mitigate this, we drive the sidebands with a large Rabi frequency
-and short pulses to Fourier broaden the spectrum.
+For thermal states, this broadens and shifts high-order sidebands due to the $n$-dependence of the transitions. To mitigate this, we calibrate the frequency of each sideband order individually, and drive the sidebands with a large Rabi frequency and short pulses to Fourier broaden the spectrum.
 
 \begin{figure*}
   \includegraphics[height=4.2cm]{spectrum_r.pdf}
@@ -265,8 +263,8 @@ and short pulses to Fourier broaden the spectrum.
     as well as off-resonant scattering from the Raman beams.
     The blue lines correspond to a 1D ground state probability of $98.1$\% after cooling
     and the red lines correspond to a thermal distribution of $80$ $\mu$K before RSC.
-    The horizontal dashed line in the plot corresponds to the $96\%$ survival probability
-    after the first image.
+    The horizontal dashed line in the plot corresponds to the $4\,\%$ probability
+    of imaging loss.
     \label{f-radial}}
 \end{figure*}
 \begin{figure*}
@@ -342,12 +340,10 @@ at a rate of $\sim0.9$\%/ms.
 The rate is consistent with off-resonant scattering of the trapping light~\cite{Grimm2000},
 and is predominantly in the axial direction where the trapping beam propagates.
 
-We expect and have verified with Monte-Carlo simulation
-to enhance the ground state probability after RSC
-by increasing the detuning of the Raman beams and
-implementing better control of the magnetic field.
-Another improvement could be to implement grey molasses cooling to achieve
-a lower starting temperature before RSC~\cite{Colzi2016}.
+Monte-Carlo simulations show that the ground state probability after RSC
+could be enhanced by increasing the detuning of the Raman beams and implementing
+better control of the magnetic field. Another improvement could come from
+grey molasses cooling, to achieve a lower starting temperature before RSC~\cite{Colzi2016}.
 
 We have shown that despite the difficulty in achieving a low optical cooling temperature
 of low mass sodium atoms, three dimensional cooling
