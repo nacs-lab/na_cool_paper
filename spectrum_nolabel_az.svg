@@ -2112,30 +2112,6 @@ L 489.954938 279.010828
 L 489.954938 12.898828 
 " style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
    </g>
-   <g id="text_15">
-    <!-- (A) -->
-    <defs>
-     <path d="M 34.1875 63.1875 
-L 20.796875 26.90625 
-L 47.609375 26.90625 
-z
-M 28.609375 72.90625 
-L 39.796875 72.90625 
-L 67.578125 0 
-L 57.328125 0 
-L 50.6875 18.703125 
-L 17.828125 18.703125 
-L 11.1875 0 
-L 0.78125 0 
-z
-" id="DejaVuSans-41"/>
-    </defs>
-    <g transform="translate(64.895035 34.187788)scale(0.2 -0.2)">
-     <use xlink:href="#DejaVuSans-28"/>
-     <use x="39.013672" xlink:href="#DejaVuSans-41"/>
-     <use x="107.421875" xlink:href="#DejaVuSans-29"/>
-    </g>
-   </g>
    <g id="legend_1">
     <g id="patch_7">
      <path d="M 328.954938 178.311078 
@@ -2165,7 +2141,7 @@ L 372.954938 129.795453
       <use style="fill:#d62728;stroke:#d62728;" x="352.954938" xlink:href="#m4d17eb6f4c" y="129.795453"/>
      </g>
     </g>
-    <g id="text_16">
+    <g id="text_15">
      <!-- $z$ initial -->
      <defs>
       <path d="M 11.625 54.6875 
@@ -2208,7 +2184,7 @@ L 372.954938 159.151703
       <use style="fill:#1f77b4;stroke:#1f77b4;stroke-linejoin:miter;" x="352.954938" xlink:href="#m9e0ac68bfd" y="159.151703"/>
      </g>
     </g>
-    <g id="text_17">
+    <g id="text_16">
      <!-- $z$ cooled -->
      <defs>
       <path d="M 45.40625 46.390625 

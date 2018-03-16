@@ -8,8 +8,6 @@ using NaCsPlot
 using PyPlot
 using DataStructures
 
-matplotlib["rcParams"][:update](Dict("font.weight" => "normal"))
-
 function selector(logicals)
     @assert size(logicals, 2) == 1
     if logicals[1, 1] == 0
@@ -183,5 +181,75 @@ xlabel("\$\\delta\$, Detuning from carrier (kHz)")
 # xlabel("δ, Detuning from carrier (kHz)")
 ylabel("F=1 population")
 NaCsPlot.maybe_save("$(prefix)_az")
+
+fig = figure(figsize=[1.6, 1] * 4.8)
+
+ax0 = fig[:add_subplot](111)    # The big subplot
+ax0[:spines]["top"][:set_color]("none")
+ax0[:spines]["bottom"][:set_color]("none")
+ax0[:spines]["left"][:set_color]("none")
+ax0[:spines]["right"][:set_color]("none")
+ax0[:tick_params](labelcolor="w", top="off", bottom="off", left="off", right="off")
+ylabel("F=1 population")
+ax0[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
+
+ax1 = fig[:add_subplot](211)
+# Radial x
+# Without cooling
+NaCsPlot.plot_survival_data(data_hot_rx, fmt="C3o-", label="\$x\$ initial")
+# With cooling
+NaCsPlot.plot_survival_data(data_cold_rx[1], fmt="C0s-", label="\$x\$ cooled")
+NaCsPlot.plot_survival_data(data_cold_rx[2], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_rx[3], fmt="C0s-")
+axhline(0.96, c="#99aaaa", ls="-.")
+grid()
+ylim([0, 1])
+xlim([-700, 1400])
+legend()
+setp(ax1[:get_xticklabels](), visible=false)
+ax1[:tick_params](axis="x", length=0)
+ax1[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
+yticks([0, 0.25, 0.5, 0.75, 1.0], ["", "0.25", "0.50", "0.75", "1.00"])
+
+ax2 = fig[:add_subplot](212)
+subplots_adjust(hspace=0.0)
+# Without cooling
+NaCsPlot.plot_survival_data(data_hot_ry, fmt="C3o-", label="\$y\$ initial")
+# With cooling
+NaCsPlot.plot_survival_data(data_cold_ry[1], fmt="C0s-", label="\$y\$ cooled")
+NaCsPlot.plot_survival_data(data_cold_ry[2], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_ry[3], fmt="C0s-")
+axhline(0.96, c="#99aaaa", ls="-.")
+grid()
+ylim([0, 1])
+xlim([-700, 1400])
+legend()
+xlabel("\$\\delta\$, Detuning from carrier (kHz)")
+ax2[:get_yaxis]()[:set_label_coords](-0.105, 0.5)
+yticks([0, 0.25, 0.5, 0.75, 1.0], ["0.00", "0.25", "0.50", "0.75", "1.00"])
+
+NaCsPlot.maybe_save("$(prefix)_nolabel_r")
+
+fig = figure(figsize=[1.6, 1] * 4.8)
+# Without cooling
+NaCsPlot.plot_survival_data(data_hot_az, fmt="C3o-", label="\$z\$ initial")
+
+# With cooling
+NaCsPlot.plot_survival_data(data_cold_az[1], fmt="C0s-", label="\$z\$ cooled")
+NaCsPlot.plot_survival_data(data_cold_az[2], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_az[3], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_az[4], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_az[5], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_az[6], fmt="C0s-")
+NaCsPlot.plot_survival_data(data_cold_az[7], fmt="C0s-")
+axhline(0.96, c="#99aaaa", ls="-.")
+grid()
+ylim([0, 1])
+xlim([-145, 470])
+legend()
+xlabel("\$\\delta\$, Detuning from carrier (kHz)")
+# xlabel("δ, Detuning from carrier (kHz)")
+ylabel("F=1 population")
+NaCsPlot.maybe_save("$(prefix)_nolabel_az")
 
 NaCsPlot.maybe_show()
